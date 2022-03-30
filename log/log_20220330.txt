@@ -1,0 +1,952 @@
+
+
+***** Starting BoloCalc Program 'calcBolos.py' *****
+[2022-03-30 17:08:04] Generating Simulation object
+[2022-03-30 17:08:04] Generating Experiment object
+[2022-03-30 17:08:04] Generating expeiment realization from /home/cesierra/software/bolocalc-space/Experiments/specter_v1/
+[2022-03-30 17:08:04] Loading foreground file '/home/cesierra/software/bolocalc-space/Experiments/specter_v1/config/foregrounds.txt'
+[2022-03-30 17:08:04] Storing foreground parameters for /home/cesierra/software/bolocalc-space/Experiments/specter_v1/
+[2022-03-30 17:08:04] Storing telescopes in experiment /home/cesierra/software/bolocalc-space/Experiments/specter_v1/
+[2022-03-30 17:08:04] Generating telescope realization from /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 17:08:04] Storing telescope parameters for /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 17:08:04] Generating Sky object for Telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 17:08:04] Initializing foregrounds in Sky object
+[2022-03-30 17:08:04] Generating ScanStrategy object for Telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 17:08:04] Generating Camera objects for Telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 17:08:04] Storing cameras in telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 17:08:04] Generating camera realization from /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/
+[2022-03-30 17:08:04] Generating OpticalChain object for camera /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/
+[2022-03-30 17:08:04] Generating channel dictionaries from '/home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/channels.txt'
+[2022-03-30 17:08:04] Generating channel objects for camera /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/
+[2022-03-30 17:08:04] Generating realization for channel Band_ID '1'
+[2022-03-30 17:08:04] Storing detector band for channel Band_ID '1'
+[2022-03-30 17:08:04] ** Using custom band for channel Band_ID '1'
+[2022-03-30 17:08:04] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_1.txt
+[2022-03-30 17:08:04] Generating DetectorArray object in channel 1
+[2022-03-30 17:08:04] Storing detector objects in DetectorArray for channel Band_ID '1'
+[2022-03-30 17:08:04] Generating ObservationSet object in channel 1
+[2022-03-30 17:08:04] Generating ObservationSet realization for channel Band_ID = '1'
+[2022-03-30 17:08:04] Generating observation objects in ObservationSet for channel Band_ID '1'
+[2022-03-30 17:08:04] Generating realization for channel Band_ID '2'
+[2022-03-30 17:08:04] Storing detector band for channel Band_ID '2'
+[2022-03-30 17:08:04] ** Using custom band for channel Band_ID '2'
+[2022-03-30 17:08:04] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_2.txt
+[2022-03-30 17:08:04] Generating DetectorArray object in channel 2
+[2022-03-30 17:08:04] Storing detector objects in DetectorArray for channel Band_ID '2'
+[2022-03-30 17:08:04] Generating ObservationSet object in channel 2
+[2022-03-30 17:08:04] Generating ObservationSet realization for channel Band_ID = '2'
+[2022-03-30 17:08:04] Generating observation objects in ObservationSet for channel Band_ID '2'
+[2022-03-30 17:08:04] Generating realization for channel Band_ID '3'
+[2022-03-30 17:08:04] Storing detector band for channel Band_ID '3'
+[2022-03-30 17:08:04] ** Using custom band for channel Band_ID '3'
+[2022-03-30 17:08:04] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_3.txt
+[2022-03-30 17:08:04] Generating DetectorArray object in channel 3
+[2022-03-30 17:08:04] Storing detector objects in DetectorArray for channel Band_ID '3'
+[2022-03-30 17:08:04] Generating ObservationSet object in channel 3
+[2022-03-30 17:08:04] Generating ObservationSet realization for channel Band_ID = '3'
+[2022-03-30 17:08:04] Generating observation objects in ObservationSet for channel Band_ID '3'
+[2022-03-30 17:08:04] Generating realization for channel Band_ID '4'
+[2022-03-30 17:08:04] Storing detector band for channel Band_ID '4'
+[2022-03-30 17:08:04] ** Using custom band for channel Band_ID '4'
+[2022-03-30 17:08:04] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_4.txt
+[2022-03-30 17:08:04] Generating DetectorArray object in channel 4
+[2022-03-30 17:08:04] Storing detector objects in DetectorArray for channel Band_ID '4'
+[2022-03-30 17:08:04] Generating ObservationSet object in channel 4
+[2022-03-30 17:08:04] Generating ObservationSet realization for channel Band_ID = '4'
+[2022-03-30 17:08:04] Generating observation objects in ObservationSet for channel Band_ID '4'
+[2022-03-30 17:08:04] Generating realization for channel Band_ID '5'
+[2022-03-30 17:08:04] Storing detector band for channel Band_ID '5'
+[2022-03-30 17:08:04] ** Using custom band for channel Band_ID '5'
+[2022-03-30 17:08:04] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_5.txt
+[2022-03-30 17:08:04] Generating DetectorArray object in channel 5
+[2022-03-30 17:08:04] Storing detector objects in DetectorArray for channel Band_ID '5'
+[2022-03-30 17:08:04] Generating ObservationSet object in channel 5
+[2022-03-30 17:08:04] Generating ObservationSet realization for channel Band_ID = '5'
+[2022-03-30 17:08:04] Generating observation objects in ObservationSet for channel Band_ID '5'
+[2022-03-30 17:08:04] Generating realization for channel Band_ID '6'
+[2022-03-30 17:08:04] Storing detector band for channel Band_ID '6'
+[2022-03-30 17:08:04] ** Using custom band for channel Band_ID '6'
+[2022-03-30 17:08:04] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_6.txt
+[2022-03-30 17:08:04] Generating DetectorArray object in channel 6
+[2022-03-30 17:08:04] Storing detector objects in DetectorArray for channel Band_ID '6'
+[2022-03-30 17:08:04] Generating ObservationSet object in channel 6
+[2022-03-30 17:08:04] Generating ObservationSet realization for channel Band_ID = '6'
+[2022-03-30 17:08:04] Generating observation objects in ObservationSet for channel Band_ID '6'
+[2022-03-30 17:08:04] Generating realization for channel Band_ID '7'
+[2022-03-30 17:08:04] Storing detector band for channel Band_ID '7'
+[2022-03-30 17:08:04] ** Using custom band for channel Band_ID '7'
+[2022-03-30 17:08:04] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_7.txt
+[2022-03-30 17:08:04] Generating DetectorArray object in channel 7
+[2022-03-30 17:08:04] Storing detector objects in DetectorArray for channel Band_ID '7'
+[2022-03-30 17:08:04] Generating ObservationSet object in channel 7
+[2022-03-30 17:08:04] Generating ObservationSet realization for channel Band_ID = '7'
+[2022-03-30 17:08:04] Generating observation objects in ObservationSet for channel Band_ID '7'
+[2022-03-30 17:08:04] Generating realization for channel Band_ID '8'
+[2022-03-30 17:08:04] Storing detector band for channel Band_ID '8'
+[2022-03-30 17:08:04] ** Using custom band for channel Band_ID '8'
+[2022-03-30 17:08:04] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_8.txt
+[2022-03-30 17:08:04] Generating DetectorArray object in channel 8
+[2022-03-30 17:08:04] Storing detector objects in DetectorArray for channel Band_ID '8'
+[2022-03-30 17:08:04] Generating ObservationSet object in channel 8
+[2022-03-30 17:08:04] Generating ObservationSet realization for channel Band_ID = '8'
+[2022-03-30 17:08:04] Generating observation objects in ObservationSet for channel Band_ID '8'
+[2022-03-30 17:08:04] Generating Sensitivity object
+[2022-03-30 17:08:04] Generating Display object
+[2022-03-30 17:08:04] Simulting 1 experiment realizations each with 1 detector realizations and 1 sky realizations. Total sims = 1
+[2022-03-30 17:08:04] Evaluating experiment /home/cesierra/software/bolocalc-space/Experiments/specter_v1/
+[2022-03-30 17:08:04] Evaluating parameters for experiment /home/cesierra/software/bolocalc-space/Experiments/specter_v1/
+[2022-03-30 17:08:04] Evaluating telescopes in experiment /home/cesierra/software/bolocalc-space/Experiments/specter_v1/
+[2022-03-30 17:08:04] Evaluating telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 17:08:04] Evaluating parameters for telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 17:08:04] Evaluating cameras in telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 17:08:04] Evaluating camera /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/
+[2022-03-30 17:08:04] Evaluating parameters for camera /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/
+[2022-03-30 17:08:04] Evaluating channels in camera /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/
+[2022-03-30 17:08:04] Evaluating channel Band_ID '1'
+[2022-03-30 17:08:04] Evaluating parameters for channel Band_ID = '1'
+[2022-03-30 17:08:04] Evaluating detector objects in DetectorArray for channel BF_1
+[2022-03-30 17:08:04] Evaluating observation objects in ObservationSet for channel BF_1
+[2022-03-30 17:08:05] Evaluating channel Band_ID '2'
+[2022-03-30 17:08:05] Evaluating parameters for channel Band_ID = '2'
+[2022-03-30 17:08:05] Evaluating detector objects in DetectorArray for channel BF_2
+[2022-03-30 17:08:05] Evaluating observation objects in ObservationSet for channel BF_2
+[2022-03-30 17:08:05] Evaluating channel Band_ID '3'
+[2022-03-30 17:08:05] Evaluating parameters for channel Band_ID = '3'
+[2022-03-30 17:08:05] Evaluating detector objects in DetectorArray for channel BF_3
+[2022-03-30 17:08:05] Evaluating observation objects in ObservationSet for channel BF_3
+[2022-03-30 17:08:05] Evaluating channel Band_ID '4'
+[2022-03-30 17:08:05] Evaluating parameters for channel Band_ID = '4'
+[2022-03-30 17:08:05] Evaluating detector objects in DetectorArray for channel BF_4
+[2022-03-30 17:08:05] Evaluating observation objects in ObservationSet for channel BF_4
+[2022-03-30 17:08:06] Evaluating channel Band_ID '5'
+[2022-03-30 17:08:06] Evaluating parameters for channel Band_ID = '5'
+[2022-03-30 17:08:06] Evaluating detector objects in DetectorArray for channel BF_5
+[2022-03-30 17:08:06] Evaluating observation objects in ObservationSet for channel BF_5
+[2022-03-30 17:08:06] Evaluating channel Band_ID '6'
+[2022-03-30 17:08:06] Evaluating parameters for channel Band_ID = '6'
+[2022-03-30 17:08:06] Evaluating detector objects in DetectorArray for channel BF_6
+[2022-03-30 17:08:06] Evaluating observation objects in ObservationSet for channel BF_6
+[2022-03-30 17:08:07] Evaluating channel Band_ID '7'
+[2022-03-30 17:08:07] Evaluating parameters for channel Band_ID = '7'
+[2022-03-30 17:08:07] Evaluating detector objects in DetectorArray for channel BF_7
+[2022-03-30 17:08:07] Evaluating observation objects in ObservationSet for channel BF_7
+[2022-03-30 17:08:07] Evaluating channel Band_ID '8'
+[2022-03-30 17:08:07] Evaluating parameters for channel Band_ID = '8'
+[2022-03-30 17:08:07] Evaluating detector objects in DetectorArray for channel BF_8
+[2022-03-30 17:08:07] Evaluating observation objects in ObservationSet for channel BF_8
+
+
+***** Starting BoloCalc Program 'calcBolos.py' *****
+[2022-03-30 17:12:26] Generating Simulation object
+[2022-03-30 17:12:26] Generating Experiment object
+[2022-03-30 17:12:26] Generating expeiment realization from /home/cesierra/software/bolocalc-space/Experiments/specter_v1/
+[2022-03-30 17:12:26] Loading foreground file '/home/cesierra/software/bolocalc-space/Experiments/specter_v1/config/foregrounds.txt'
+[2022-03-30 17:12:26] Storing foreground parameters for /home/cesierra/software/bolocalc-space/Experiments/specter_v1/
+[2022-03-30 17:12:26] Storing telescopes in experiment /home/cesierra/software/bolocalc-space/Experiments/specter_v1/
+[2022-03-30 17:12:26] Generating telescope realization from /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 17:12:26] Storing telescope parameters for /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 17:12:26] Generating Sky object for Telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 17:12:26] Initializing foregrounds in Sky object
+[2022-03-30 17:12:26] Generating ScanStrategy object for Telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 17:12:26] Generating Camera objects for Telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 17:12:26] Storing cameras in telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 17:12:26] Generating camera realization from /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/
+[2022-03-30 17:12:26] Generating OpticalChain object for camera /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/
+[2022-03-30 17:12:26] Generating channel dictionaries from '/home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/channels.txt'
+[2022-03-30 17:12:26] Generating channel objects for camera /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/
+[2022-03-30 17:12:26] Generating realization for channel Band_ID '1'
+[2022-03-30 17:12:26] Storing detector band for channel Band_ID '1'
+[2022-03-30 17:12:26] ** Using custom band for channel Band_ID '1'
+[2022-03-30 17:12:26] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_1.txt
+[2022-03-30 17:12:26] Generating DetectorArray object in channel 1
+[2022-03-30 17:12:26] Storing detector objects in DetectorArray for channel Band_ID '1'
+[2022-03-30 17:12:26] Generating ObservationSet object in channel 1
+[2022-03-30 17:12:26] Generating ObservationSet realization for channel Band_ID = '1'
+[2022-03-30 17:12:26] Generating observation objects in ObservationSet for channel Band_ID '1'
+[2022-03-30 17:12:26] Generating realization for channel Band_ID '2'
+[2022-03-30 17:12:26] Storing detector band for channel Band_ID '2'
+[2022-03-30 17:12:26] ** Using custom band for channel Band_ID '2'
+[2022-03-30 17:12:26] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_2.txt
+[2022-03-30 17:12:26] Generating DetectorArray object in channel 2
+[2022-03-30 17:12:26] Storing detector objects in DetectorArray for channel Band_ID '2'
+[2022-03-30 17:12:26] Generating ObservationSet object in channel 2
+[2022-03-30 17:12:26] Generating ObservationSet realization for channel Band_ID = '2'
+[2022-03-30 17:12:26] Generating observation objects in ObservationSet for channel Band_ID '2'
+[2022-03-30 17:12:26] Generating realization for channel Band_ID '3'
+[2022-03-30 17:12:26] Storing detector band for channel Band_ID '3'
+[2022-03-30 17:12:26] ** Using custom band for channel Band_ID '3'
+[2022-03-30 17:12:26] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_3.txt
+[2022-03-30 17:12:26] Generating DetectorArray object in channel 3
+[2022-03-30 17:12:26] Storing detector objects in DetectorArray for channel Band_ID '3'
+[2022-03-30 17:12:26] Generating ObservationSet object in channel 3
+[2022-03-30 17:12:26] Generating ObservationSet realization for channel Band_ID = '3'
+[2022-03-30 17:12:26] Generating observation objects in ObservationSet for channel Band_ID '3'
+[2022-03-30 17:12:26] Generating realization for channel Band_ID '4'
+[2022-03-30 17:12:26] Storing detector band for channel Band_ID '4'
+[2022-03-30 17:12:26] ** Using custom band for channel Band_ID '4'
+[2022-03-30 17:12:26] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_4.txt
+[2022-03-30 17:12:26] Generating DetectorArray object in channel 4
+[2022-03-30 17:12:26] Storing detector objects in DetectorArray for channel Band_ID '4'
+[2022-03-30 17:12:26] Generating ObservationSet object in channel 4
+[2022-03-30 17:12:26] Generating ObservationSet realization for channel Band_ID = '4'
+[2022-03-30 17:12:26] Generating observation objects in ObservationSet for channel Band_ID '4'
+[2022-03-30 17:12:26] Generating realization for channel Band_ID '5'
+[2022-03-30 17:12:26] Storing detector band for channel Band_ID '5'
+[2022-03-30 17:12:26] ** Using custom band for channel Band_ID '5'
+[2022-03-30 17:12:26] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_5.txt
+[2022-03-30 17:12:26] Generating DetectorArray object in channel 5
+[2022-03-30 17:12:26] Storing detector objects in DetectorArray for channel Band_ID '5'
+[2022-03-30 17:12:26] Generating ObservationSet object in channel 5
+[2022-03-30 17:12:26] Generating ObservationSet realization for channel Band_ID = '5'
+[2022-03-30 17:12:26] Generating observation objects in ObservationSet for channel Band_ID '5'
+[2022-03-30 17:12:26] Generating realization for channel Band_ID '6'
+[2022-03-30 17:12:26] Storing detector band for channel Band_ID '6'
+[2022-03-30 17:12:26] ** Using custom band for channel Band_ID '6'
+[2022-03-30 17:12:26] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_6.txt
+[2022-03-30 17:12:26] Generating DetectorArray object in channel 6
+[2022-03-30 17:12:26] Storing detector objects in DetectorArray for channel Band_ID '6'
+[2022-03-30 17:12:26] Generating ObservationSet object in channel 6
+[2022-03-30 17:12:26] Generating ObservationSet realization for channel Band_ID = '6'
+[2022-03-30 17:12:26] Generating observation objects in ObservationSet for channel Band_ID '6'
+[2022-03-30 17:12:26] Generating realization for channel Band_ID '7'
+[2022-03-30 17:12:26] Storing detector band for channel Band_ID '7'
+[2022-03-30 17:12:26] ** Using custom band for channel Band_ID '7'
+[2022-03-30 17:12:26] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_7.txt
+[2022-03-30 17:12:26] Generating DetectorArray object in channel 7
+[2022-03-30 17:12:26] Storing detector objects in DetectorArray for channel Band_ID '7'
+[2022-03-30 17:12:26] Generating ObservationSet object in channel 7
+[2022-03-30 17:12:26] Generating ObservationSet realization for channel Band_ID = '7'
+[2022-03-30 17:12:26] Generating observation objects in ObservationSet for channel Band_ID '7'
+[2022-03-30 17:12:26] Generating realization for channel Band_ID '8'
+[2022-03-30 17:12:26] Storing detector band for channel Band_ID '8'
+[2022-03-30 17:12:26] ** Using custom band for channel Band_ID '8'
+[2022-03-30 17:12:26] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_8.txt
+[2022-03-30 17:12:26] Generating DetectorArray object in channel 8
+[2022-03-30 17:12:26] Storing detector objects in DetectorArray for channel Band_ID '8'
+[2022-03-30 17:12:26] Generating ObservationSet object in channel 8
+[2022-03-30 17:12:26] Generating ObservationSet realization for channel Band_ID = '8'
+[2022-03-30 17:12:26] Generating observation objects in ObservationSet for channel Band_ID '8'
+[2022-03-30 17:12:26] Generating Sensitivity object
+[2022-03-30 17:12:26] Generating Display object
+[2022-03-30 17:12:26] Simulting 1 experiment realizations each with 1 detector realizations and 1 sky realizations. Total sims = 1
+[2022-03-30 17:12:26] Evaluating experiment /home/cesierra/software/bolocalc-space/Experiments/specter_v1/
+[2022-03-30 17:12:26] Evaluating parameters for experiment /home/cesierra/software/bolocalc-space/Experiments/specter_v1/
+[2022-03-30 17:12:26] Evaluating telescopes in experiment /home/cesierra/software/bolocalc-space/Experiments/specter_v1/
+[2022-03-30 17:12:26] Evaluating telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 17:12:26] Evaluating parameters for telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 17:12:26] Evaluating cameras in telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 17:12:26] Evaluating camera /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/
+[2022-03-30 17:12:26] Evaluating parameters for camera /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/
+[2022-03-30 17:12:26] Evaluating channels in camera /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/
+[2022-03-30 17:12:26] Evaluating channel Band_ID '1'
+[2022-03-30 17:12:26] Evaluating parameters for channel Band_ID = '1'
+[2022-03-30 17:12:26] Evaluating detector objects in DetectorArray for channel BF_1
+[2022-03-30 17:12:26] Evaluating observation objects in ObservationSet for channel BF_1
+[2022-03-30 17:12:27] Evaluating channel Band_ID '2'
+[2022-03-30 17:12:27] Evaluating parameters for channel Band_ID = '2'
+[2022-03-30 17:12:27] Evaluating detector objects in DetectorArray for channel BF_2
+[2022-03-30 17:12:27] Evaluating observation objects in ObservationSet for channel BF_2
+[2022-03-30 17:12:27] Evaluating channel Band_ID '3'
+[2022-03-30 17:12:27] Evaluating parameters for channel Band_ID = '3'
+[2022-03-30 17:12:27] Evaluating detector objects in DetectorArray for channel BF_3
+[2022-03-30 17:12:27] Evaluating observation objects in ObservationSet for channel BF_3
+[2022-03-30 17:12:28] Evaluating channel Band_ID '4'
+[2022-03-30 17:12:28] Evaluating parameters for channel Band_ID = '4'
+[2022-03-30 17:12:28] Evaluating detector objects in DetectorArray for channel BF_4
+[2022-03-30 17:12:28] Evaluating observation objects in ObservationSet for channel BF_4
+[2022-03-30 17:12:28] Evaluating channel Band_ID '5'
+[2022-03-30 17:12:28] Evaluating parameters for channel Band_ID = '5'
+[2022-03-30 17:12:28] Evaluating detector objects in DetectorArray for channel BF_5
+[2022-03-30 17:12:28] Evaluating observation objects in ObservationSet for channel BF_5
+[2022-03-30 17:12:29] Evaluating channel Band_ID '6'
+[2022-03-30 17:12:29] Evaluating parameters for channel Band_ID = '6'
+[2022-03-30 17:12:29] Evaluating detector objects in DetectorArray for channel BF_6
+[2022-03-30 17:12:29] Evaluating observation objects in ObservationSet for channel BF_6
+[2022-03-30 17:12:29] Evaluating channel Band_ID '7'
+[2022-03-30 17:12:29] Evaluating parameters for channel Band_ID = '7'
+[2022-03-30 17:12:29] Evaluating detector objects in DetectorArray for channel BF_7
+[2022-03-30 17:12:29] Evaluating observation objects in ObservationSet for channel BF_7
+[2022-03-30 17:12:29] Evaluating channel Band_ID '8'
+[2022-03-30 17:12:29] Evaluating parameters for channel Band_ID = '8'
+[2022-03-30 17:12:29] Evaluating detector objects in DetectorArray for channel BF_8
+[2022-03-30 17:12:29] Evaluating observation objects in ObservationSet for channel BF_8
+
+
+***** Starting BoloCalc Program 'calcBolos.py' *****
+[2022-03-30 17:12:48] Generating Simulation object
+[2022-03-30 17:12:48] Generating Experiment object
+[2022-03-30 17:12:48] Generating expeiment realization from /home/cesierra/software/bolocalc-space/Experiments/specter_v1/
+[2022-03-30 17:12:48] Loading foreground file '/home/cesierra/software/bolocalc-space/Experiments/specter_v1/config/foregrounds.txt'
+[2022-03-30 17:12:48] Storing foreground parameters for /home/cesierra/software/bolocalc-space/Experiments/specter_v1/
+[2022-03-30 17:12:48] Storing telescopes in experiment /home/cesierra/software/bolocalc-space/Experiments/specter_v1/
+[2022-03-30 17:12:48] Generating telescope realization from /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 17:12:48] Storing telescope parameters for /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 17:12:48] Generating Sky object for Telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 17:12:48] Initializing foregrounds in Sky object
+[2022-03-30 17:12:48] Generating ScanStrategy object for Telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 17:12:48] Generating Camera objects for Telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 17:12:48] Storing cameras in telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 17:12:48] Generating camera realization from /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/
+[2022-03-30 17:12:48] Generating OpticalChain object for camera /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/
+[2022-03-30 17:12:48] Generating channel dictionaries from '/home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/channels.txt'
+[2022-03-30 17:12:48] Generating channel objects for camera /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/
+[2022-03-30 17:12:48] Generating realization for channel Band_ID '1'
+[2022-03-30 17:12:48] Storing detector band for channel Band_ID '1'
+[2022-03-30 17:12:48] ** Using custom band for channel Band_ID '1'
+[2022-03-30 17:12:48] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_1.txt
+[2022-03-30 17:12:48] Generating DetectorArray object in channel 1
+[2022-03-30 17:12:48] Storing detector objects in DetectorArray for channel Band_ID '1'
+[2022-03-30 17:12:48] Generating ObservationSet object in channel 1
+[2022-03-30 17:12:48] Generating ObservationSet realization for channel Band_ID = '1'
+[2022-03-30 17:12:48] Generating observation objects in ObservationSet for channel Band_ID '1'
+[2022-03-30 17:12:48] Generating realization for channel Band_ID '2'
+[2022-03-30 17:12:48] Storing detector band for channel Band_ID '2'
+[2022-03-30 17:12:48] ** Using custom band for channel Band_ID '2'
+[2022-03-30 17:12:48] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_2.txt
+[2022-03-30 17:12:48] Generating DetectorArray object in channel 2
+[2022-03-30 17:12:48] Storing detector objects in DetectorArray for channel Band_ID '2'
+[2022-03-30 17:12:48] Generating ObservationSet object in channel 2
+[2022-03-30 17:12:48] Generating ObservationSet realization for channel Band_ID = '2'
+[2022-03-30 17:12:48] Generating observation objects in ObservationSet for channel Band_ID '2'
+[2022-03-30 17:12:48] Generating realization for channel Band_ID '3'
+[2022-03-30 17:12:48] Storing detector band for channel Band_ID '3'
+[2022-03-30 17:12:48] ** Using custom band for channel Band_ID '3'
+[2022-03-30 17:12:48] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_3.txt
+[2022-03-30 17:12:48] Generating DetectorArray object in channel 3
+[2022-03-30 17:12:48] Storing detector objects in DetectorArray for channel Band_ID '3'
+[2022-03-30 17:12:48] Generating ObservationSet object in channel 3
+[2022-03-30 17:12:48] Generating ObservationSet realization for channel Band_ID = '3'
+[2022-03-30 17:12:48] Generating observation objects in ObservationSet for channel Band_ID '3'
+[2022-03-30 17:12:48] Generating realization for channel Band_ID '4'
+[2022-03-30 17:12:48] Storing detector band for channel Band_ID '4'
+[2022-03-30 17:12:48] ** Using custom band for channel Band_ID '4'
+[2022-03-30 17:12:48] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_4.txt
+[2022-03-30 17:12:48] Generating DetectorArray object in channel 4
+[2022-03-30 17:12:48] Storing detector objects in DetectorArray for channel Band_ID '4'
+[2022-03-30 17:12:48] Generating ObservationSet object in channel 4
+[2022-03-30 17:12:48] Generating ObservationSet realization for channel Band_ID = '4'
+[2022-03-30 17:12:48] Generating observation objects in ObservationSet for channel Band_ID '4'
+[2022-03-30 17:12:48] Generating realization for channel Band_ID '5'
+[2022-03-30 17:12:48] Storing detector band for channel Band_ID '5'
+[2022-03-30 17:12:48] ** Using custom band for channel Band_ID '5'
+[2022-03-30 17:12:48] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_5.txt
+[2022-03-30 17:12:48] Generating DetectorArray object in channel 5
+[2022-03-30 17:12:48] Storing detector objects in DetectorArray for channel Band_ID '5'
+[2022-03-30 17:12:48] Generating ObservationSet object in channel 5
+[2022-03-30 17:12:48] Generating ObservationSet realization for channel Band_ID = '5'
+[2022-03-30 17:12:48] Generating observation objects in ObservationSet for channel Band_ID '5'
+[2022-03-30 17:12:48] Generating realization for channel Band_ID '6'
+[2022-03-30 17:12:48] Storing detector band for channel Band_ID '6'
+[2022-03-30 17:12:48] ** Using custom band for channel Band_ID '6'
+[2022-03-30 17:12:48] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_6.txt
+[2022-03-30 17:12:48] Generating DetectorArray object in channel 6
+[2022-03-30 17:12:48] Storing detector objects in DetectorArray for channel Band_ID '6'
+[2022-03-30 17:12:48] Generating ObservationSet object in channel 6
+[2022-03-30 17:12:48] Generating ObservationSet realization for channel Band_ID = '6'
+[2022-03-30 17:12:48] Generating observation objects in ObservationSet for channel Band_ID '6'
+[2022-03-30 17:12:48] Generating realization for channel Band_ID '7'
+[2022-03-30 17:12:48] Storing detector band for channel Band_ID '7'
+[2022-03-30 17:12:48] ** Using custom band for channel Band_ID '7'
+[2022-03-30 17:12:48] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_7.txt
+[2022-03-30 17:12:48] Generating DetectorArray object in channel 7
+[2022-03-30 17:12:48] Storing detector objects in DetectorArray for channel Band_ID '7'
+[2022-03-30 17:12:48] Generating ObservationSet object in channel 7
+[2022-03-30 17:12:48] Generating ObservationSet realization for channel Band_ID = '7'
+[2022-03-30 17:12:48] Generating observation objects in ObservationSet for channel Band_ID '7'
+[2022-03-30 17:12:48] Generating realization for channel Band_ID '8'
+[2022-03-30 17:12:48] Storing detector band for channel Band_ID '8'
+[2022-03-30 17:12:48] ** Using custom band for channel Band_ID '8'
+[2022-03-30 17:12:48] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_8.txt
+[2022-03-30 17:12:48] Generating DetectorArray object in channel 8
+[2022-03-30 17:12:48] Storing detector objects in DetectorArray for channel Band_ID '8'
+[2022-03-30 17:12:48] Generating ObservationSet object in channel 8
+[2022-03-30 17:12:48] Generating ObservationSet realization for channel Band_ID = '8'
+[2022-03-30 17:12:48] Generating observation objects in ObservationSet for channel Band_ID '8'
+[2022-03-30 17:12:48] Generating Sensitivity object
+[2022-03-30 17:12:48] Generating Display object
+[2022-03-30 17:12:48] Simulting 1 experiment realizations each with 1 detector realizations and 1 sky realizations. Total sims = 1
+[2022-03-30 17:12:48] Evaluating experiment /home/cesierra/software/bolocalc-space/Experiments/specter_v1/
+[2022-03-30 17:12:48] Evaluating parameters for experiment /home/cesierra/software/bolocalc-space/Experiments/specter_v1/
+[2022-03-30 17:12:48] Evaluating telescopes in experiment /home/cesierra/software/bolocalc-space/Experiments/specter_v1/
+[2022-03-30 17:12:48] Evaluating telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 17:12:48] Evaluating parameters for telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 17:12:48] Evaluating cameras in telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 17:12:48] Evaluating camera /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/
+[2022-03-30 17:12:48] Evaluating parameters for camera /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/
+[2022-03-30 17:12:48] Evaluating channels in camera /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/
+[2022-03-30 17:12:48] Evaluating channel Band_ID '1'
+[2022-03-30 17:12:48] Evaluating parameters for channel Band_ID = '1'
+[2022-03-30 17:12:48] Evaluating detector objects in DetectorArray for channel BF_1
+[2022-03-30 17:12:48] Evaluating observation objects in ObservationSet for channel BF_1
+[2022-03-30 17:12:49] Evaluating channel Band_ID '2'
+[2022-03-30 17:12:49] Evaluating parameters for channel Band_ID = '2'
+[2022-03-30 17:12:49] Evaluating detector objects in DetectorArray for channel BF_2
+[2022-03-30 17:12:49] Evaluating observation objects in ObservationSet for channel BF_2
+[2022-03-30 17:12:49] Evaluating channel Band_ID '3'
+[2022-03-30 17:12:49] Evaluating parameters for channel Band_ID = '3'
+[2022-03-30 17:12:49] Evaluating detector objects in DetectorArray for channel BF_3
+[2022-03-30 17:12:49] Evaluating observation objects in ObservationSet for channel BF_3
+[2022-03-30 17:12:50] Evaluating channel Band_ID '4'
+[2022-03-30 17:12:50] Evaluating parameters for channel Band_ID = '4'
+[2022-03-30 17:12:50] Evaluating detector objects in DetectorArray for channel BF_4
+[2022-03-30 17:12:50] Evaluating observation objects in ObservationSet for channel BF_4
+[2022-03-30 17:12:50] Evaluating channel Band_ID '5'
+[2022-03-30 17:12:50] Evaluating parameters for channel Band_ID = '5'
+[2022-03-30 17:12:50] Evaluating detector objects in DetectorArray for channel BF_5
+[2022-03-30 17:12:50] Evaluating observation objects in ObservationSet for channel BF_5
+[2022-03-30 17:12:51] Evaluating channel Band_ID '6'
+[2022-03-30 17:12:51] Evaluating parameters for channel Band_ID = '6'
+[2022-03-30 17:12:51] Evaluating detector objects in DetectorArray for channel BF_6
+[2022-03-30 17:12:51] Evaluating observation objects in ObservationSet for channel BF_6
+[2022-03-30 17:12:51] Evaluating channel Band_ID '7'
+[2022-03-30 17:12:51] Evaluating parameters for channel Band_ID = '7'
+[2022-03-30 17:12:51] Evaluating detector objects in DetectorArray for channel BF_7
+[2022-03-30 17:12:51] Evaluating observation objects in ObservationSet for channel BF_7
+[2022-03-30 17:12:51] Evaluating channel Band_ID '8'
+[2022-03-30 17:12:51] Evaluating parameters for channel Band_ID = '8'
+[2022-03-30 17:12:51] Evaluating detector objects in DetectorArray for channel BF_8
+[2022-03-30 17:12:51] Evaluating observation objects in ObservationSet for channel BF_8
+
+
+***** Starting BoloCalc Program 'calcBolos.py' *****
+[2022-03-30 17:22:42] Generating Simulation object
+[2022-03-30 17:22:42] Generating Experiment object
+[2022-03-30 17:22:42] Generating expeiment realization from /home/cesierra/software/bolocalc-space/Experiments/specter_v1/
+[2022-03-30 17:22:42] Loading foreground file '/home/cesierra/software/bolocalc-space/Experiments/specter_v1/config/foregrounds.txt'
+[2022-03-30 17:22:42] Storing foreground parameters for /home/cesierra/software/bolocalc-space/Experiments/specter_v1/
+[2022-03-30 17:22:42] Storing telescopes in experiment /home/cesierra/software/bolocalc-space/Experiments/specter_v1/
+[2022-03-30 17:22:42] Generating telescope realization from /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 17:22:42] Storing telescope parameters for /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 17:22:42] Generating Sky object for Telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 17:22:42] Initializing foregrounds in Sky object
+[2022-03-30 17:22:42] Generating ScanStrategy object for Telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 17:22:42] Generating Camera objects for Telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 17:22:42] Storing cameras in telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 17:22:42] Generating camera realization from /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/
+[2022-03-30 17:22:42] Generating OpticalChain object for camera /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/
+[2022-03-30 17:22:42] Generating channel dictionaries from '/home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/channels.txt'
+[2022-03-30 17:22:42] Generating channel objects for camera /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/
+[2022-03-30 17:22:42] Generating realization for channel Band_ID '1'
+[2022-03-30 17:22:42] Storing detector band for channel Band_ID '1'
+[2022-03-30 17:22:42] ** Using custom band for channel Band_ID '1'
+[2022-03-30 17:22:42] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_1.txt
+[2022-03-30 17:22:42] Generating DetectorArray object in channel 1
+[2022-03-30 17:22:42] Storing detector objects in DetectorArray for channel Band_ID '1'
+[2022-03-30 17:22:42] Generating ObservationSet object in channel 1
+[2022-03-30 17:22:42] Generating ObservationSet realization for channel Band_ID = '1'
+[2022-03-30 17:22:42] Generating observation objects in ObservationSet for channel Band_ID '1'
+[2022-03-30 17:22:42] Generating realization for channel Band_ID '2'
+[2022-03-30 17:22:42] Storing detector band for channel Band_ID '2'
+[2022-03-30 17:22:42] ** Using custom band for channel Band_ID '2'
+[2022-03-30 17:22:42] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_2.txt
+[2022-03-30 17:22:42] Generating DetectorArray object in channel 2
+[2022-03-30 17:22:42] Storing detector objects in DetectorArray for channel Band_ID '2'
+[2022-03-30 17:22:42] Generating ObservationSet object in channel 2
+[2022-03-30 17:22:42] Generating ObservationSet realization for channel Band_ID = '2'
+[2022-03-30 17:22:42] Generating observation objects in ObservationSet for channel Band_ID '2'
+[2022-03-30 17:22:42] Generating realization for channel Band_ID '3'
+[2022-03-30 17:22:42] Storing detector band for channel Band_ID '3'
+[2022-03-30 17:22:42] ** Using custom band for channel Band_ID '3'
+[2022-03-30 17:22:42] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_3.txt
+[2022-03-30 17:22:42] Generating DetectorArray object in channel 3
+[2022-03-30 17:22:42] Storing detector objects in DetectorArray for channel Band_ID '3'
+[2022-03-30 17:22:42] Generating ObservationSet object in channel 3
+[2022-03-30 17:22:42] Generating ObservationSet realization for channel Band_ID = '3'
+[2022-03-30 17:22:42] Generating observation objects in ObservationSet for channel Band_ID '3'
+[2022-03-30 17:22:42] Generating realization for channel Band_ID '4'
+[2022-03-30 17:22:42] Storing detector band for channel Band_ID '4'
+[2022-03-30 17:22:42] ** Using custom band for channel Band_ID '4'
+[2022-03-30 17:22:42] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_4.txt
+[2022-03-30 17:22:42] Generating DetectorArray object in channel 4
+[2022-03-30 17:22:42] Storing detector objects in DetectorArray for channel Band_ID '4'
+[2022-03-30 17:22:42] Generating ObservationSet object in channel 4
+[2022-03-30 17:22:42] Generating ObservationSet realization for channel Band_ID = '4'
+[2022-03-30 17:22:42] Generating observation objects in ObservationSet for channel Band_ID '4'
+[2022-03-30 17:22:42] Generating realization for channel Band_ID '5'
+[2022-03-30 17:22:42] Storing detector band for channel Band_ID '5'
+[2022-03-30 17:22:42] ** Using custom band for channel Band_ID '5'
+[2022-03-30 17:22:42] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_5.txt
+[2022-03-30 17:22:42] Generating DetectorArray object in channel 5
+[2022-03-30 17:22:42] Storing detector objects in DetectorArray for channel Band_ID '5'
+[2022-03-30 17:22:42] Generating ObservationSet object in channel 5
+[2022-03-30 17:22:42] Generating ObservationSet realization for channel Band_ID = '5'
+[2022-03-30 17:22:42] Generating observation objects in ObservationSet for channel Band_ID '5'
+[2022-03-30 17:22:42] Generating realization for channel Band_ID '6'
+[2022-03-30 17:22:42] Storing detector band for channel Band_ID '6'
+[2022-03-30 17:22:42] ** Using custom band for channel Band_ID '6'
+[2022-03-30 17:22:42] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_6.txt
+[2022-03-30 17:22:42] Generating DetectorArray object in channel 6
+[2022-03-30 17:22:42] Storing detector objects in DetectorArray for channel Band_ID '6'
+[2022-03-30 17:22:42] Generating ObservationSet object in channel 6
+[2022-03-30 17:22:42] Generating ObservationSet realization for channel Band_ID = '6'
+[2022-03-30 17:22:42] Generating observation objects in ObservationSet for channel Band_ID '6'
+[2022-03-30 17:22:42] Generating realization for channel Band_ID '7'
+[2022-03-30 17:22:42] Storing detector band for channel Band_ID '7'
+[2022-03-30 17:22:42] ** Using custom band for channel Band_ID '7'
+[2022-03-30 17:22:42] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_7.txt
+[2022-03-30 17:22:42] Generating DetectorArray object in channel 7
+[2022-03-30 17:22:42] Storing detector objects in DetectorArray for channel Band_ID '7'
+[2022-03-30 17:22:42] Generating ObservationSet object in channel 7
+[2022-03-30 17:22:42] Generating ObservationSet realization for channel Band_ID = '7'
+[2022-03-30 17:22:42] Generating observation objects in ObservationSet for channel Band_ID '7'
+[2022-03-30 17:22:42] Generating realization for channel Band_ID '8'
+[2022-03-30 17:22:42] Storing detector band for channel Band_ID '8'
+[2022-03-30 17:22:42] ** Using custom band for channel Band_ID '8'
+[2022-03-30 17:22:42] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_8.txt
+[2022-03-30 17:22:42] Generating DetectorArray object in channel 8
+[2022-03-30 17:22:42] Storing detector objects in DetectorArray for channel Band_ID '8'
+[2022-03-30 17:22:42] Generating ObservationSet object in channel 8
+[2022-03-30 17:22:42] Generating ObservationSet realization for channel Band_ID = '8'
+[2022-03-30 17:22:42] Generating observation objects in ObservationSet for channel Band_ID '8'
+[2022-03-30 17:22:42] Generating Sensitivity object
+[2022-03-30 17:22:42] Generating Display object
+[2022-03-30 17:22:42] Simulting 1 experiment realizations each with 1 detector realizations and 1 sky realizations. Total sims = 1
+[2022-03-30 17:22:42] Evaluating experiment /home/cesierra/software/bolocalc-space/Experiments/specter_v1/
+[2022-03-30 17:22:42] Evaluating parameters for experiment /home/cesierra/software/bolocalc-space/Experiments/specter_v1/
+[2022-03-30 17:22:42] Evaluating telescopes in experiment /home/cesierra/software/bolocalc-space/Experiments/specter_v1/
+[2022-03-30 17:22:42] Evaluating telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 17:22:42] Evaluating parameters for telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 17:22:42] Evaluating cameras in telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 17:22:42] Evaluating camera /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/
+[2022-03-30 17:22:42] Evaluating parameters for camera /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/
+[2022-03-30 17:22:42] Evaluating channels in camera /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/
+[2022-03-30 17:22:42] Evaluating channel Band_ID '1'
+[2022-03-30 17:22:42] Evaluating parameters for channel Band_ID = '1'
+[2022-03-30 17:22:42] Evaluating detector objects in DetectorArray for channel BF_1
+[2022-03-30 17:22:42] Evaluating observation objects in ObservationSet for channel BF_1
+[2022-03-30 17:22:42] Evaluating channel Band_ID '2'
+[2022-03-30 17:22:42] Evaluating parameters for channel Band_ID = '2'
+[2022-03-30 17:22:42] Evaluating detector objects in DetectorArray for channel BF_2
+[2022-03-30 17:22:42] Evaluating observation objects in ObservationSet for channel BF_2
+[2022-03-30 17:22:43] Evaluating channel Band_ID '3'
+[2022-03-30 17:22:43] Evaluating parameters for channel Band_ID = '3'
+[2022-03-30 17:22:43] Evaluating detector objects in DetectorArray for channel BF_3
+[2022-03-30 17:22:43] Evaluating observation objects in ObservationSet for channel BF_3
+[2022-03-30 17:22:43] Evaluating channel Band_ID '4'
+[2022-03-30 17:22:43] Evaluating parameters for channel Band_ID = '4'
+[2022-03-30 17:22:43] Evaluating detector objects in DetectorArray for channel BF_4
+[2022-03-30 17:22:43] Evaluating observation objects in ObservationSet for channel BF_4
+[2022-03-30 17:22:44] Evaluating channel Band_ID '5'
+[2022-03-30 17:22:44] Evaluating parameters for channel Band_ID = '5'
+[2022-03-30 17:22:44] Evaluating detector objects in DetectorArray for channel BF_5
+[2022-03-30 17:22:44] Evaluating observation objects in ObservationSet for channel BF_5
+[2022-03-30 17:22:44] Evaluating channel Band_ID '6'
+[2022-03-30 17:22:44] Evaluating parameters for channel Band_ID = '6'
+[2022-03-30 17:22:44] Evaluating detector objects in DetectorArray for channel BF_6
+[2022-03-30 17:22:44] Evaluating observation objects in ObservationSet for channel BF_6
+[2022-03-30 17:22:45] Evaluating channel Band_ID '7'
+[2022-03-30 17:22:45] Evaluating parameters for channel Band_ID = '7'
+[2022-03-30 17:22:45] Evaluating detector objects in DetectorArray for channel BF_7
+[2022-03-30 17:22:45] Evaluating observation objects in ObservationSet for channel BF_7
+[2022-03-30 17:22:45] Evaluating channel Band_ID '8'
+[2022-03-30 17:22:45] Evaluating parameters for channel Band_ID = '8'
+[2022-03-30 17:22:45] Evaluating detector objects in DetectorArray for channel BF_8
+[2022-03-30 17:22:45] Evaluating observation objects in ObservationSet for channel BF_8
+
+
+***** Starting BoloCalc Program 'calcBolos.py' *****
+[2022-03-30 17:26:37] Generating Simulation object
+[2022-03-30 17:26:37] Generating Experiment object
+[2022-03-30 17:26:37] Generating expeiment realization from /home/cesierra/software/bolocalc-space/Experiments/specter_v1/
+[2022-03-30 17:26:37] Loading foreground file '/home/cesierra/software/bolocalc-space/Experiments/specter_v1/config/foregrounds.txt'
+[2022-03-30 17:26:37] Storing foreground parameters for /home/cesierra/software/bolocalc-space/Experiments/specter_v1/
+[2022-03-30 17:26:37] Storing telescopes in experiment /home/cesierra/software/bolocalc-space/Experiments/specter_v1/
+[2022-03-30 17:26:37] Generating telescope realization from /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 17:26:37] Storing telescope parameters for /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 17:26:37] Generating Sky object for Telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 17:26:37] Initializing foregrounds in Sky object
+[2022-03-30 17:26:37] Generating ScanStrategy object for Telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 17:26:37] Generating Camera objects for Telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 17:26:37] Storing cameras in telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 17:26:37] Generating camera realization from /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/
+[2022-03-30 17:26:37] Generating OpticalChain object for camera /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/
+[2022-03-30 17:26:37] Generating channel dictionaries from '/home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/channels.txt'
+[2022-03-30 17:26:37] Generating channel objects for camera /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/
+[2022-03-30 17:26:37] Generating realization for channel Band_ID '1'
+[2022-03-30 17:26:37] Storing detector band for channel Band_ID '1'
+[2022-03-30 17:26:37] ** Using custom band for channel Band_ID '1'
+[2022-03-30 17:26:37] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_1.txt
+[2022-03-30 17:26:37] Generating DetectorArray object in channel 1
+[2022-03-30 17:26:37] Storing detector objects in DetectorArray for channel Band_ID '1'
+[2022-03-30 17:26:37] Generating ObservationSet object in channel 1
+[2022-03-30 17:26:37] Generating ObservationSet realization for channel Band_ID = '1'
+[2022-03-30 17:26:37] Generating observation objects in ObservationSet for channel Band_ID '1'
+[2022-03-30 17:26:37] Generating realization for channel Band_ID '2'
+[2022-03-30 17:26:37] Storing detector band for channel Band_ID '2'
+[2022-03-30 17:26:37] ** Using custom band for channel Band_ID '2'
+[2022-03-30 17:26:37] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_2.txt
+[2022-03-30 17:26:37] Generating DetectorArray object in channel 2
+[2022-03-30 17:26:37] Storing detector objects in DetectorArray for channel Band_ID '2'
+[2022-03-30 17:26:37] Generating ObservationSet object in channel 2
+[2022-03-30 17:26:37] Generating ObservationSet realization for channel Band_ID = '2'
+[2022-03-30 17:26:37] Generating observation objects in ObservationSet for channel Band_ID '2'
+[2022-03-30 17:26:37] Generating realization for channel Band_ID '3'
+[2022-03-30 17:26:37] Storing detector band for channel Band_ID '3'
+[2022-03-30 17:26:37] ** Using custom band for channel Band_ID '3'
+[2022-03-30 17:26:37] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_3.txt
+[2022-03-30 17:26:37] Generating DetectorArray object in channel 3
+[2022-03-30 17:26:37] Storing detector objects in DetectorArray for channel Band_ID '3'
+[2022-03-30 17:26:37] Generating ObservationSet object in channel 3
+[2022-03-30 17:26:37] Generating ObservationSet realization for channel Band_ID = '3'
+[2022-03-30 17:26:37] Generating observation objects in ObservationSet for channel Band_ID '3'
+[2022-03-30 17:26:37] Generating realization for channel Band_ID '4'
+[2022-03-30 17:26:37] Storing detector band for channel Band_ID '4'
+[2022-03-30 17:26:37] ** Using custom band for channel Band_ID '4'
+[2022-03-30 17:26:37] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_4.txt
+[2022-03-30 17:26:37] Generating DetectorArray object in channel 4
+[2022-03-30 17:26:37] Storing detector objects in DetectorArray for channel Band_ID '4'
+[2022-03-30 17:26:37] Generating ObservationSet object in channel 4
+[2022-03-30 17:26:37] Generating ObservationSet realization for channel Band_ID = '4'
+[2022-03-30 17:26:37] Generating observation objects in ObservationSet for channel Band_ID '4'
+[2022-03-30 17:26:37] Generating realization for channel Band_ID '5'
+[2022-03-30 17:26:37] Storing detector band for channel Band_ID '5'
+[2022-03-30 17:26:37] ** Using custom band for channel Band_ID '5'
+[2022-03-30 17:26:37] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_5.txt
+[2022-03-30 17:26:37] Generating DetectorArray object in channel 5
+[2022-03-30 17:26:37] Storing detector objects in DetectorArray for channel Band_ID '5'
+[2022-03-30 17:26:37] Generating ObservationSet object in channel 5
+[2022-03-30 17:26:37] Generating ObservationSet realization for channel Band_ID = '5'
+[2022-03-30 17:26:37] Generating observation objects in ObservationSet for channel Band_ID '5'
+[2022-03-30 17:26:37] Generating realization for channel Band_ID '6'
+[2022-03-30 17:26:37] Storing detector band for channel Band_ID '6'
+[2022-03-30 17:26:37] ** Using custom band for channel Band_ID '6'
+[2022-03-30 17:26:37] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_6.txt
+[2022-03-30 17:26:37] Generating DetectorArray object in channel 6
+[2022-03-30 17:26:37] Storing detector objects in DetectorArray for channel Band_ID '6'
+[2022-03-30 17:26:37] Generating ObservationSet object in channel 6
+[2022-03-30 17:26:37] Generating ObservationSet realization for channel Band_ID = '6'
+[2022-03-30 17:26:37] Generating observation objects in ObservationSet for channel Band_ID '6'
+[2022-03-30 17:26:37] Generating realization for channel Band_ID '7'
+[2022-03-30 17:26:37] Storing detector band for channel Band_ID '7'
+[2022-03-30 17:26:37] ** Using custom band for channel Band_ID '7'
+[2022-03-30 17:26:37] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_7.txt
+[2022-03-30 17:26:37] Generating DetectorArray object in channel 7
+[2022-03-30 17:26:37] Storing detector objects in DetectorArray for channel Band_ID '7'
+[2022-03-30 17:26:37] Generating ObservationSet object in channel 7
+[2022-03-30 17:26:37] Generating ObservationSet realization for channel Band_ID = '7'
+[2022-03-30 17:26:37] Generating observation objects in ObservationSet for channel Band_ID '7'
+[2022-03-30 17:26:37] Generating realization for channel Band_ID '8'
+[2022-03-30 17:26:37] Storing detector band for channel Band_ID '8'
+[2022-03-30 17:26:37] ** Using custom band for channel Band_ID '8'
+[2022-03-30 17:26:37] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_8.txt
+[2022-03-30 17:26:37] Generating DetectorArray object in channel 8
+[2022-03-30 17:26:37] Storing detector objects in DetectorArray for channel Band_ID '8'
+[2022-03-30 17:26:37] Generating ObservationSet object in channel 8
+[2022-03-30 17:26:37] Generating ObservationSet realization for channel Band_ID = '8'
+[2022-03-30 17:26:37] Generating observation objects in ObservationSet for channel Band_ID '8'
+[2022-03-30 17:26:37] Generating Sensitivity object
+[2022-03-30 17:26:37] Generating Display object
+[2022-03-30 17:26:37] Simulting 1 experiment realizations each with 1 detector realizations and 1 sky realizations. Total sims = 1
+[2022-03-30 17:26:37] Evaluating experiment /home/cesierra/software/bolocalc-space/Experiments/specter_v1/
+[2022-03-30 17:26:37] Evaluating parameters for experiment /home/cesierra/software/bolocalc-space/Experiments/specter_v1/
+[2022-03-30 17:26:37] Evaluating telescopes in experiment /home/cesierra/software/bolocalc-space/Experiments/specter_v1/
+[2022-03-30 17:26:37] Evaluating telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 17:26:37] Evaluating parameters for telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 17:26:37] Evaluating cameras in telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 17:26:37] Evaluating camera /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/
+[2022-03-30 17:26:37] Evaluating parameters for camera /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/
+[2022-03-30 17:26:37] Evaluating channels in camera /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/
+[2022-03-30 17:26:37] Evaluating channel Band_ID '1'
+[2022-03-30 17:26:37] Evaluating parameters for channel Band_ID = '1'
+[2022-03-30 17:26:37] Evaluating detector objects in DetectorArray for channel BF_1
+[2022-03-30 17:26:37] Evaluating observation objects in ObservationSet for channel BF_1
+[2022-03-30 17:26:38] Evaluating channel Band_ID '2'
+[2022-03-30 17:26:38] Evaluating parameters for channel Band_ID = '2'
+[2022-03-30 17:26:38] Evaluating detector objects in DetectorArray for channel BF_2
+[2022-03-30 17:26:38] Evaluating observation objects in ObservationSet for channel BF_2
+[2022-03-30 17:26:38] Evaluating channel Band_ID '3'
+[2022-03-30 17:26:38] Evaluating parameters for channel Band_ID = '3'
+[2022-03-30 17:26:38] Evaluating detector objects in DetectorArray for channel BF_3
+[2022-03-30 17:26:38] Evaluating observation objects in ObservationSet for channel BF_3
+[2022-03-30 17:26:39] Evaluating channel Band_ID '4'
+[2022-03-30 17:26:39] Evaluating parameters for channel Band_ID = '4'
+[2022-03-30 17:26:39] Evaluating detector objects in DetectorArray for channel BF_4
+[2022-03-30 17:26:39] Evaluating observation objects in ObservationSet for channel BF_4
+[2022-03-30 17:26:39] Evaluating channel Band_ID '5'
+[2022-03-30 17:26:39] Evaluating parameters for channel Band_ID = '5'
+[2022-03-30 17:26:39] Evaluating detector objects in DetectorArray for channel BF_5
+[2022-03-30 17:26:39] Evaluating observation objects in ObservationSet for channel BF_5
+[2022-03-30 17:26:39] Evaluating channel Band_ID '6'
+[2022-03-30 17:26:39] Evaluating parameters for channel Band_ID = '6'
+[2022-03-30 17:26:39] Evaluating detector objects in DetectorArray for channel BF_6
+[2022-03-30 17:26:39] Evaluating observation objects in ObservationSet for channel BF_6
+[2022-03-30 17:26:40] Evaluating channel Band_ID '7'
+[2022-03-30 17:26:40] Evaluating parameters for channel Band_ID = '7'
+[2022-03-30 17:26:40] Evaluating detector objects in DetectorArray for channel BF_7
+[2022-03-30 17:26:40] Evaluating observation objects in ObservationSet for channel BF_7
+[2022-03-30 17:26:40] Evaluating channel Band_ID '8'
+[2022-03-30 17:26:40] Evaluating parameters for channel Band_ID = '8'
+[2022-03-30 17:26:40] Evaluating detector objects in DetectorArray for channel BF_8
+[2022-03-30 17:26:40] Evaluating observation objects in ObservationSet for channel BF_8
+
+
+***** Starting BoloCalc Program 'calcBolos.py' *****
+[2022-03-30 18:49:26] Generating Simulation object
+[2022-03-30 18:49:26] Generating Experiment object
+[2022-03-30 18:49:26] Generating expeiment realization from /home/cesierra/software/bolocalc-space/Experiments/specter_v1/
+[2022-03-30 18:49:26] Loading foreground file '/home/cesierra/software/bolocalc-space/Experiments/specter_v1/config/foregrounds.txt'
+[2022-03-30 18:49:26] Storing foreground parameters for /home/cesierra/software/bolocalc-space/Experiments/specter_v1/
+[2022-03-30 18:49:26] Storing telescopes in experiment /home/cesierra/software/bolocalc-space/Experiments/specter_v1/
+[2022-03-30 18:49:26] Generating telescope realization from /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 18:49:26] Storing telescope parameters for /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 18:49:26] Generating Sky object for Telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 18:49:26] Initializing foregrounds in Sky object
+[2022-03-30 18:49:26] Generating ScanStrategy object for Telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 18:49:26] Generating Camera objects for Telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 18:49:26] Storing cameras in telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 18:49:26] Generating camera realization from /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/
+[2022-03-30 18:49:26] Generating OpticalChain object for camera /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/
+[2022-03-30 18:49:26] Generating channel dictionaries from '/home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/channels.txt'
+[2022-03-30 18:49:26] Generating channel objects for camera /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/
+[2022-03-30 18:49:26] Generating realization for channel Band_ID '1'
+[2022-03-30 18:49:26] Storing detector band for channel Band_ID '1'
+[2022-03-30 18:49:26] ** Using custom band for channel Band_ID '1'
+[2022-03-30 18:49:26] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_1.txt
+[2022-03-30 18:49:26] Generating DetectorArray object in channel 1
+[2022-03-30 18:49:26] Storing detector objects in DetectorArray for channel Band_ID '1'
+[2022-03-30 18:49:26] Generating ObservationSet object in channel 1
+[2022-03-30 18:49:26] Generating ObservationSet realization for channel Band_ID = '1'
+[2022-03-30 18:49:26] Generating observation objects in ObservationSet for channel Band_ID '1'
+[2022-03-30 18:49:26] Generating realization for channel Band_ID '2'
+[2022-03-30 18:49:26] Storing detector band for channel Band_ID '2'
+[2022-03-30 18:49:26] ** Using custom band for channel Band_ID '2'
+[2022-03-30 18:49:26] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_2.txt
+[2022-03-30 18:49:26] Generating DetectorArray object in channel 2
+[2022-03-30 18:49:26] Storing detector objects in DetectorArray for channel Band_ID '2'
+[2022-03-30 18:49:26] Generating ObservationSet object in channel 2
+[2022-03-30 18:49:26] Generating ObservationSet realization for channel Band_ID = '2'
+[2022-03-30 18:49:26] Generating observation objects in ObservationSet for channel Band_ID '2'
+[2022-03-30 18:49:26] Generating realization for channel Band_ID '3'
+[2022-03-30 18:49:26] Storing detector band for channel Band_ID '3'
+[2022-03-30 18:49:26] ** Using custom band for channel Band_ID '3'
+[2022-03-30 18:49:26] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_3.txt
+[2022-03-30 18:49:26] Generating DetectorArray object in channel 3
+[2022-03-30 18:49:26] Storing detector objects in DetectorArray for channel Band_ID '3'
+[2022-03-30 18:49:26] Generating ObservationSet object in channel 3
+[2022-03-30 18:49:26] Generating ObservationSet realization for channel Band_ID = '3'
+[2022-03-30 18:49:26] Generating observation objects in ObservationSet for channel Band_ID '3'
+[2022-03-30 18:49:26] Generating realization for channel Band_ID '4'
+[2022-03-30 18:49:26] Storing detector band for channel Band_ID '4'
+[2022-03-30 18:49:26] ** Using custom band for channel Band_ID '4'
+[2022-03-30 18:49:26] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_4.txt
+[2022-03-30 18:49:26] Generating DetectorArray object in channel 4
+[2022-03-30 18:49:26] Storing detector objects in DetectorArray for channel Band_ID '4'
+[2022-03-30 18:49:26] Generating ObservationSet object in channel 4
+[2022-03-30 18:49:26] Generating ObservationSet realization for channel Band_ID = '4'
+[2022-03-30 18:49:26] Generating observation objects in ObservationSet for channel Band_ID '4'
+[2022-03-30 18:49:26] Generating realization for channel Band_ID '5'
+[2022-03-30 18:49:26] Storing detector band for channel Band_ID '5'
+[2022-03-30 18:49:26] ** Using custom band for channel Band_ID '5'
+[2022-03-30 18:49:26] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_5.txt
+[2022-03-30 18:49:26] Generating DetectorArray object in channel 5
+[2022-03-30 18:49:26] Storing detector objects in DetectorArray for channel Band_ID '5'
+[2022-03-30 18:49:26] Generating ObservationSet object in channel 5
+[2022-03-30 18:49:26] Generating ObservationSet realization for channel Band_ID = '5'
+[2022-03-30 18:49:26] Generating observation objects in ObservationSet for channel Band_ID '5'
+[2022-03-30 18:49:26] Generating realization for channel Band_ID '6'
+[2022-03-30 18:49:26] Storing detector band for channel Band_ID '6'
+[2022-03-30 18:49:26] ** Using custom band for channel Band_ID '6'
+[2022-03-30 18:49:26] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_6.txt
+[2022-03-30 18:49:26] Generating DetectorArray object in channel 6
+[2022-03-30 18:49:26] Storing detector objects in DetectorArray for channel Band_ID '6'
+[2022-03-30 18:49:26] Generating ObservationSet object in channel 6
+[2022-03-30 18:49:26] Generating ObservationSet realization for channel Band_ID = '6'
+[2022-03-30 18:49:26] Generating observation objects in ObservationSet for channel Band_ID '6'
+[2022-03-30 18:49:26] Generating realization for channel Band_ID '7'
+[2022-03-30 18:49:26] Storing detector band for channel Band_ID '7'
+[2022-03-30 18:49:26] ** Using custom band for channel Band_ID '7'
+[2022-03-30 18:49:26] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_7.txt
+[2022-03-30 18:49:26] Generating DetectorArray object in channel 7
+[2022-03-30 18:49:26] Storing detector objects in DetectorArray for channel Band_ID '7'
+[2022-03-30 18:49:26] Generating ObservationSet object in channel 7
+[2022-03-30 18:49:26] Generating ObservationSet realization for channel Band_ID = '7'
+[2022-03-30 18:49:26] Generating observation objects in ObservationSet for channel Band_ID '7'
+[2022-03-30 18:49:26] Generating realization for channel Band_ID '8'
+[2022-03-30 18:49:26] Storing detector band for channel Band_ID '8'
+[2022-03-30 18:49:26] ** Using custom band for channel Band_ID '8'
+[2022-03-30 18:49:26] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_8.txt
+[2022-03-30 18:49:26] Generating DetectorArray object in channel 8
+[2022-03-30 18:49:26] Storing detector objects in DetectorArray for channel Band_ID '8'
+[2022-03-30 18:49:26] Generating ObservationSet object in channel 8
+[2022-03-30 18:49:26] Generating ObservationSet realization for channel Band_ID = '8'
+[2022-03-30 18:49:26] Generating observation objects in ObservationSet for channel Band_ID '8'
+[2022-03-30 18:49:26] Generating Sensitivity object
+[2022-03-30 18:49:26] Generating Display object
+[2022-03-30 18:49:26] Simulting 1 experiment realizations each with 1 detector realizations and 1 sky realizations. Total sims = 1
+[2022-03-30 18:49:26] Evaluating experiment /home/cesierra/software/bolocalc-space/Experiments/specter_v1/
+[2022-03-30 18:49:26] Evaluating parameters for experiment /home/cesierra/software/bolocalc-space/Experiments/specter_v1/
+[2022-03-30 18:49:26] Evaluating telescopes in experiment /home/cesierra/software/bolocalc-space/Experiments/specter_v1/
+[2022-03-30 18:49:26] Evaluating telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 18:49:26] Evaluating parameters for telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 18:49:26] Evaluating cameras in telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 18:49:26] Evaluating camera /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/
+[2022-03-30 18:49:26] Evaluating parameters for camera /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/
+[2022-03-30 18:49:26] Evaluating channels in camera /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/
+[2022-03-30 18:49:26] Evaluating channel Band_ID '1'
+[2022-03-30 18:49:26] Evaluating parameters for channel Band_ID = '1'
+[2022-03-30 18:49:26] Evaluating detector objects in DetectorArray for channel BF_1
+[2022-03-30 18:49:26] Evaluating observation objects in ObservationSet for channel BF_1
+[2022-03-30 18:49:27] Evaluating channel Band_ID '2'
+[2022-03-30 18:49:27] Evaluating parameters for channel Band_ID = '2'
+[2022-03-30 18:49:27] Evaluating detector objects in DetectorArray for channel BF_2
+[2022-03-30 18:49:27] Evaluating observation objects in ObservationSet for channel BF_2
+[2022-03-30 18:49:27] Evaluating channel Band_ID '3'
+[2022-03-30 18:49:27] Evaluating parameters for channel Band_ID = '3'
+[2022-03-30 18:49:27] Evaluating detector objects in DetectorArray for channel BF_3
+[2022-03-30 18:49:27] Evaluating observation objects in ObservationSet for channel BF_3
+[2022-03-30 18:49:27] Evaluating channel Band_ID '4'
+[2022-03-30 18:49:27] Evaluating parameters for channel Band_ID = '4'
+[2022-03-30 18:49:27] Evaluating detector objects in DetectorArray for channel BF_4
+[2022-03-30 18:49:27] Evaluating observation objects in ObservationSet for channel BF_4
+[2022-03-30 18:49:28] Evaluating channel Band_ID '5'
+[2022-03-30 18:49:28] Evaluating parameters for channel Band_ID = '5'
+[2022-03-30 18:49:28] Evaluating detector objects in DetectorArray for channel BF_5
+[2022-03-30 18:49:28] Evaluating observation objects in ObservationSet for channel BF_5
+[2022-03-30 18:49:28] Evaluating channel Band_ID '6'
+[2022-03-30 18:49:28] Evaluating parameters for channel Band_ID = '6'
+[2022-03-30 18:49:28] Evaluating detector objects in DetectorArray for channel BF_6
+[2022-03-30 18:49:28] Evaluating observation objects in ObservationSet for channel BF_6
+[2022-03-30 18:49:29] Evaluating channel Band_ID '7'
+[2022-03-30 18:49:29] Evaluating parameters for channel Band_ID = '7'
+[2022-03-30 18:49:29] Evaluating detector objects in DetectorArray for channel BF_7
+[2022-03-30 18:49:29] Evaluating observation objects in ObservationSet for channel BF_7
+[2022-03-30 18:49:29] Evaluating channel Band_ID '8'
+[2022-03-30 18:49:29] Evaluating parameters for channel Band_ID = '8'
+[2022-03-30 18:49:29] Evaluating detector objects in DetectorArray for channel BF_8
+[2022-03-30 18:49:29] Evaluating observation objects in ObservationSet for channel BF_8
+
+
+***** Starting BoloCalc Program 'calcBolos.py' *****
+[2022-03-30 18:49:52] Generating Simulation object
+[2022-03-30 18:49:52] Generating Experiment object
+[2022-03-30 18:49:52] Generating expeiment realization from /home/cesierra/software/bolocalc-space/Experiments/specter_v1/
+[2022-03-30 18:49:52] Loading foreground file '/home/cesierra/software/bolocalc-space/Experiments/specter_v1/config/foregrounds.txt'
+[2022-03-30 18:49:52] Storing foreground parameters for /home/cesierra/software/bolocalc-space/Experiments/specter_v1/
+[2022-03-30 18:49:52] Storing telescopes in experiment /home/cesierra/software/bolocalc-space/Experiments/specter_v1/
+[2022-03-30 18:49:52] Generating telescope realization from /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 18:49:52] Storing telescope parameters for /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 18:49:52] Generating Sky object for Telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 18:49:52] Initializing foregrounds in Sky object
+[2022-03-30 18:49:52] Generating ScanStrategy object for Telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 18:49:52] Generating Camera objects for Telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 18:49:52] Storing cameras in telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 18:49:52] Generating camera realization from /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/
+[2022-03-30 18:49:52] Generating OpticalChain object for camera /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/
+[2022-03-30 18:49:52] Generating channel dictionaries from '/home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/channels.txt'
+[2022-03-30 18:49:52] Generating channel objects for camera /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/
+[2022-03-30 18:49:52] Generating realization for channel Band_ID '1'
+[2022-03-30 18:49:52] Storing detector band for channel Band_ID '1'
+[2022-03-30 18:49:52] ** Using custom band for channel Band_ID '1'
+[2022-03-30 18:49:52] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_1.txt
+[2022-03-30 18:49:52] Generating DetectorArray object in channel 1
+[2022-03-30 18:49:52] Storing detector objects in DetectorArray for channel Band_ID '1'
+[2022-03-30 18:49:52] Generating ObservationSet object in channel 1
+[2022-03-30 18:49:52] Generating ObservationSet realization for channel Band_ID = '1'
+[2022-03-30 18:49:52] Generating observation objects in ObservationSet for channel Band_ID '1'
+[2022-03-30 18:49:52] Generating realization for channel Band_ID '2'
+[2022-03-30 18:49:52] Storing detector band for channel Band_ID '2'
+[2022-03-30 18:49:52] ** Using custom band for channel Band_ID '2'
+[2022-03-30 18:49:52] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_2.txt
+[2022-03-30 18:49:52] Generating DetectorArray object in channel 2
+[2022-03-30 18:49:52] Storing detector objects in DetectorArray for channel Band_ID '2'
+[2022-03-30 18:49:52] Generating ObservationSet object in channel 2
+[2022-03-30 18:49:52] Generating ObservationSet realization for channel Band_ID = '2'
+[2022-03-30 18:49:52] Generating observation objects in ObservationSet for channel Band_ID '2'
+[2022-03-30 18:49:52] Generating realization for channel Band_ID '3'
+[2022-03-30 18:49:52] Storing detector band for channel Band_ID '3'
+[2022-03-30 18:49:52] ** Using custom band for channel Band_ID '3'
+[2022-03-30 18:49:52] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_3.txt
+[2022-03-30 18:49:52] Generating DetectorArray object in channel 3
+[2022-03-30 18:49:52] Storing detector objects in DetectorArray for channel Band_ID '3'
+[2022-03-30 18:49:52] Generating ObservationSet object in channel 3
+[2022-03-30 18:49:52] Generating ObservationSet realization for channel Band_ID = '3'
+[2022-03-30 18:49:52] Generating observation objects in ObservationSet for channel Band_ID '3'
+[2022-03-30 18:49:52] Generating realization for channel Band_ID '4'
+[2022-03-30 18:49:52] Storing detector band for channel Band_ID '4'
+[2022-03-30 18:49:52] ** Using custom band for channel Band_ID '4'
+[2022-03-30 18:49:52] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_4.txt
+[2022-03-30 18:49:52] Generating DetectorArray object in channel 4
+[2022-03-30 18:49:52] Storing detector objects in DetectorArray for channel Band_ID '4'
+[2022-03-30 18:49:52] Generating ObservationSet object in channel 4
+[2022-03-30 18:49:52] Generating ObservationSet realization for channel Band_ID = '4'
+[2022-03-30 18:49:52] Generating observation objects in ObservationSet for channel Band_ID '4'
+[2022-03-30 18:49:52] Generating realization for channel Band_ID '5'
+[2022-03-30 18:49:52] Storing detector band for channel Band_ID '5'
+[2022-03-30 18:49:52] ** Using custom band for channel Band_ID '5'
+[2022-03-30 18:49:52] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_5.txt
+[2022-03-30 18:49:52] Generating DetectorArray object in channel 5
+[2022-03-30 18:49:52] Storing detector objects in DetectorArray for channel Band_ID '5'
+[2022-03-30 18:49:52] Generating ObservationSet object in channel 5
+[2022-03-30 18:49:52] Generating ObservationSet realization for channel Band_ID = '5'
+[2022-03-30 18:49:52] Generating observation objects in ObservationSet for channel Band_ID '5'
+[2022-03-30 18:49:52] Generating realization for channel Band_ID '6'
+[2022-03-30 18:49:52] Storing detector band for channel Band_ID '6'
+[2022-03-30 18:49:52] ** Using custom band for channel Band_ID '6'
+[2022-03-30 18:49:52] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_6.txt
+[2022-03-30 18:49:52] Generating DetectorArray object in channel 6
+[2022-03-30 18:49:52] Storing detector objects in DetectorArray for channel Band_ID '6'
+[2022-03-30 18:49:52] Generating ObservationSet object in channel 6
+[2022-03-30 18:49:52] Generating ObservationSet realization for channel Band_ID = '6'
+[2022-03-30 18:49:52] Generating observation objects in ObservationSet for channel Band_ID '6'
+[2022-03-30 18:49:52] Generating realization for channel Band_ID '7'
+[2022-03-30 18:49:52] Storing detector band for channel Band_ID '7'
+[2022-03-30 18:49:52] ** Using custom band for channel Band_ID '7'
+[2022-03-30 18:49:52] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_7.txt
+[2022-03-30 18:49:52] Generating DetectorArray object in channel 7
+[2022-03-30 18:49:52] Storing detector objects in DetectorArray for channel Band_ID '7'
+[2022-03-30 18:49:52] Generating ObservationSet object in channel 7
+[2022-03-30 18:49:52] Generating ObservationSet realization for channel Band_ID = '7'
+[2022-03-30 18:49:52] Generating observation objects in ObservationSet for channel Band_ID '7'
+[2022-03-30 18:49:52] Generating realization for channel Band_ID '8'
+[2022-03-30 18:49:52] Storing detector band for channel Band_ID '8'
+[2022-03-30 18:49:52] ** Using custom band for channel Band_ID '8'
+[2022-03-30 18:49:52] Processing band file /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/config/Bands/Detectors/BF_8.txt
+[2022-03-30 18:49:52] Generating DetectorArray object in channel 8
+[2022-03-30 18:49:52] Storing detector objects in DetectorArray for channel Band_ID '8'
+[2022-03-30 18:49:52] Generating ObservationSet object in channel 8
+[2022-03-30 18:49:52] Generating ObservationSet realization for channel Band_ID = '8'
+[2022-03-30 18:49:52] Generating observation objects in ObservationSet for channel Band_ID '8'
+[2022-03-30 18:49:52] Generating Sensitivity object
+[2022-03-30 18:49:52] Generating Display object
+[2022-03-30 18:49:52] Simulting 1 experiment realizations each with 1 detector realizations and 1 sky realizations. Total sims = 1
+[2022-03-30 18:49:52] Evaluating experiment /home/cesierra/software/bolocalc-space/Experiments/specter_v1/
+[2022-03-30 18:49:52] Evaluating parameters for experiment /home/cesierra/software/bolocalc-space/Experiments/specter_v1/
+[2022-03-30 18:49:52] Evaluating telescopes in experiment /home/cesierra/software/bolocalc-space/Experiments/specter_v1/
+[2022-03-30 18:49:52] Evaluating telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 18:49:52] Evaluating parameters for telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 18:49:52] Evaluating cameras in telescope /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/
+[2022-03-30 18:49:52] Evaluating camera /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/
+[2022-03-30 18:49:52] Evaluating parameters for camera /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/
+[2022-03-30 18:49:52] Evaluating channels in camera /home/cesierra/software/bolocalc-space/Experiments/specter_v1/SPECTER/BF/
+[2022-03-30 18:49:52] Evaluating channel Band_ID '1'
+[2022-03-30 18:49:52] Evaluating parameters for channel Band_ID = '1'
+[2022-03-30 18:49:52] Evaluating detector objects in DetectorArray for channel BF_1
+[2022-03-30 18:49:52] Evaluating observation objects in ObservationSet for channel BF_1
+[2022-03-30 18:49:53] Evaluating channel Band_ID '2'
+[2022-03-30 18:49:53] Evaluating parameters for channel Band_ID = '2'
+[2022-03-30 18:49:53] Evaluating detector objects in DetectorArray for channel BF_2
+[2022-03-30 18:49:53] Evaluating observation objects in ObservationSet for channel BF_2
+[2022-03-30 18:49:53] Evaluating channel Band_ID '3'
+[2022-03-30 18:49:53] Evaluating parameters for channel Band_ID = '3'
+[2022-03-30 18:49:53] Evaluating detector objects in DetectorArray for channel BF_3
+[2022-03-30 18:49:53] Evaluating observation objects in ObservationSet for channel BF_3
+[2022-03-30 18:49:54] Evaluating channel Band_ID '4'
+[2022-03-30 18:49:54] Evaluating parameters for channel Band_ID = '4'
+[2022-03-30 18:49:54] Evaluating detector objects in DetectorArray for channel BF_4
+[2022-03-30 18:49:54] Evaluating observation objects in ObservationSet for channel BF_4
+[2022-03-30 18:49:54] Evaluating channel Band_ID '5'
+[2022-03-30 18:49:54] Evaluating parameters for channel Band_ID = '5'
+[2022-03-30 18:49:54] Evaluating detector objects in DetectorArray for channel BF_5
+[2022-03-30 18:49:54] Evaluating observation objects in ObservationSet for channel BF_5
+[2022-03-30 18:49:55] Evaluating channel Band_ID '6'
+[2022-03-30 18:49:55] Evaluating parameters for channel Band_ID = '6'
+[2022-03-30 18:49:55] Evaluating detector objects in DetectorArray for channel BF_6
+[2022-03-30 18:49:55] Evaluating observation objects in ObservationSet for channel BF_6
+[2022-03-30 18:49:55] Evaluating channel Band_ID '7'
+[2022-03-30 18:49:55] Evaluating parameters for channel Band_ID = '7'
+[2022-03-30 18:49:55] Evaluating detector objects in DetectorArray for channel BF_7
+[2022-03-30 18:49:55] Evaluating observation objects in ObservationSet for channel BF_7
+[2022-03-30 18:49:55] Evaluating channel Band_ID '8'
+[2022-03-30 18:49:55] Evaluating parameters for channel Band_ID = '8'
+[2022-03-30 18:49:55] Evaluating detector objects in DetectorArray for channel BF_8
+[2022-03-30 18:49:55] Evaluating observation objects in ObservationSet for channel BF_8

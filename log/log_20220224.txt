@@ -1,0 +1,152 @@
+
+
+***** Starting BoloCalc Program 'calcBolos.py' *****
+[2022-02-24 18:23:53] Generating Simulation object
+[2022-02-24 18:23:53] Generating Experiment object
+[2022-02-24 18:23:53] Generating expeiment realization from ../../../Planck/
+[2022-02-24 18:23:53] Loading foreground file '../../../Planck/config/foregrounds.txt'
+[2022-02-24 18:23:53] Storing foreground parameters for ../../../Planck/
+[2022-02-24 18:23:53] Storing telescopes in experiment ../../../Planck/
+[2022-02-24 18:23:53] Generating telescope realization from ../../../Planck/LAT/
+[2022-02-24 18:23:53] Storing telescope parameters for ../../../Planck/LAT/
+[2022-02-24 18:23:53] Generating Sky object for Telescope ../../../Planck/LAT/
+[2022-02-24 18:23:53] Initializing foregrounds in Sky object
+[2022-02-24 18:23:53] Generating ScanStrategy object for Telescope ../../../Planck/LAT/
+[2022-02-24 18:23:53] Generating Camera objects for Telescope ../../../Planck/LAT/
+[2022-02-24 18:23:53] Storing cameras in telescope ../../../Planck/LAT/
+[2022-02-24 18:23:53] Generating camera realization from ../../../Planck/LAT/DetType1/
+[2022-02-24 18:23:53] Generating OpticalChain object for camera ../../../Planck/LAT/DetType1/
+[2022-02-24 18:23:53] Generating channel dictionaries from '../../../Planck/LAT/DetType1/config/channels.txt'
+[2022-02-24 18:23:53] Generating channel objects for camera ../../../Planck/LAT/DetType1/
+[2022-02-24 18:23:53] Generating realization for channel Band_ID '1'
+[2022-02-24 18:23:53] Storing detector band for channel Band_ID '1'
+[2022-02-24 18:23:53] Generating DetectorArray object in channel 1
+[2022-02-24 18:23:53] Storing detector objects in DetectorArray for channel Band_ID '1'
+[2022-02-24 18:23:53] Generating ObservationSet object in channel 1
+[2022-02-24 18:23:53] Generating ObservationSet realization for channel Band_ID = '1'
+[2022-02-24 18:23:53] Generating observation objects in ObservationSet for channel Band_ID '1'
+[2022-02-24 18:23:53] Generating realization for channel Band_ID '2'
+[2022-02-24 18:23:53] Storing detector band for channel Band_ID '2'
+[2022-02-24 18:23:53] Generating DetectorArray object in channel 2
+[2022-02-24 18:23:53] Storing detector objects in DetectorArray for channel Band_ID '2'
+[2022-02-24 18:23:53] Generating ObservationSet object in channel 2
+[2022-02-24 18:23:53] Generating ObservationSet realization for channel Band_ID = '2'
+[2022-02-24 18:23:53] Generating observation objects in ObservationSet for channel Band_ID '2'
+[2022-02-24 18:23:53] Generating realization for channel Band_ID '3'
+[2022-02-24 18:23:53] Storing detector band for channel Band_ID '3'
+[2022-02-24 18:23:53] Generating DetectorArray object in channel 3
+[2022-02-24 18:23:53] Storing detector objects in DetectorArray for channel Band_ID '3'
+[2022-02-24 18:23:53] Generating ObservationSet object in channel 3
+[2022-02-24 18:23:53] Generating ObservationSet realization for channel Band_ID = '3'
+[2022-02-24 18:23:53] Generating observation objects in ObservationSet for channel Band_ID '3'
+[2022-02-24 18:23:53] Generating realization for channel Band_ID '4'
+[2022-02-24 18:23:53] Storing detector band for channel Band_ID '4'
+[2022-02-24 18:23:53] Generating DetectorArray object in channel 4
+[2022-02-24 18:23:53] Storing detector objects in DetectorArray for channel Band_ID '4'
+[2022-02-24 18:23:53] Generating ObservationSet object in channel 4
+[2022-02-24 18:23:53] Generating ObservationSet realization for channel Band_ID = '4'
+[2022-02-24 18:23:53] Generating observation objects in ObservationSet for channel Band_ID '4'
+[2022-02-24 18:23:53] Generating Sensitivity object
+[2022-02-24 18:23:53] Generating Display object
+[2022-02-24 18:23:53] Simulting 1 experiment realizations each with 1 detector realizations and 1 sky realizations. Total sims = 1
+[2022-02-24 18:23:53] Evaluating experiment ../../../Planck/
+[2022-02-24 18:23:53] Evaluating parameters for experiment ../../../Planck/
+[2022-02-24 18:23:53] Evaluating telescopes in experiment ../../../Planck/
+[2022-02-24 18:23:53] Evaluating telescope ../../../Planck/LAT/
+[2022-02-24 18:23:53] Evaluating parameters for telescope ../../../Planck/LAT/
+[2022-02-24 18:23:53] Evaluating cameras in telescope ../../../Planck/LAT/
+[2022-02-24 18:23:53] Evaluating camera ../../../Planck/LAT/DetType1/
+[2022-02-24 18:23:53] Evaluating parameters for camera ../../../Planck/LAT/DetType1/
+[2022-02-24 18:23:53] Evaluating channels in camera ../../../Planck/LAT/DetType1/
+[2022-02-24 18:23:53] Evaluating channel Band_ID '1'
+[2022-02-24 18:23:53] Evaluating parameters for channel Band_ID = '1'
+[2022-02-24 18:23:53] Evaluating detector objects in DetectorArray for channel DetType1_1
+[2022-02-24 18:23:53] Evaluating observation objects in ObservationSet for channel DetType1_1
+[2022-02-24 18:23:53] Evaluating channel Band_ID '2'
+[2022-02-24 18:23:53] Evaluating parameters for channel Band_ID = '2'
+[2022-02-24 18:23:53] Evaluating detector objects in DetectorArray for channel DetType1_2
+[2022-02-24 18:23:53] Evaluating observation objects in ObservationSet for channel DetType1_2
+[2022-02-24 18:23:53] Evaluating channel Band_ID '3'
+[2022-02-24 18:23:53] Evaluating parameters for channel Band_ID = '3'
+[2022-02-24 18:23:53] Evaluating detector objects in DetectorArray for channel DetType1_3
+[2022-02-24 18:23:53] Evaluating observation objects in ObservationSet for channel DetType1_3
+[2022-02-24 18:23:53] Evaluating channel Band_ID '4'
+[2022-02-24 18:23:53] Evaluating parameters for channel Band_ID = '4'
+[2022-02-24 18:23:53] Evaluating detector objects in DetectorArray for channel DetType1_4
+[2022-02-24 18:23:53] Evaluating observation objects in ObservationSet for channel DetType1_4
+
+
+***** Starting BoloCalc Program 'calcBolos.py' *****
+[2022-02-24 18:27:09] Generating Simulation object
+[2022-02-24 18:27:09] Generating Experiment object
+[2022-02-24 18:27:09] Generating expeiment realization from ../../../Planck/
+[2022-02-24 18:27:09] Loading foreground file '../../../Planck/config/foregrounds.txt'
+[2022-02-24 18:27:09] Storing foreground parameters for ../../../Planck/
+[2022-02-24 18:27:09] Storing telescopes in experiment ../../../Planck/
+[2022-02-24 18:27:09] Generating telescope realization from ../../../Planck/LAT/
+[2022-02-24 18:27:09] Storing telescope parameters for ../../../Planck/LAT/
+[2022-02-24 18:27:09] Generating Sky object for Telescope ../../../Planck/LAT/
+[2022-02-24 18:27:09] Initializing foregrounds in Sky object
+[2022-02-24 18:27:09] Generating ScanStrategy object for Telescope ../../../Planck/LAT/
+[2022-02-24 18:27:09] Generating Camera objects for Telescope ../../../Planck/LAT/
+[2022-02-24 18:27:09] Storing cameras in telescope ../../../Planck/LAT/
+[2022-02-24 18:27:09] Generating camera realization from ../../../Planck/LAT/DetType1/
+[2022-02-24 18:27:09] Generating OpticalChain object for camera ../../../Planck/LAT/DetType1/
+[2022-02-24 18:27:09] Generating channel dictionaries from '../../../Planck/LAT/DetType1/config/channels.txt'
+[2022-02-24 18:27:09] Generating channel objects for camera ../../../Planck/LAT/DetType1/
+[2022-02-24 18:27:09] Generating realization for channel Band_ID '1'
+[2022-02-24 18:27:09] Storing detector band for channel Band_ID '1'
+[2022-02-24 18:27:09] Generating DetectorArray object in channel 1
+[2022-02-24 18:27:09] Storing detector objects in DetectorArray for channel Band_ID '1'
+[2022-02-24 18:27:09] Generating ObservationSet object in channel 1
+[2022-02-24 18:27:09] Generating ObservationSet realization for channel Band_ID = '1'
+[2022-02-24 18:27:09] Generating observation objects in ObservationSet for channel Band_ID '1'
+[2022-02-24 18:27:09] Generating realization for channel Band_ID '2'
+[2022-02-24 18:27:09] Storing detector band for channel Band_ID '2'
+[2022-02-24 18:27:09] Generating DetectorArray object in channel 2
+[2022-02-24 18:27:09] Storing detector objects in DetectorArray for channel Band_ID '2'
+[2022-02-24 18:27:09] Generating ObservationSet object in channel 2
+[2022-02-24 18:27:09] Generating ObservationSet realization for channel Band_ID = '2'
+[2022-02-24 18:27:09] Generating observation objects in ObservationSet for channel Band_ID '2'
+[2022-02-24 18:27:09] Generating realization for channel Band_ID '3'
+[2022-02-24 18:27:09] Storing detector band for channel Band_ID '3'
+[2022-02-24 18:27:09] Generating DetectorArray object in channel 3
+[2022-02-24 18:27:09] Storing detector objects in DetectorArray for channel Band_ID '3'
+[2022-02-24 18:27:09] Generating ObservationSet object in channel 3
+[2022-02-24 18:27:09] Generating ObservationSet realization for channel Band_ID = '3'
+[2022-02-24 18:27:09] Generating observation objects in ObservationSet for channel Band_ID '3'
+[2022-02-24 18:27:09] Generating realization for channel Band_ID '4'
+[2022-02-24 18:27:09] Storing detector band for channel Band_ID '4'
+[2022-02-24 18:27:09] Generating DetectorArray object in channel 4
+[2022-02-24 18:27:09] Storing detector objects in DetectorArray for channel Band_ID '4'
+[2022-02-24 18:27:09] Generating ObservationSet object in channel 4
+[2022-02-24 18:27:09] Generating ObservationSet realization for channel Band_ID = '4'
+[2022-02-24 18:27:09] Generating observation objects in ObservationSet for channel Band_ID '4'
+[2022-02-24 18:27:09] Generating Sensitivity object
+[2022-02-24 18:27:09] Generating Display object
+[2022-02-24 18:27:09] Simulting 1 experiment realizations each with 1 detector realizations and 1 sky realizations. Total sims = 1
+[2022-02-24 18:27:09] Evaluating experiment ../../../Planck/
+[2022-02-24 18:27:09] Evaluating parameters for experiment ../../../Planck/
+[2022-02-24 18:27:09] Evaluating telescopes in experiment ../../../Planck/
+[2022-02-24 18:27:09] Evaluating telescope ../../../Planck/LAT/
+[2022-02-24 18:27:09] Evaluating parameters for telescope ../../../Planck/LAT/
+[2022-02-24 18:27:09] Evaluating cameras in telescope ../../../Planck/LAT/
+[2022-02-24 18:27:09] Evaluating camera ../../../Planck/LAT/DetType1/
+[2022-02-24 18:27:09] Evaluating parameters for camera ../../../Planck/LAT/DetType1/
+[2022-02-24 18:27:09] Evaluating channels in camera ../../../Planck/LAT/DetType1/
+[2022-02-24 18:27:09] Evaluating channel Band_ID '1'
+[2022-02-24 18:27:09] Evaluating parameters for channel Band_ID = '1'
+[2022-02-24 18:27:09] Evaluating detector objects in DetectorArray for channel DetType1_1
+[2022-02-24 18:27:09] Evaluating observation objects in ObservationSet for channel DetType1_1
+[2022-02-24 18:27:09] Evaluating channel Band_ID '2'
+[2022-02-24 18:27:09] Evaluating parameters for channel Band_ID = '2'
+[2022-02-24 18:27:09] Evaluating detector objects in DetectorArray for channel DetType1_2
+[2022-02-24 18:27:09] Evaluating observation objects in ObservationSet for channel DetType1_2
+[2022-02-24 18:27:09] Evaluating channel Band_ID '3'
+[2022-02-24 18:27:09] Evaluating parameters for channel Band_ID = '3'
+[2022-02-24 18:27:09] Evaluating detector objects in DetectorArray for channel DetType1_3
+[2022-02-24 18:27:09] Evaluating observation objects in ObservationSet for channel DetType1_3
+[2022-02-24 18:27:09] Evaluating channel Band_ID '4'
+[2022-02-24 18:27:09] Evaluating parameters for channel Band_ID = '4'
+[2022-02-24 18:27:09] Evaluating detector objects in DetectorArray for channel DetType1_4
+[2022-02-24 18:27:09] Evaluating observation objects in ObservationSet for channel DetType1_4

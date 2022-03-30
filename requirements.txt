@@ -1,0 +1,11 @@
+oauth2client
+h5py
+ipdb
+simplejson
+matplotlib
+custom_settings
+seaborn
+pandas
+pdf2image
+numpy
+PyQt5

@@ -1,0 +1,379 @@
+
+
+***** Starting BoloCalc Program 'calcBolos.py' *****
+[2021-11-12 17:52:02] Generating Simulation object
+[2021-11-12 17:52:02] Generating Experiment object
+[2021-11-12 17:52:02] Generating expeiment realization from ../../../../Dark_4kCL_v2/
+[2021-11-12 17:52:02] Ignoring foregrounds for experiment ../../../../Dark_4kCL_v2/
+[2021-11-12 17:52:02] Storing telescopes in experiment ../../../../Dark_4kCL_v2/
+[2021-11-12 17:52:02] Generating telescope realization from ../../../../Dark_4kCL_v2/LAT/
+[2021-11-12 17:52:02] Storing telescope parameters for ../../../../Dark_4kCL_v2/LAT/
+[2021-11-12 17:52:02] Generating Sky object for Telescope ../../../../Dark_4kCL_v2/LAT/
+[2021-11-12 17:52:02] Generating ScanStrategy object for Telescope ../../../../Dark_4kCL_v2/LAT/
+[2021-11-12 17:52:02] Generating Camera objects for Telescope ../../../../Dark_4kCL_v2/LAT/
+[2021-11-12 17:52:02] Storing cameras in telescope ../../../../Dark_4kCL_v2/LAT/
+[2021-11-12 17:52:02] Generating camera realization from ../../../../Dark_4kCL_v2/LAT/MF/
+[2021-11-12 17:52:02] Generating OpticalChain object for camera ../../../../Dark_4kCL_v2/LAT/MF/
+[2021-11-12 17:52:02] Generating channel dictionaries from '../../../../Dark_4kCL_v2/LAT/MF/config/channels.txt'
+[2021-11-12 17:52:02] Generating channel objects for camera ../../../../Dark_4kCL_v2/LAT/MF/
+[2021-11-12 17:52:02] Generating realization for channel Band_ID '1'
+[2021-11-12 17:52:02] Storing detector band for channel Band_ID '1'
+[2021-11-12 17:52:02] ** Using custom band for channel Band_ID '1'
+[2021-11-12 17:52:02] Processing band file ../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Detectors/MF_1.txt
+[2021-11-12 17:52:02] Generating DetectorArray object in channel 1
+[2021-11-12 17:52:02] Storing detector objects in DetectorArray for channel Band_ID '1'
+[2021-11-12 17:52:02] Generating ObservationSet object in channel 1
+[2021-11-12 17:52:02] Generating ObservationSet realization for channel Band_ID = '1'
+[2021-11-12 17:52:02] Generating observation objects in ObservationSet for channel Band_ID '1'
+[2021-11-12 17:52:02] Generating realization for channel Band_ID '2'
+[2021-11-12 17:52:02] Storing detector band for channel Band_ID '2'
+[2021-11-12 17:52:02] ** Using custom band for channel Band_ID '2'
+[2021-11-12 17:52:02] Processing band file ../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Detectors/MF_2.txt
+[2021-11-12 17:52:02] Generating DetectorArray object in channel 2
+[2021-11-12 17:52:02] Storing detector objects in DetectorArray for channel Band_ID '2'
+[2021-11-12 17:52:02] Generating ObservationSet object in channel 2
+[2021-11-12 17:52:02] Generating ObservationSet realization for channel Band_ID = '2'
+[2021-11-12 17:52:02] Generating observation objects in ObservationSet for channel Band_ID '2'
+[2021-11-12 17:52:02] Using user-input spectra for optic 'LowPass1'
+[2021-11-12 17:52:02] ** Using band files ['../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Optics/LowPass1_Reflection.txt'] for optic 'LowPass1' parameters ['REFLECTION']
+[2021-11-12 17:52:02] Using user-input spectra for optic 'ThickF1'
+[2021-11-12 17:52:02] ** Using band files ['../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Optics/ThickF1_Reflection.txt'] for optic 'ThickF1' parameters ['REFLECTION']
+[2021-11-12 17:52:02] Using user-input spectra for optic 'Aperture'
+[2021-11-12 17:52:02] ** Using band files ['../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Optics/Aperture_Absorption.txt'] for optic 'Aperture' parameters ['ABSORPTION']
+[2021-11-12 17:52:02] Using user-input spectra for optic 'LowPass2'
+[2021-11-12 17:52:02] ** Using band files ['../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Optics/LowPass2_Reflection.txt'] for optic 'LowPass2' parameters ['REFLECTION']
+[2021-11-12 17:52:02] Using user-input spectra for optic 'LowPass3'
+[2021-11-12 17:52:02] ** Using band files ['../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Optics/LowPass3_Reflection.txt'] for optic 'LowPass3' parameters ['REFLECTION']
+[2021-11-12 17:52:02] Generating Sensitivity object
+[2021-11-12 17:52:02] Generating Display object
+[2021-11-12 17:52:02] Simulting 1 experiment realizations each with 1 detector realizations and 1 sky realizations. Total sims = 1
+[2021-11-12 17:52:02] Evaluating experiment ../../../../Dark_4kCL_v2/
+[2021-11-12 17:52:02] Evaluating parameters for experiment ../../../../Dark_4kCL_v2/
+[2021-11-12 17:52:02] Evaluating telescopes in experiment ../../../../Dark_4kCL_v2/
+[2021-11-12 17:52:02] Evaluating telescope ../../../../Dark_4kCL_v2/LAT/
+[2021-11-12 17:52:02] Evaluating parameters for telescope ../../../../Dark_4kCL_v2/LAT/
+[2021-11-12 17:52:02] Evaluating cameras in telescope ../../../../Dark_4kCL_v2/LAT/
+[2021-11-12 17:52:02] Evaluating camera ../../../../Dark_4kCL_v2/LAT/MF/
+[2021-11-12 17:52:02] Evaluating parameters for camera ../../../../Dark_4kCL_v2/LAT/MF/
+[2021-11-12 17:52:02] Evaluating channels in camera ../../../../Dark_4kCL_v2/LAT/MF/
+[2021-11-12 17:52:02] Evaluating channel Band_ID '1'
+[2021-11-12 17:52:02] Evaluating parameters for channel Band_ID = '1'
+[2021-11-12 17:52:02] Evaluating detector objects in DetectorArray for channel MF_1
+[2021-11-12 17:52:02] Evaluating observation objects in ObservationSet for channel MF_1
+[2021-11-12 17:52:02] Processing band file ../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Optics/LowPass1_Reflection.txt
+[2021-11-12 17:52:02] Processing band file ../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Optics/ThickF1_Reflection.txt
+[2021-11-12 17:52:02] Processing band file ../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Optics/Aperture_Absorption.txt
+[2021-11-12 17:52:02] Processing band file ../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Optics/LowPass2_Reflection.txt
+[2021-11-12 17:52:02] Processing band file ../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Optics/LowPass3_Reflection.txt
+[2021-11-12 17:52:02] Evaluating channel Band_ID '2'
+[2021-11-12 17:52:02] Evaluating parameters for channel Band_ID = '2'
+[2021-11-12 17:52:02] Evaluating detector objects in DetectorArray for channel MF_2
+[2021-11-12 17:52:02] Evaluating observation objects in ObservationSet for channel MF_2
+[2021-11-12 17:52:02] Processing band file ../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Optics/LowPass1_Reflection.txt
+[2021-11-12 17:52:02] Processing band file ../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Optics/ThickF1_Reflection.txt
+[2021-11-12 17:52:02] Processing band file ../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Optics/Aperture_Absorption.txt
+[2021-11-12 17:52:02] Processing band file ../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Optics/LowPass2_Reflection.txt
+[2021-11-12 17:52:02] Processing band file ../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Optics/LowPass3_Reflection.txt
+
+
+***** Starting BoloCalc Program 'calcBolos.py' *****
+[2021-11-12 17:52:18] Generating Simulation object
+[2021-11-12 17:52:18] Generating Experiment object
+[2021-11-12 17:52:18] Generating expeiment realization from ../../../../Dark_4kCL_v2/
+[2021-11-12 17:52:18] Ignoring foregrounds for experiment ../../../../Dark_4kCL_v2/
+[2021-11-12 17:52:18] Storing telescopes in experiment ../../../../Dark_4kCL_v2/
+[2021-11-12 17:52:18] Generating telescope realization from ../../../../Dark_4kCL_v2/LAT/
+[2021-11-12 17:52:18] Storing telescope parameters for ../../../../Dark_4kCL_v2/LAT/
+[2021-11-12 17:52:18] Generating Sky object for Telescope ../../../../Dark_4kCL_v2/LAT/
+[2021-11-12 17:52:18] Generating ScanStrategy object for Telescope ../../../../Dark_4kCL_v2/LAT/
+[2021-11-12 17:52:18] Generating Camera objects for Telescope ../../../../Dark_4kCL_v2/LAT/
+[2021-11-12 17:52:18] Storing cameras in telescope ../../../../Dark_4kCL_v2/LAT/
+[2021-11-12 17:52:18] Generating camera realization from ../../../../Dark_4kCL_v2/LAT/MF/
+[2021-11-12 17:52:18] Generating OpticalChain object for camera ../../../../Dark_4kCL_v2/LAT/MF/
+[2021-11-12 17:52:18] Generating channel dictionaries from '../../../../Dark_4kCL_v2/LAT/MF/config/channels.txt'
+[2021-11-12 17:52:18] Generating channel objects for camera ../../../../Dark_4kCL_v2/LAT/MF/
+[2021-11-12 17:52:18] Generating realization for channel Band_ID '1'
+[2021-11-12 17:52:18] Storing detector band for channel Band_ID '1'
+[2021-11-12 17:52:18] ** Using custom band for channel Band_ID '1'
+[2021-11-12 17:52:18] Processing band file ../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Detectors/MF_1.txt
+[2021-11-12 17:52:18] Generating DetectorArray object in channel 1
+[2021-11-12 17:52:18] Storing detector objects in DetectorArray for channel Band_ID '1'
+[2021-11-12 17:52:18] Generating ObservationSet object in channel 1
+[2021-11-12 17:52:18] Generating ObservationSet realization for channel Band_ID = '1'
+[2021-11-12 17:52:18] Generating observation objects in ObservationSet for channel Band_ID '1'
+[2021-11-12 17:52:18] Generating realization for channel Band_ID '2'
+[2021-11-12 17:52:18] Storing detector band for channel Band_ID '2'
+[2021-11-12 17:52:18] ** Using custom band for channel Band_ID '2'
+[2021-11-12 17:52:18] Processing band file ../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Detectors/MF_2.txt
+[2021-11-12 17:52:18] Generating DetectorArray object in channel 2
+[2021-11-12 17:52:18] Storing detector objects in DetectorArray for channel Band_ID '2'
+[2021-11-12 17:52:18] Generating ObservationSet object in channel 2
+[2021-11-12 17:52:18] Generating ObservationSet realization for channel Band_ID = '2'
+[2021-11-12 17:52:18] Generating observation objects in ObservationSet for channel Band_ID '2'
+[2021-11-12 17:52:18] Using user-input spectra for optic 'LowPass1'
+[2021-11-12 17:52:18] ** Using band files ['../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Optics/LowPass1_Reflection.txt'] for optic 'LowPass1' parameters ['REFLECTION']
+[2021-11-12 17:52:18] Using user-input spectra for optic 'ThickF1'
+[2021-11-12 17:52:18] ** Using band files ['../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Optics/ThickF1_Reflection.txt'] for optic 'ThickF1' parameters ['REFLECTION']
+[2021-11-12 17:52:18] Using user-input spectra for optic 'Aperture'
+[2021-11-12 17:52:18] ** Using band files ['../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Optics/Aperture_Absorption.txt'] for optic 'Aperture' parameters ['ABSORPTION']
+[2021-11-12 17:52:18] Using user-input spectra for optic 'LowPass3'
+[2021-11-12 17:52:18] ** Using band files ['../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Optics/LowPass3_Reflection.txt'] for optic 'LowPass3' parameters ['REFLECTION']
+[2021-11-12 17:52:18] Generating Sensitivity object
+[2021-11-12 17:52:18] Generating Display object
+[2021-11-12 17:52:18] Simulting 1 experiment realizations each with 1 detector realizations and 1 sky realizations. Total sims = 1
+[2021-11-12 17:52:18] Evaluating experiment ../../../../Dark_4kCL_v2/
+[2021-11-12 17:52:18] Evaluating parameters for experiment ../../../../Dark_4kCL_v2/
+[2021-11-12 17:52:18] Evaluating telescopes in experiment ../../../../Dark_4kCL_v2/
+[2021-11-12 17:52:18] Evaluating telescope ../../../../Dark_4kCL_v2/LAT/
+[2021-11-12 17:52:18] Evaluating parameters for telescope ../../../../Dark_4kCL_v2/LAT/
+[2021-11-12 17:52:18] Evaluating cameras in telescope ../../../../Dark_4kCL_v2/LAT/
+[2021-11-12 17:52:18] Evaluating camera ../../../../Dark_4kCL_v2/LAT/MF/
+[2021-11-12 17:52:18] Evaluating parameters for camera ../../../../Dark_4kCL_v2/LAT/MF/
+[2021-11-12 17:52:18] Evaluating channels in camera ../../../../Dark_4kCL_v2/LAT/MF/
+[2021-11-12 17:52:18] Evaluating channel Band_ID '1'
+[2021-11-12 17:52:18] Evaluating parameters for channel Band_ID = '1'
+[2021-11-12 17:52:18] Evaluating detector objects in DetectorArray for channel MF_1
+[2021-11-12 17:52:18] Evaluating observation objects in ObservationSet for channel MF_1
+[2021-11-12 17:52:18] Processing band file ../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Optics/LowPass1_Reflection.txt
+[2021-11-12 17:52:18] Processing band file ../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Optics/ThickF1_Reflection.txt
+[2021-11-12 17:52:18] Processing band file ../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Optics/Aperture_Absorption.txt
+[2021-11-12 17:52:18] Processing band file ../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Optics/LowPass3_Reflection.txt
+[2021-11-12 17:52:18] Evaluating channel Band_ID '2'
+[2021-11-12 17:52:18] Evaluating parameters for channel Band_ID = '2'
+[2021-11-12 17:52:18] Evaluating detector objects in DetectorArray for channel MF_2
+[2021-11-12 17:52:18] Evaluating observation objects in ObservationSet for channel MF_2
+[2021-11-12 17:52:18] Processing band file ../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Optics/LowPass1_Reflection.txt
+[2021-11-12 17:52:18] Processing band file ../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Optics/ThickF1_Reflection.txt
+[2021-11-12 17:52:18] Processing band file ../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Optics/Aperture_Absorption.txt
+[2021-11-12 17:52:18] Processing band file ../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Optics/LowPass3_Reflection.txt
+
+
+***** Starting BoloCalc Program 'calcBolos.py' *****
+[2021-11-12 17:53:03] Generating Simulation object
+[2021-11-12 17:53:03] Generating Experiment object
+[2021-11-12 17:53:03] Generating expeiment realization from ../../../../Dark_4kCL_v2/
+[2021-11-12 17:53:03] Ignoring foregrounds for experiment ../../../../Dark_4kCL_v2/
+[2021-11-12 17:53:03] Storing telescopes in experiment ../../../../Dark_4kCL_v2/
+[2021-11-12 17:53:03] Generating telescope realization from ../../../../Dark_4kCL_v2/LAT/
+[2021-11-12 17:53:03] Storing telescope parameters for ../../../../Dark_4kCL_v2/LAT/
+[2021-11-12 17:53:03] Generating Sky object for Telescope ../../../../Dark_4kCL_v2/LAT/
+[2021-11-12 17:53:03] Generating ScanStrategy object for Telescope ../../../../Dark_4kCL_v2/LAT/
+[2021-11-12 17:53:03] Generating Camera objects for Telescope ../../../../Dark_4kCL_v2/LAT/
+[2021-11-12 17:53:03] Storing cameras in telescope ../../../../Dark_4kCL_v2/LAT/
+[2021-11-12 17:53:03] Generating camera realization from ../../../../Dark_4kCL_v2/LAT/MF/
+[2021-11-12 17:53:03] Generating OpticalChain object for camera ../../../../Dark_4kCL_v2/LAT/MF/
+[2021-11-12 17:53:03] Generating channel dictionaries from '../../../../Dark_4kCL_v2/LAT/MF/config/channels.txt'
+[2021-11-12 17:53:03] Generating channel objects for camera ../../../../Dark_4kCL_v2/LAT/MF/
+[2021-11-12 17:53:03] Generating realization for channel Band_ID '1'
+[2021-11-12 17:53:03] Storing detector band for channel Band_ID '1'
+[2021-11-12 17:53:03] ** Using custom band for channel Band_ID '1'
+[2021-11-12 17:53:03] Processing band file ../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Detectors/MF_1.txt
+[2021-11-12 17:53:03] Generating DetectorArray object in channel 1
+[2021-11-12 17:53:03] Storing detector objects in DetectorArray for channel Band_ID '1'
+[2021-11-12 17:53:03] Generating ObservationSet object in channel 1
+[2021-11-12 17:53:03] Generating ObservationSet realization for channel Band_ID = '1'
+[2021-11-12 17:53:03] Generating observation objects in ObservationSet for channel Band_ID '1'
+[2021-11-12 17:53:03] Generating realization for channel Band_ID '2'
+[2021-11-12 17:53:03] Storing detector band for channel Band_ID '2'
+[2021-11-12 17:53:03] ** Using custom band for channel Band_ID '2'
+[2021-11-12 17:53:03] Processing band file ../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Detectors/MF_2.txt
+[2021-11-12 17:53:03] Generating DetectorArray object in channel 2
+[2021-11-12 17:53:03] Storing detector objects in DetectorArray for channel Band_ID '2'
+[2021-11-12 17:53:03] Generating ObservationSet object in channel 2
+[2021-11-12 17:53:03] Generating ObservationSet realization for channel Band_ID = '2'
+[2021-11-12 17:53:03] Generating observation objects in ObservationSet for channel Band_ID '2'
+[2021-11-12 17:53:03] Using user-input spectra for optic 'LowPass1'
+[2021-11-12 17:53:03] ** Using band files ['../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Optics/LowPass1_Reflection.txt'] for optic 'LowPass1' parameters ['REFLECTION']
+[2021-11-12 17:53:03] Using user-input spectra for optic 'ThickF1'
+[2021-11-12 17:53:03] ** Using band files ['../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Optics/ThickF1_Reflection.txt'] for optic 'ThickF1' parameters ['REFLECTION']
+[2021-11-12 17:53:03] Using user-input spectra for optic 'Aperture'
+[2021-11-12 17:53:03] ** Using band files ['../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Optics/Aperture_Absorption.txt'] for optic 'Aperture' parameters ['ABSORPTION']
+[2021-11-12 17:53:03] Using user-input spectra for optic 'LowPass2'
+[2021-11-12 17:53:03] ** Using band files ['../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Optics/LowPass2_Reflection.txt'] for optic 'LowPass2' parameters ['REFLECTION']
+[2021-11-12 17:53:03] Using user-input spectra for optic 'LowPass3'
+[2021-11-12 17:53:03] ** Using band files ['../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Optics/LowPass3_Reflection.txt'] for optic 'LowPass3' parameters ['REFLECTION']
+[2021-11-12 17:53:03] Generating Sensitivity object
+[2021-11-12 17:53:03] Generating Display object
+[2021-11-12 17:53:03] Simulting 1 experiment realizations each with 1 detector realizations and 1 sky realizations. Total sims = 1
+[2021-11-12 17:53:03] Evaluating experiment ../../../../Dark_4kCL_v2/
+[2021-11-12 17:53:03] Evaluating parameters for experiment ../../../../Dark_4kCL_v2/
+[2021-11-12 17:53:03] Evaluating telescopes in experiment ../../../../Dark_4kCL_v2/
+[2021-11-12 17:53:03] Evaluating telescope ../../../../Dark_4kCL_v2/LAT/
+[2021-11-12 17:53:03] Evaluating parameters for telescope ../../../../Dark_4kCL_v2/LAT/
+[2021-11-12 17:53:03] Evaluating cameras in telescope ../../../../Dark_4kCL_v2/LAT/
+[2021-11-12 17:53:03] Evaluating camera ../../../../Dark_4kCL_v2/LAT/MF/
+[2021-11-12 17:53:03] Evaluating parameters for camera ../../../../Dark_4kCL_v2/LAT/MF/
+[2021-11-12 17:53:03] Evaluating channels in camera ../../../../Dark_4kCL_v2/LAT/MF/
+[2021-11-12 17:53:03] Evaluating channel Band_ID '1'
+[2021-11-12 17:53:03] Evaluating parameters for channel Band_ID = '1'
+[2021-11-12 17:53:03] Evaluating detector objects in DetectorArray for channel MF_1
+[2021-11-12 17:53:03] Evaluating observation objects in ObservationSet for channel MF_1
+[2021-11-12 17:53:03] Processing band file ../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Optics/LowPass1_Reflection.txt
+[2021-11-12 17:53:03] Processing band file ../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Optics/ThickF1_Reflection.txt
+[2021-11-12 17:53:03] Processing band file ../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Optics/Aperture_Absorption.txt
+[2021-11-12 17:53:03] Processing band file ../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Optics/LowPass2_Reflection.txt
+[2021-11-12 17:53:03] Processing band file ../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Optics/LowPass3_Reflection.txt
+[2021-11-12 17:53:03] Evaluating channel Band_ID '2'
+[2021-11-12 17:53:03] Evaluating parameters for channel Band_ID = '2'
+[2021-11-12 17:53:03] Evaluating detector objects in DetectorArray for channel MF_2
+[2021-11-12 17:53:03] Evaluating observation objects in ObservationSet for channel MF_2
+[2021-11-12 17:53:03] Processing band file ../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Optics/LowPass1_Reflection.txt
+[2021-11-12 17:53:03] Processing band file ../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Optics/ThickF1_Reflection.txt
+[2021-11-12 17:53:03] Processing band file ../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Optics/Aperture_Absorption.txt
+[2021-11-12 17:53:03] Processing band file ../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Optics/LowPass2_Reflection.txt
+[2021-11-12 17:53:03] Processing band file ../../../../Dark_4kCL_v2/LAT/MF/config/Bands/Optics/LowPass3_Reflection.txt
+
+
+***** Starting BoloCalc Program 'calcBolos.py' *****
+[2021-11-12 17:56:26] Generating Simulation object
+[2021-11-12 17:56:26] Generating Experiment object
+[2021-11-12 17:56:26] Generating expeiment realization from ../../../Cv4_NDF_r7
+[2021-11-12 17:56:26] Ignoring foregrounds for experiment ../../../Cv4_NDF_r7
+[2021-11-12 17:56:26] Storing telescopes in experiment ../../../Cv4_NDF_r7
+[2021-11-12 17:56:26] Generating telescope realization from ../../../Cv4_NDF_r7/LAT/
+[2021-11-12 17:56:26] Storing telescope parameters for ../../../Cv4_NDF_r7/LAT/
+[2021-11-12 17:56:26] Generating Sky object for Telescope ../../../Cv4_NDF_r7/LAT/
+[2021-11-12 17:56:26] Generating ScanStrategy object for Telescope ../../../Cv4_NDF_r7/LAT/
+[2021-11-12 17:56:26] Generating Camera objects for Telescope ../../../Cv4_NDF_r7/LAT/
+[2021-11-12 17:56:26] Storing cameras in telescope ../../../Cv4_NDF_r7/LAT/
+[2021-11-12 17:56:26] Generating camera realization from ../../../Cv4_NDF_r7/LAT/MF/
+[2021-11-12 17:56:26] Generating OpticalChain object for camera ../../../Cv4_NDF_r7/LAT/MF/
+[2021-11-12 17:56:26] Generating channel dictionaries from '../../../Cv4_NDF_r7/LAT/MF/config/channels.txt'
+[2021-11-12 17:56:26] Generating channel objects for camera ../../../Cv4_NDF_r7/LAT/MF/
+[2021-11-12 17:56:26] Generating realization for channel Band_ID '1'
+[2021-11-12 17:56:26] Storing detector band for channel Band_ID '1'
+[2021-11-12 17:56:26] ** Using custom band for channel Band_ID '1'
+[2021-11-12 17:56:26] Processing band file ../../../Cv4_NDF_r7/LAT/MF/config/Bands/Detectors/MF_1.txt
+[2021-11-12 17:56:26] Generating DetectorArray object in channel 1
+[2021-11-12 17:56:26] Storing detector objects in DetectorArray for channel Band_ID '1'
+[2021-11-12 17:56:26] Generating ObservationSet object in channel 1
+[2021-11-12 17:56:26] Generating ObservationSet realization for channel Band_ID = '1'
+[2021-11-12 17:56:26] Generating observation objects in ObservationSet for channel Band_ID '1'
+[2021-11-12 17:56:26] Generating realization for channel Band_ID '2'
+[2021-11-12 17:56:26] Storing detector band for channel Band_ID '2'
+[2021-11-12 17:56:26] ** Using custom band for channel Band_ID '2'
+[2021-11-12 17:56:26] Processing band file ../../../Cv4_NDF_r7/LAT/MF/config/Bands/Detectors/MF_2.txt
+[2021-11-12 17:56:26] Generating DetectorArray object in channel 2
+[2021-11-12 17:56:26] Storing detector objects in DetectorArray for channel Band_ID '2'
+[2021-11-12 17:56:26] Generating ObservationSet object in channel 2
+[2021-11-12 17:56:26] Generating ObservationSet realization for channel Band_ID = '2'
+[2021-11-12 17:56:26] Generating observation objects in ObservationSet for channel Band_ID '2'
+[2021-11-12 17:56:26] Using user-input spectra for optic 'LowPass1'
+[2021-11-12 17:56:26] ** Using band files ['../../../Cv4_NDF_r7/LAT/MF/config/Bands/Optics/LowPass1_Reflection.txt'] for optic 'LowPass1' parameters ['REFLECTION']
+[2021-11-12 17:56:26] Using user-input spectra for optic 'ThickF1'
+[2021-11-12 17:56:26] ** Using band files ['../../../Cv4_NDF_r7/LAT/MF/config/Bands/Optics/ThickF1_Reflection.txt'] for optic 'ThickF1' parameters ['REFLECTION']
+[2021-11-12 17:56:26] Using user-input spectra for optic 'Aperture'
+[2021-11-12 17:56:26] ** Using band files ['../../../Cv4_NDF_r7/LAT/MF/config/Bands/Optics/Aperture_Absorption.txt'] for optic 'Aperture' parameters ['ABSORPTION']
+[2021-11-12 17:56:26] Using user-input spectra for optic 'LowPass2'
+[2021-11-12 17:56:26] ** Using band files ['../../../Cv4_NDF_r7/LAT/MF/config/Bands/Optics/LowPass2_Reflection.txt'] for optic 'LowPass2' parameters ['REFLECTION']
+[2021-11-12 17:56:26] Using user-input spectra for optic 'LowPass3'
+[2021-11-12 17:56:26] ** Using band files ['../../../Cv4_NDF_r7/LAT/MF/config/Bands/Optics/LowPass3_Reflection.txt'] for optic 'LowPass3' parameters ['REFLECTION']
+[2021-11-12 17:56:26] Generating Sensitivity object
+[2021-11-12 17:56:26] Generating Display object
+[2021-11-12 17:56:26] Simulting 1 experiment realizations each with 1 detector realizations and 1 sky realizations. Total sims = 1
+[2021-11-12 17:56:26] Evaluating experiment ../../../Cv4_NDF_r7
+[2021-11-12 17:56:26] Evaluating parameters for experiment ../../../Cv4_NDF_r7
+[2021-11-12 17:56:26] Evaluating telescopes in experiment ../../../Cv4_NDF_r7
+[2021-11-12 17:56:26] Evaluating telescope ../../../Cv4_NDF_r7/LAT/
+[2021-11-12 17:56:26] Evaluating parameters for telescope ../../../Cv4_NDF_r7/LAT/
+[2021-11-12 17:56:26] Evaluating cameras in telescope ../../../Cv4_NDF_r7/LAT/
+[2021-11-12 17:56:26] Evaluating camera ../../../Cv4_NDF_r7/LAT/MF/
+[2021-11-12 17:56:26] Evaluating parameters for camera ../../../Cv4_NDF_r7/LAT/MF/
+[2021-11-12 17:56:26] Evaluating channels in camera ../../../Cv4_NDF_r7/LAT/MF/
+[2021-11-12 17:56:26] Evaluating channel Band_ID '1'
+[2021-11-12 17:56:26] Evaluating parameters for channel Band_ID = '1'
+[2021-11-12 17:56:26] Evaluating detector objects in DetectorArray for channel MF_1
+[2021-11-12 17:56:26] Evaluating observation objects in ObservationSet for channel MF_1
+[2021-11-12 17:56:26] Processing band file ../../../Cv4_NDF_r7/LAT/MF/config/Bands/Optics/LowPass1_Reflection.txt
+[2021-11-12 17:56:26] Processing band file ../../../Cv4_NDF_r7/LAT/MF/config/Bands/Optics/ThickF1_Reflection.txt
+[2021-11-12 17:56:26] Processing band file ../../../Cv4_NDF_r7/LAT/MF/config/Bands/Optics/Aperture_Absorption.txt
+[2021-11-12 17:56:26] Processing band file ../../../Cv4_NDF_r7/LAT/MF/config/Bands/Optics/LowPass2_Reflection.txt
+[2021-11-12 17:56:26] Processing band file ../../../Cv4_NDF_r7/LAT/MF/config/Bands/Optics/LowPass3_Reflection.txt
+[2021-11-12 17:56:26] Evaluating channel Band_ID '2'
+[2021-11-12 17:56:26] Evaluating parameters for channel Band_ID = '2'
+[2021-11-12 17:56:26] Evaluating detector objects in DetectorArray for channel MF_2
+[2021-11-12 17:56:26] Evaluating observation objects in ObservationSet for channel MF_2
+[2021-11-12 17:56:26] Processing band file ../../../Cv4_NDF_r7/LAT/MF/config/Bands/Optics/LowPass1_Reflection.txt
+[2021-11-12 17:56:26] Processing band file ../../../Cv4_NDF_r7/LAT/MF/config/Bands/Optics/ThickF1_Reflection.txt
+[2021-11-12 17:56:26] Processing band file ../../../Cv4_NDF_r7/LAT/MF/config/Bands/Optics/Aperture_Absorption.txt
+[2021-11-12 17:56:26] Processing band file ../../../Cv4_NDF_r7/LAT/MF/config/Bands/Optics/LowPass2_Reflection.txt
+[2021-11-12 17:56:26] Processing band file ../../../Cv4_NDF_r7/LAT/MF/config/Bands/Optics/LowPass3_Reflection.txt
+
+
+***** Starting BoloCalc Program 'calcBolos.py' *****
+[2021-11-12 17:57:40] Generating Simulation object
+[2021-11-12 17:57:40] Generating Experiment object
+[2021-11-12 17:57:40] Generating expeiment realization from ../Cv4_NDF_r7
+[2021-11-12 17:57:40] BoloCalc ERROR: Experiment dir '../Cv4_NDF_r7' does not exist
+
+
+***** Starting BoloCalc Program 'calcBolos.py' *****
+[2021-11-12 17:57:52] Generating Simulation object
+[2021-11-12 17:57:52] Generating Experiment object
+[2021-11-12 17:57:52] Generating expeiment realization from ../../Cv4_NDF_r7
+[2021-11-12 17:57:52] Ignoring foregrounds for experiment ../../Cv4_NDF_r7
+[2021-11-12 17:57:52] Storing telescopes in experiment ../../Cv4_NDF_r7
+[2021-11-12 17:57:52] Generating telescope realization from ../../Cv4_NDF_r7/LAT/
+[2021-11-12 17:57:52] Storing telescope parameters for ../../Cv4_NDF_r7/LAT/
+[2021-11-12 17:57:52] Generating Sky object for Telescope ../../Cv4_NDF_r7/LAT/
+[2021-11-12 17:57:52] Generating ScanStrategy object for Telescope ../../Cv4_NDF_r7/LAT/
+[2021-11-12 17:57:52] Generating Camera objects for Telescope ../../Cv4_NDF_r7/LAT/
+[2021-11-12 17:57:52] Storing cameras in telescope ../../Cv4_NDF_r7/LAT/
+[2021-11-12 17:57:52] Generating camera realization from ../../Cv4_NDF_r7/LAT/MF/
+[2021-11-12 17:57:52] Generating OpticalChain object for camera ../../Cv4_NDF_r7/LAT/MF/
+[2021-11-12 17:57:52] Generating channel dictionaries from '../../Cv4_NDF_r7/LAT/MF/config/channels.txt'
+[2021-11-12 17:57:52] Generating channel objects for camera ../../Cv4_NDF_r7/LAT/MF/
+[2021-11-12 17:57:52] Generating realization for channel Band_ID '1'
+[2021-11-12 17:57:52] Storing detector band for channel Band_ID '1'
+[2021-11-12 17:57:52] ** Using custom band for channel Band_ID '1'
+[2021-11-12 17:57:52] Processing band file ../../Cv4_NDF_r7/LAT/MF/config/Bands/Detectors/MF_1.txt
+[2021-11-12 17:57:52] Generating DetectorArray object in channel 1
+[2021-11-12 17:57:52] Storing detector objects in DetectorArray for channel Band_ID '1'
+[2021-11-12 17:57:52] Generating ObservationSet object in channel 1
+[2021-11-12 17:57:52] Generating ObservationSet realization for channel Band_ID = '1'
+[2021-11-12 17:57:52] Generating observation objects in ObservationSet for channel Band_ID '1'
+[2021-11-12 17:57:52] Generating realization for channel Band_ID '2'
+[2021-11-12 17:57:52] Storing detector band for channel Band_ID '2'
+[2021-11-12 17:57:52] ** Using custom band for channel Band_ID '2'
+[2021-11-12 17:57:52] Processing band file ../../Cv4_NDF_r7/LAT/MF/config/Bands/Detectors/MF_2.txt
+[2021-11-12 17:57:52] Generating DetectorArray object in channel 2
+[2021-11-12 17:57:52] Storing detector objects in DetectorArray for channel Band_ID '2'
+[2021-11-12 17:57:52] Generating ObservationSet object in channel 2
+[2021-11-12 17:57:52] Generating ObservationSet realization for channel Band_ID = '2'
+[2021-11-12 17:57:52] Generating observation objects in ObservationSet for channel Band_ID '2'
+[2021-11-12 17:57:52] Using user-input spectra for optic 'LowPass1'
+[2021-11-12 17:57:52] ** Using band files ['../../Cv4_NDF_r7/LAT/MF/config/Bands/Optics/LowPass1_Reflection.txt'] for optic 'LowPass1' parameters ['REFLECTION']
+[2021-11-12 17:57:52] Using user-input spectra for optic 'ThickF1'
+[2021-11-12 17:57:52] ** Using band files ['../../Cv4_NDF_r7/LAT/MF/config/Bands/Optics/ThickF1_Reflection.txt'] for optic 'ThickF1' parameters ['REFLECTION']
+[2021-11-12 17:57:52] Using user-input spectra for optic 'Aperture'
+[2021-11-12 17:57:52] ** Using band files ['../../Cv4_NDF_r7/LAT/MF/config/Bands/Optics/Aperture_Absorption.txt'] for optic 'Aperture' parameters ['ABSORPTION']
+[2021-11-12 17:57:52] Using user-input spectra for optic 'LowPass3'
+[2021-11-12 17:57:52] ** Using band files ['../../Cv4_NDF_r7/LAT/MF/config/Bands/Optics/LowPass3_Reflection.txt'] for optic 'LowPass3' parameters ['REFLECTION']
+[2021-11-12 17:57:52] Generating Sensitivity object
+[2021-11-12 17:57:52] Generating Display object
+[2021-11-12 17:57:52] Simulting 1 experiment realizations each with 1 detector realizations and 1 sky realizations. Total sims = 1
+[2021-11-12 17:57:52] Evaluating experiment ../../Cv4_NDF_r7
+[2021-11-12 17:57:52] Evaluating parameters for experiment ../../Cv4_NDF_r7
+[2021-11-12 17:57:52] Evaluating telescopes in experiment ../../Cv4_NDF_r7
+[2021-11-12 17:57:52] Evaluating telescope ../../Cv4_NDF_r7/LAT/
+[2021-11-12 17:57:52] Evaluating parameters for telescope ../../Cv4_NDF_r7/LAT/
+[2021-11-12 17:57:52] Evaluating cameras in telescope ../../Cv4_NDF_r7/LAT/
+[2021-11-12 17:57:52] Evaluating camera ../../Cv4_NDF_r7/LAT/MF/
+[2021-11-12 17:57:52] Evaluating parameters for camera ../../Cv4_NDF_r7/LAT/MF/
+[2021-11-12 17:57:52] Evaluating channels in camera ../../Cv4_NDF_r7/LAT/MF/
+[2021-11-12 17:57:52] Evaluating channel Band_ID '1'
+[2021-11-12 17:57:52] Evaluating parameters for channel Band_ID = '1'
+[2021-11-12 17:57:52] Evaluating detector objects in DetectorArray for channel MF_1
+[2021-11-12 17:57:52] Evaluating observation objects in ObservationSet for channel MF_1
+[2021-11-12 17:57:52] Processing band file ../../Cv4_NDF_r7/LAT/MF/config/Bands/Optics/LowPass1_Reflection.txt
+[2021-11-12 17:57:52] Processing band file ../../Cv4_NDF_r7/LAT/MF/config/Bands/Optics/ThickF1_Reflection.txt
+[2021-11-12 17:57:52] Processing band file ../../Cv4_NDF_r7/LAT/MF/config/Bands/Optics/Aperture_Absorption.txt
+[2021-11-12 17:57:52] Processing band file ../../Cv4_NDF_r7/LAT/MF/config/Bands/Optics/LowPass3_Reflection.txt
+[2021-11-12 17:57:52] Evaluating channel Band_ID '2'
+[2021-11-12 17:57:52] Evaluating parameters for channel Band_ID = '2'
+[2021-11-12 17:57:52] Evaluating detector objects in DetectorArray for channel MF_2
+[2021-11-12 17:57:52] Evaluating observation objects in ObservationSet for channel MF_2
+[2021-11-12 17:57:52] Processing band file ../../Cv4_NDF_r7/LAT/MF/config/Bands/Optics/LowPass1_Reflection.txt
+[2021-11-12 17:57:52] Processing band file ../../Cv4_NDF_r7/LAT/MF/config/Bands/Optics/ThickF1_Reflection.txt
+[2021-11-12 17:57:52] Processing band file ../../Cv4_NDF_r7/LAT/MF/config/Bands/Optics/Aperture_Absorption.txt
+[2021-11-12 17:57:52] Processing band file ../../Cv4_NDF_r7/LAT/MF/config/Bands/Optics/LowPass3_Reflection.txt
