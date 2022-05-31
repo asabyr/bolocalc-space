@@ -10,11 +10,14 @@ import pandas as pd
 
 class GenBolos:
     
-    def __init__(self,bc_fp,exp_fp,band_edges,eta=0.7):
+    def __init__(self,bc_fp,exp_fp,band_edges,eta=0.7,force_sim = False):
         """ Accept a tuple of band edges, e.g. ([10,40], [40,80], ...) and write as tophats to the specified Bolocalc experiment directory with a default 0.7 detector efficiency"""
         self.bc_fp = bc_fp
         self.exp_fp = exp_fp
-        self.band_edges = np.vstack(band_edges)
+        if force_sim:
+            self.band_edges = np.vstack(band_edges)
+        else:
+            self.band_edges = np.vstack(self.read_cache(band_edges))
         self.N_bands = len(self.band_edges)
         self.freqs = np.arange(0.75*np.min(self.band_edges), 1.25*np.max(self.band_edges))
         self.passbands = np.zeros( (self.N_bands, self.freqs.shape[0]))
@@ -24,14 +27,8 @@ class GenBolos:
                     self.passbands[b,j] = 1
         self.passbands *= eta
         self.band_centers = np.sum( self.freqs * self.passbands, axis=1) / np.sum(self.passbands, axis=1)
-        
-        # generate pixel sizes [mm] by scaling lower band edges 
-        self.norm_edge = 80  # expect 10 mm diameter pixels with low edge at 80 mm
-        self.diff_edges = abs(self.band_edges[:,0] - self.norm_edge)
-        self.idx = self.diff_edges.argmin()
-        if self.diff_edges[self.idx] > 50:
-            print('Warning: Pixel sizes may not be accurate with these edges')
-        self.pixel_sizes = (10/2) * 2 * self.band_edges[self.idx,0]/self.band_edges[:,0]
+
+        self.pixel_sizes = self.pitch_estimate()
         
         self.unpack = up.Unpack()
         self.unpack.unpack_sensitivities(self.exp_fp)
@@ -76,6 +73,40 @@ class GenBolos:
                  "G")
         self.det_units = ('', 'NA', '[GHz]', 'NA', '[mm]', 'NA', 'NA', 'NA', 'NA', 'NA', '[pW]', 'NA', 'NA', '[K]', 'NA', 'NA', 'NA', '[pA/rtHz]', '[Ohms]', 'NA', '[pW/K]')
         
+    def read_cache(self, band_edges):
+        # this method checks for bands that are already stored in the cache dictionary, saves those sensitivities, and returns the remaining bands to run
+        try:
+            cached_sens = np.load(f'{self.exp_fp}/sens_out.npy', allow_pickle=True).item()
+            band_edges = [tuple(x) for x in band_edges]
+            cnt = 0
+            self.cached_dict = {}
+            saved_edges = []
+            for band in cached_sens.keys():
+                for j,nus in enumerate(band_edges):
+                    if np.all(cached_sens[band]['Band Edges'] == nus):
+                        self.cached_dict[cnt] = {}
+                        self.cached_dict[cnt] = cached_sens[band]
+                        cnt += 1
+                        saved_edges.append(nus)
+            rem_edges = list(set(band_edges) ^ set(saved_edges))
+            if len(rem_edges) == 0:
+                print('No new bands found, simulating all')
+                self.cached_dict = {}
+                return band_edges
+            else:
+                return rem_edges
+        except:
+            print('No cached dictionary found, simulating all input bands')
+            return band_edges
+        
+    def pitch_estimate(self):
+        ref_sizes = np.load('pixel_pitch.npy', allow_pickle=True).item()
+        sizes = []
+        for low_edge in self.band_edges[:,0]:
+            freq_idx = find_nearest(ref_sizes['Freq'], low_edge)[0]
+            sizes.append(ref_sizes['Size'][freq_idx])
+        return sizes
+
     def write_bands(self):
         os.makedirs(self.bands_fp, exist_ok=True) 
         for j,band in enumerate(self.passbands):
@@ -196,14 +227,21 @@ class GenBolos:
         #!{' '.join(self.cmd_bolo)}
         run_cmd(' '.join(self.cmd_bolo))
         self.unpack.unpack_sensitivities(self.exp_fp)
-        sens_arr = {}
+        try:
+            c = 1 + len(self.cached_dict.keys())
+        except:
+            self.cached_dict = {}
+            c = 1
         for j,band in enumerate(self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'].keys()):
-            sens_arr[f'{j+1}'] = {}
-            sens_arr[f'{j+1}']['Center Frequency [GHz]'] = self.band_centers[j]
-            sens_arr[f'{j+1}']['NET_CMB [uK-rtSec]'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Detector NET_CMB'][0]
-            sens_arr[f'{j+1}']['NET_RJ [uK-rtSec]'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Detector NET_RJ'][0]
-            sens_arr[f'{j+1}']['Optical Power [pW]'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Optical Power'][0]
-        return sens_arr
+            self.cached_dict[j+c] = {}
+            self.cached_dict[j+c]['Center Frequency'] = self.band_centers[j] // 1
+            self.cached_dict[j+c]['Band Edges'] = tuple(self.band_edges[j])
+            self.cached_dict[j+c]['Detector NET_CMB'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Detector NET_CMB'][0]
+            self.cached_dict[j+c]['Detector NET_RJ'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Detector NET_RJ'][0]
+            self.cached_dict[j+c]['Optical Power'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Optical Power'][0]
+        print(f'saving sensitivities to {self.exp_fp}/sens_out.npy')
+        np.save(f'{self.exp_fp}/sens_out.npy', self.cached_dict, allow_pickle=True)
+        return self.cached_dict
     
 def run_cmd(cmd: str, stderr=subprocess.STDOUT) -> None:
     """Run a command in terminal
@@ -228,3 +266,8 @@ def run_cmd(cmd: str, stderr=subprocess.STDOUT) -> None:
               flush=True, file=sys.stderr)
         raise e
     print(out)
+    
+def find_nearest(array, value):
+    array = np.asarray(array)
+    idx = (np.abs(array - value)).argmin()
+    return idx,array[idx]
