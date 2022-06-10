@@ -14,12 +14,13 @@ class GenBolos:
         """ Accept a tuple of band edges, e.g. ([10,40], [40,80], ...) and write as tophats to the specified Bolocalc experiment directory with a default 0.7 detector efficiency"""
         self.bc_fp = bc_fp
         self.exp_fp = exp_fp
+        self.freqs = np.arange(0.75*np.min(band_edges), 1.25*np.max(band_edges))
         if force_sim:
             self.band_edges = np.vstack(band_edges)
         else:
+            #self.band_edges = self.read_cache(band_edges)
             self.band_edges = np.vstack(self.read_cache(band_edges))
         self.N_bands = len(self.band_edges)
-        self.freqs = np.arange(0.75*np.min(self.band_edges), 1.25*np.max(self.band_edges))
         self.passbands = np.zeros( (self.N_bands, self.freqs.shape[0]))
         for b,edges in enumerate(self.band_edges):
             for j,freq in enumerate(self.freqs):
@@ -89,6 +90,9 @@ class GenBolos:
                         cnt += 1
                         saved_edges.append(nus)
             rem_edges = list(set(band_edges) ^ set(saved_edges))
+            def getKey(item):
+                return item[0]
+            rem_edges = np.array(sorted(rem_edges, key=getKey))
             if len(rem_edges) == 0:
                 print('No new bands found, simulating all')
                 self.cached_dict = {}
@@ -108,7 +112,9 @@ class GenBolos:
         return sizes
 
     def write_bands(self):
-        os.makedirs(self.bands_fp, exist_ok=True) 
+        os.makedirs(self.bands_fp, exist_ok=True)
+        clear_bands = ["rm", self.bands_fp+"/*"]
+        run_cmd(' '.join(clear_bands))
         for j,band in enumerate(self.passbands):
             np.savetxt(f'{self.bands_fp}{self.cam}_{j+1}.txt', np.c_[self.freqs,band])
         
@@ -228,20 +234,35 @@ class GenBolos:
         run_cmd(' '.join(self.cmd_bolo))
         self.unpack.unpack_sensitivities(self.exp_fp)
         try:
+            self.new_dict = self.cached_dict.copy()
             c = 1 + len(self.cached_dict.keys())
         except:
-            self.cached_dict = {}
+            self.new_dict = {}
             c = 1
         for j,band in enumerate(self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'].keys()):
-            self.cached_dict[j+c] = {}
-            self.cached_dict[j+c]['Center Frequency'] = self.band_centers[j] // 1
-            self.cached_dict[j+c]['Band Edges'] = tuple(self.band_edges[j])
-            self.cached_dict[j+c]['Detector NET_CMB'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Detector NET_CMB'][0]
-            self.cached_dict[j+c]['Detector NET_RJ'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Detector NET_RJ'][0]
-            self.cached_dict[j+c]['Optical Power'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Optical Power'][0]
-        print(f'saving sensitivities to {self.exp_fp}/sens_out.npy')
-        np.save(f'{self.exp_fp}/sens_out.npy', self.cached_dict, allow_pickle=True)
-        return self.cached_dict
+            self.new_dict[j+c] = {}
+            self.new_dict[j+c]['Center Frequency'] = self.band_centers[j]
+            self.new_dict[j+c]['Band Edges'] = tuple(self.band_edges[j])
+            self.new_dict[j+c]['Detector NET_CMB'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Detector NET_CMB'][0]
+            self.new_dict[j+c]['Detector NET_RJ'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Detector NET_RJ'][0]
+            self.new_dict[j+c]['Optical Power'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Optical Power'][0]
+        print(f'saving sensitivities to {self.exp_fp}sens_out.npy')
+        self.new_dict = self.sort_dict(self.new_dict)
+        np.save(f'{self.exp_fp}/sens_out.npy', self.new_dict, allow_pickle=True)
+        return self.new_dict
+    
+    def sort_dict(self, sdict, key = 'Center Frequency'):
+        # sort a dictionary by its 2nd key
+        idxs, vals = [], []
+        for j in sdict.keys():
+            vals.append(sdict[j][key])
+            idxs.append(j)
+        idxs = np.array(idxs)
+        vals = np.array(vals)
+        sdict_sorted = {}
+        for j,i in enumerate(np.argsort(vals)):
+            sdict_sorted[j] = sdict[idxs[i]]
+        return sdict_sorted
     
 def run_cmd(cmd: str, stderr=subprocess.STDOUT) -> None:
     """Run a command in terminal
