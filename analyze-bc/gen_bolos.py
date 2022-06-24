@@ -1,6 +1,6 @@
 import sys
 import os
-root_path="/Users/asabyr/Documents/Spring2022/bolocalc-space/"
+root_path="/burg/home/as6131/CMB_dist_instrument/bolocalc-space/"
 src_path = os.path.join(root_path, "src")
 #src_path = os.path.join("..", "src")
 if src_path not in sys.path:
@@ -115,7 +115,7 @@ class GenBolos:
 
     def write_bands(self):
         os.makedirs(self.bands_fp, exist_ok=True)
-        clear_bands = ["rm", self.bands_fp+"/*"]
+        clear_bands = ["rm", self.bands_fp+"*"]
         run_cmd(' '.join(clear_bands))
         for j,band in enumerate(self.passbands):
             np.savetxt(f'{self.bands_fp}{self.cam}_{j+1}.txt', np.c_[self.freqs,band])
