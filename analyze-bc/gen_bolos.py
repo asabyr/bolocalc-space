@@ -1,6 +1,7 @@
 import sys
 import os
-src_path = os.path.join("..", "src")
+root_path=".."
+src_path = os.path.join(root_path, "src")
 if src_path not in sys.path:
     sys.path.append(src_path)
 import unpack as up
@@ -9,7 +10,7 @@ import numpy as np
 import pandas as pd
 
 class GenBolos:
-    
+
     def __init__(self,bc_fp,exp_fp,band_edges,eta=0.7,force_sim = False):
         """ Accept a tuple of band edges, e.g. ([10,40], [40,80], ...) and write as tophats to the specified Bolocalc experiment directory with a default 0.7 detector efficiency"""
         self.bc_fp = bc_fp
@@ -30,7 +31,7 @@ class GenBolos:
         self.band_centers = np.sum( self.freqs * self.passbands, axis=1) / np.sum(self.passbands, axis=1)
 
         self.pixel_sizes = self.pitch_estimate()
-        
+
         self.unpack = up.Unpack()
         self.unpack.unpack_sensitivities(self.exp_fp)
         for exp in self.unpack.sens_outputs.keys():
@@ -50,7 +51,7 @@ class GenBolos:
         self.optics_fp = f'{self.cam_config}optics.txt'
         self.channels_fp = f'{self.cam_config}channels.txt'
         self.cmd_bolo = ['python3', self.bc_fp, self.exp_fp]
-        
+
         self.optics_titles =     ("Element", "Temperature",
                 "Absorption", "Reflection",
                 "Thickness", "Index",
@@ -73,7 +74,7 @@ class GenBolos:
                  "Bolo Resistance", "Read Noise Frac",
                  "G")
         self.det_units = ('', 'NA', '[GHz]', 'NA', '[mm]', 'NA', 'NA', 'NA', 'NA', 'NA', '[pW]', 'NA', 'NA', '[K]', 'NA', 'NA', 'NA', '[pA/rtHz]', '[Ohms]', 'NA', '[pW/K]')
-        
+
     def read_cache(self, band_edges):
         # this method checks for bands that are already stored in the cache dictionary, saves those sensitivities, and returns the remaining bands to run
         try:
@@ -102,9 +103,9 @@ class GenBolos:
         except:
             print('No cached dictionary found, simulating all input bands')
             return band_edges
-        
+
     def pitch_estimate(self):
-        ref_sizes = np.load('pixel_pitch.npy', allow_pickle=True).item()
+        ref_sizes = np.load(root_path+'/analyze-bc'+'/pixel_pitch.npy', allow_pickle=True).item()
         sizes = []
         for low_edge in self.band_edges[:,0]:
             freq_idx = find_nearest(ref_sizes['Freq'], low_edge)[0]
@@ -117,7 +118,7 @@ class GenBolos:
         run_cmd(' '.join(clear_bands))
         for j,band in enumerate(self.passbands):
             np.savetxt(f'{self.bands_fp}{self.cam}_{j+1}.txt', np.c_[self.freqs,band])
-        
+
     def write_optics_heading(self, entries, units = False):
         row = []
         for j,entry in enumerate(entries):
@@ -227,7 +228,7 @@ class GenBolos:
         self.write_optics_table()
         self.write_det_table()
         self.write_bands()
-        
+
     def calc_bolos(self):
         self.write_experiment()
         #!{' '.join(self.cmd_bolo)}
@@ -248,9 +249,9 @@ class GenBolos:
             self.new_dict[j+c]['Optical Power'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Optical Power'][0]
         print(f'saving sensitivities to {self.exp_fp}sens_out.npy')
         self.new_dict = self.sort_dict(self.new_dict)
-        np.save(f'{self.exp_fp}/sens_out.npy', self.new_dict, allow_pickle=True)
+        np.save(f'{self.exp_fp}sens_out.npy', self.new_dict, allow_pickle=True)
         return self.new_dict
-    
+
     def sort_dict(self, sdict, key = 'Center Frequency'):
         # sort a dictionary by its 2nd key
         idxs, vals = [], []
@@ -263,7 +264,7 @@ class GenBolos:
         for j,i in enumerate(np.argsort(vals)):
             sdict_sorted[j] = sdict[idxs[i]]
         return sdict_sorted
-    
+
 def run_cmd(cmd: str, stderr=subprocess.STDOUT) -> None:
     """Run a command in terminal
 
@@ -287,7 +288,7 @@ def run_cmd(cmd: str, stderr=subprocess.STDOUT) -> None:
               flush=True, file=sys.stderr)
         raise e
     print(out)
-    
+
 def find_nearest(array, value):
     array = np.asarray(array)
     idx = (np.abs(array - value)).argmin()
