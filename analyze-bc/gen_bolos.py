@@ -8,10 +8,11 @@ import unpack as up
 import subprocess
 import numpy as np
 import pandas as pd
+import glob
 
 class GenBolos:
 
-    def __init__(self,bc_fp,exp_fp,band_edges,file_prefix, eta=0.7,force_sim = False):
+    def __init__(self,bc_fp,exp_fp,band_edges,file_prefix, exp='specter_v1', tel='SPECTER', cam='BF', eta=0.7,force_sim = False):
         """ Accept a tuple of band edges, e.g. ([10,40], [40,80], ...) and write as tophats to the specified Bolocalc experiment directory with a default 0.7 detector efficiency"""
 
         self.bc_fp = bc_fp
@@ -34,20 +35,39 @@ class GenBolos:
 
         self.pixel_sizes = self.pitch_estimate()
 
-        self.unpack = up.Unpack()
+        self.unpack = up.Unpack(self.file_prefix)
         self.unpack.unpack_sensitivities(self.exp_fp)
-        for exp in self.unpack.sens_outputs.keys():
-            if exp == 'Summary':
-                continue
-            self.exp = exp
-            for tel in self.unpack.sens_outputs[exp].keys():
-                if tel == 'Summary':
-                    continue
-                self.tel = tel
-                for cam in self.unpack.sens_outputs[exp][tel].keys():
-                    if cam == 'Summary':
-                        continue
-                    self.cam = cam
+        # for exp in self.unpack.sens_outputs.keys():
+        #     if exp == 'Summary':
+        #         continue
+        #     self.exp = exp
+        #     print(self.exp)
+        #     for tel in self.unpack.sens_outputs[exp].keys():
+        #         if tel == 'Summary':
+        #             continue
+        #         self.tel = tel
+        #         print(self.tel)
+        #         for cam in self.unpack.sens_outputs[exp][tel].keys():
+        #             if cam == 'Summary':
+        #                 continue
+        #             self.cam = cam
+        #             print(self.cam)
+
+        # for exp in self.unpack.sens_outputs.keys():
+        #     if exp == 'Summary':
+        #         continue
+        self.exp = exp
+            # print(self.exp)
+            # for tel in self.unpack.sens_outputs[exp].keys():
+            #     if tel == 'Summary':
+            #         continue
+        self.tel = tel
+                # print(self.tel)
+                # for cam in self.unpack.sens_outputs[exp][tel].keys():
+                #     if cam == 'Summary':
+                #         continue
+        self.cam = cam
+                    # print(self.cam)
 
         self.cam_config = f'{self.exp_fp}{self.tel}/{self.cam}/config/'
         self.bands_fp = f'{self.cam_config}Bands/Detectors/'
@@ -117,8 +137,9 @@ class GenBolos:
 
     def write_bands(self):
         os.makedirs(self.bands_fp, exist_ok=True)
-        clear_bands = ["rm", self.bands_fp+self.file_prefix+"*"]
-        run_cmd(' '.join(clear_bands))
+        if glob.glob(self.file_prefix+'*'):
+            clear_bands = ["rm", self.bands_fp+self.file_prefix+"*"]
+            run_cmd(' '.join(clear_bands))
         for j,band in enumerate(self.passbands):
             np.savetxt(f'{self.bands_fp}{self.file_prefix}{self.cam}_{j+1}.txt', np.c_[self.freqs,band])
 
@@ -236,7 +257,22 @@ class GenBolos:
         self.write_experiment()
         #!{' '.join(self.cmd_bolo)}
         run_cmd(' '.join(self.cmd_bolo))
+
+        self.unpack = up.Unpack(self.file_prefix)
         self.unpack.unpack_sensitivities(self.exp_fp)
+        # for exp in self.unpack.sens_outputs.keys():
+        #     if exp == 'Summary':
+        #         continue
+        #     self.exp = exp
+        #     for tel in self.unpack.sens_outputs[exp].keys():
+        #         if tel == 'Summary':
+        #             continue
+        #         self.tel = tel
+        #         for cam in self.unpack.sens_outputs[exp][tel].keys():
+        #             if cam == 'Summary':
+        #                 continue
+        #             self.cam = cam
+        #self.unpack.unpack_sensitivities(self.exp_fp)
         try:
             self.new_dict = self.cached_dict.copy()
             c = 1 + len(self.cached_dict.keys())
