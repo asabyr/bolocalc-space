@@ -26,7 +26,7 @@ class OpticalChain:
         self.cam = cam
         self._log = self.cam.tel.exp.sim.log
         self._load = self.cam.tel.exp.sim.load
-
+        self.prefix=self.cam.tel.exp.sim.prefix
         # Store optic objects
         self._store_optics()
         return
@@ -52,7 +52,7 @@ class OpticalChain:
         """ Store Optic objects into a dictionary """
         # Load optics parameters from the optics.txt file
         param_dicts = self._load.optics(
-            os.path.join(self.cam.config_dir, 'optics.txt'))
+            os.path.join(self.cam.config_dir, f'{self.prefix}optics.txt'))
         # Load optics bands
         opt_band_dict = self._load.optics_bands(self.cam.config_dir)
         # Store dictionary of optics objects

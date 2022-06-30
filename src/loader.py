@@ -22,6 +22,7 @@ class Loader:
         self._opt_dir = "Optics"
         self._det_dir = "Detectors"
         self._ftypes = ["CSV", "TXT"]
+        self.prefix=sim.prefix
 
     # ***** Public methods *****
     def sim(self, fname):
@@ -119,7 +120,9 @@ class Loader:
         """
         if not os.path.exists(inp_dir):
             os.mkdir(inp_dir)
-        band_files = sorted(gb.glob(os.path.join(inp_dir, '*')))
+        #print(os.path.join(inp_dir,f'{self.prefix}*'))
+        band_files = sorted(gb.glob(os.path.join(inp_dir,f'{self.prefix}*')))
+        #print(band_files)
         if len(band_files):
             # No temporary files
             band_files = [f for f in band_files if "~" not in f]

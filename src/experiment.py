@@ -34,7 +34,7 @@ class Experiment:
         # Experiment directory
         self.dir = self.sim.exp_dir
         self.name = self.dir.split(os.sep)[-2]
-
+        self.prefix=self.sim.prefix
         # Generate the experiment
         self._log.log("Generating expeiment realization from %s" % (self.dir))
         # Check whether experiment and config dirs exist

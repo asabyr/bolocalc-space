@@ -44,10 +44,11 @@ class Simulation:
     sns (src.Sensitivity): Sensitivity object
     dsp (src.Display): Display object
     """
-    def __init__(self, log_file, sim_file, exp_dir):
+    def __init__(self, log_file, sim_file, exp_dir, prefix):
         # Store experiment input file
         self.exp_dir = exp_dir
         self._sim_file = sim_file
+        self.prefix=prefix
 
         # Set up logging
         self.log = lg.Log(log_file)
@@ -376,7 +377,7 @@ class Simulation:
                 std_param=self.std_params["PERCENTILE"])})
         else:
             self.log.err(
-                "Neither 'Percentile' not 'Percentile Lo' and 'Percentile Hi " 
+                "Neither 'Percentile' not 'Percentile Lo' and 'Percentile Hi "
                 "were found in 'simulationInputs.txt")
         return
 
