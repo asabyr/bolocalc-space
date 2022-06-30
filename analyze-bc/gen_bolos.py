@@ -19,6 +19,7 @@ class GenBolos:
         self.exp_fp = exp_fp
         self.file_prefix=file_prefix
         self.freqs = np.arange(0.75*np.min(band_edges), 1.25*np.max(band_edges))
+
         if force_sim:
             self.band_edges = np.vstack(band_edges)
         else:
@@ -35,8 +36,8 @@ class GenBolos:
 
         self.pixel_sizes = self.pitch_estimate()
 
-        self.unpack = up.Unpack(self.file_prefix)
-        self.unpack.unpack_sensitivities(self.exp_fp)
+        #self.unpack = up.Unpack(self.file_prefix)
+        #self.unpack.unpack_sensitivities(self.exp_fp)
         # for exp in self.unpack.sens_outputs.keys():
         #     if exp == 'Summary':
         #         continue
@@ -260,19 +261,7 @@ class GenBolos:
 
         self.unpack = up.Unpack(self.file_prefix)
         self.unpack.unpack_sensitivities(self.exp_fp)
-        # for exp in self.unpack.sens_outputs.keys():
-        #     if exp == 'Summary':
-        #         continue
-        #     self.exp = exp
-        #     for tel in self.unpack.sens_outputs[exp].keys():
-        #         if tel == 'Summary':
-        #             continue
-        #         self.tel = tel
-        #         for cam in self.unpack.sens_outputs[exp][tel].keys():
-        #             if cam == 'Summary':
-        #                 continue
-        #             self.cam = cam
-        #self.unpack.unpack_sensitivities(self.exp_fp)
+
         try:
             self.new_dict = self.cached_dict.copy()
             c = 1 + len(self.cached_dict.keys())
