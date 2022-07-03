@@ -1,22 +1,29 @@
 import sys
 import os
+<<<<<<< HEAD
 root_path="/burg/home/as6131/CMB_dist_instrument/bolocalc-space/"
 src_path = os.path.join(root_path, "src")
 #src_path = os.path.join("..", "src")
+
 if src_path not in sys.path:
     sys.path.append(src_path)
 import unpack as up
 import subprocess
 import numpy as np
 import pandas as pd
+import glob
 
 class GenBolos:
 
-    def __init__(self,bc_fp,exp_fp,band_edges,eta=0.7,force_sim = False):
+    def __init__(self,bc_fp,exp_fp,band_edges,file_prefix, exp='specter_v1', tel='SPECTER', cam='BF', eta=0.7,force_sim = False):
+
         """ Accept a tuple of band edges, e.g. ([10,40], [40,80], ...) and write as tophats to the specified Bolocalc experiment directory with a default 0.7 detector efficiency"""
+
         self.bc_fp = bc_fp
         self.exp_fp = exp_fp
+        self.file_prefix=file_prefix
         self.freqs = np.arange(0.75*np.min(band_edges), 1.25*np.max(band_edges))
+
         if force_sim:
             self.band_edges = np.vstack(band_edges)
         else:
@@ -33,25 +40,46 @@ class GenBolos:
 
         self.pixel_sizes = self.pitch_estimate()
 
-        self.unpack = up.Unpack()
-        self.unpack.unpack_sensitivities(self.exp_fp)
-        for exp in self.unpack.sens_outputs.keys():
-            if exp == 'Summary':
-                continue
-            self.exp = exp
-            for tel in self.unpack.sens_outputs[exp].keys():
-                if tel == 'Summary':
-                    continue
-                self.tel = tel
-                for cam in self.unpack.sens_outputs[exp][tel].keys():
-                    if cam == 'Summary':
-                        continue
-                    self.cam = cam
+        #self.unpack = up.Unpack(self.file_prefix)
+        #self.unpack.unpack_sensitivities(self.exp_fp)
+        # for exp in self.unpack.sens_outputs.keys():
+        #     if exp == 'Summary':
+        #         continue
+        #     self.exp = exp
+        #     print(self.exp)
+        #     for tel in self.unpack.sens_outputs[exp].keys():
+        #         if tel == 'Summary':
+        #             continue
+        #         self.tel = tel
+        #         print(self.tel)
+        #         for cam in self.unpack.sens_outputs[exp][tel].keys():
+        #             if cam == 'Summary':
+        #                 continue
+        #             self.cam = cam
+        #             print(self.cam)
+
+        # for exp in self.unpack.sens_outputs.keys():
+        #     if exp == 'Summary':
+        #         continue
+        self.exp = exp
+            # print(self.exp)
+            # for tel in self.unpack.sens_outputs[exp].keys():
+            #     if tel == 'Summary':
+            #         continue
+        self.tel = tel
+                # print(self.tel)
+                # for cam in self.unpack.sens_outputs[exp][tel].keys():
+                #     if cam == 'Summary':
+                #         continue
+        self.cam = cam
+                    # print(self.cam)
+
         self.cam_config = f'{self.exp_fp}{self.tel}/{self.cam}/config/'
         self.bands_fp = f'{self.cam_config}Bands/Detectors/'
-        self.optics_fp = f'{self.cam_config}optics.txt'
-        self.channels_fp = f'{self.cam_config}channels.txt'
-        self.cmd_bolo = ['python3', self.bc_fp, self.exp_fp]
+        self.optics_fp = f'{self.cam_config}{self.file_prefix}optics.txt'
+        self.channels_fp = f'{self.cam_config}{self.file_prefix}channels.txt'
+        self.cmd_bolo = ['python3', self.bc_fp, self.exp_fp, f' --log_name {self.file_prefix}', f' --prefix {self.file_prefix}']
+
 
         self.optics_titles =     ("Element", "Temperature",
                 "Absorption", "Reflection",
@@ -79,7 +107,7 @@ class GenBolos:
     def read_cache(self, band_edges):
         # this method checks for bands that are already stored in the cache dictionary, saves those sensitivities, and returns the remaining bands to run
         try:
-            cached_sens = np.load(f'{self.exp_fp}/sens_out.npy', allow_pickle=True).item()
+            cached_sens = np.load(f'{self.exp_fp}/{self.file_prefix}sens_out.npy', allow_pickle=True).item()
             band_edges = [tuple(x) for x in band_edges]
             cnt = 0
             self.cached_dict = {}
@@ -115,10 +143,12 @@ class GenBolos:
 
     def write_bands(self):
         os.makedirs(self.bands_fp, exist_ok=True)
-        clear_bands = ["rm", self.bands_fp+"*"]
-        run_cmd(' '.join(clear_bands))
+        if glob.glob(self.file_prefix+'*'):
+            clear_bands = ["rm", self.bands_fp+self.file_prefix+"*"]
+            run_cmd(' '.join(clear_bands))
         for j,band in enumerate(self.passbands):
-            np.savetxt(f'{self.bands_fp}{self.cam}_{j+1}.txt', np.c_[self.freqs,band])
+            np.savetxt(f'{self.bands_fp}{self.file_prefix}{self.cam}_{j+1}.txt', np.c_[self.freqs,band])
+
 
     def write_optics_heading(self, entries, units = False):
         row = []
@@ -234,7 +264,10 @@ class GenBolos:
         self.write_experiment()
         #!{' '.join(self.cmd_bolo)}
         run_cmd(' '.join(self.cmd_bolo))
+
+        self.unpack = up.Unpack(self.file_prefix)
         self.unpack.unpack_sensitivities(self.exp_fp)
+
         try:
             self.new_dict = self.cached_dict.copy()
             c = 1 + len(self.cached_dict.keys())
@@ -248,9 +281,9 @@ class GenBolos:
             self.new_dict[j+c]['Detector NET_CMB'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Detector NET_CMB'][0]
             self.new_dict[j+c]['Detector NET_RJ'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Detector NET_RJ'][0]
             self.new_dict[j+c]['Optical Power'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Optical Power'][0]
-        print(f'saving sensitivities to {self.exp_fp}sens_out.npy')
+        print(f'saving sensitivities to {self.exp_fp}{self.file_prefix}sens_out.npy')
         self.new_dict = self.sort_dict(self.new_dict)
-        np.save(f'{self.exp_fp}sens_out.npy', self.new_dict, allow_pickle=True)
+        np.save(f'{self.exp_fp}{self.file_prefix}sens_out.npy', self.new_dict, allow_pickle=True)
         return self.new_dict
 
     def sort_dict(self, sdict, key = 'Center Frequency'):

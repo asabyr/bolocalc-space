@@ -16,13 +16,13 @@ class Unpack:
     vary_hist_output_dict (dict): dictionary of arrays of all MC-simulated
                                   values for the parameter sweep
     """
-    def __init__(self):
+    def __init__(self, prefix):
         # Formatting for the parameter spreads
         self._pm = '+/-'
         self._txt = '.txt'
-        self._sens_file = 'sensitivity.txt'
-        self._out_file = 'output.txt'
-        self._pwr_file = 'optical_power.txt'
+        self._sens_file = prefix+'sensitivity.txt'
+        self._out_file = prefix+'output.txt'
+        self._pwr_file = prefix+'optical_power.txt'
         self._exp_dir = 'Experiments'
         self._total_params = [
             'Num Det', 'Array NET_CMB', 'Array NET_RJ',
@@ -141,15 +141,20 @@ class Unpack:
                     np.take(sens_files, sens_arg)[0])
                 if i == 0:  # Camera level
                     out_dict = self._unpack_out_file(
-                        np.take(out_files, out_args[j])[0], 
+                        np.take(out_files, out_args[j])[0],
                         list(sens_dict.keys()),
                         list(sens_dict[list(
                             sens_dict.keys())[0]].keys()))
                     key_exp = sens_loc_dir[-4]
                     key_tel = sens_loc_dir[-3]
                     key_cam = sens_loc_dir[-2]
-                    dict_to_store = {self._sens_str: sens_dict, 
+                    dict_to_store = {self._sens_str: sens_dict,
                                      self._out_str: out_dict}
+                    #print(self.sens_outputs.keys())
+                    #print(key_exp)
+                    #print(key_exp not in self.sens_outputs.keys())
+                    #print(key_tel)
+                    #print(key_cam)
                     if (key_exp not in self.sens_outputs.keys()):
                         self.sens_outputs.update(
                             {key_exp: {key_tel: {key_cam:
@@ -163,7 +168,7 @@ class Unpack:
                         self.sens_outputs[key_exp][key_tel].update(
                             {key_cam: dict_to_store})
                     else:
-                        sy.exit("Camera-level storage error in "    
+                        sy.exit("Camera-level storage error in "
                                 "Unpack._gather_sens_files()")
                 elif i == 1:  # Telescope level
                     key_exp = sens_loc_dir[-3]
@@ -175,7 +180,7 @@ class Unpack:
                     self.sens_outputs[key_exp].update(
                         {self._sens_str: sens_dict})
                 else:
-                    sy.exit("Telescope-level storage error in "    
+                    sy.exit("Telescope-level storage error in "
                             "Unpack._gather_sens_files()")
         return
 
@@ -295,15 +300,15 @@ class Unpack:
             sy.exit("BoloCalc Unpack error: error when unpacking 'output.txt' "
                     "in _unpack_out_file()")
         out_dict = {ch_keys[i]: {sens_keys[j]: arr[i][j]
-                    for j in range(len(sens_keys))} 
+                    for j in range(len(sens_keys))}
                     for i in range(len(ch_keys))}
         return out_dict
-    
+
     # Unpack a channel file
     def _unpack_vary_summary_file(self, fname):
         with open(fname, 'r') as f:
             finput = f.readlines()
-        
+
         # Unpack the telescope, camera, channel, and optic labels
         lab_ids = finput[:4]
         tel_labs = np.char.strip(lab_ids[0].split('|'))[1:-1]
@@ -319,7 +324,7 @@ class Unpack:
         for i in range(self._num_inputs):
             labs_to_string = [
                 cam_labs[i], ch_labs[i], opt_labs[i], param_labs[i]]
-            lab_string = "_".join([("%s" % lab) for lab in labs_to_string 
+            lab_string = "_".join([("%s" % lab) for lab in labs_to_string
                                    if lab != ""])
             input_labs.append(lab_string)
         # Store the output parameter labels
@@ -331,17 +336,17 @@ class Unpack:
         self.input_unit_labs = unit_labs[:self._num_inputs]
         self.output_unit_labs = unit_labs[self._num_inputs:]
         self.ind_lab = lab_ids[0].split('|')[0].strip()
-        
+
         # Unpack the data
         data = np.char.strip([line.split('|') for line in finput[7:]]).T
-        
+
         # Store the input data dictionary
         input_dict = {}
         #input_dict[self.ind_lab] = np.array(data[0]).astype(np.float)
         for i in range(self._num_inputs):
             ind = i + 1
             input_dict[input_labs[i]] = np.array(data[ind]).astype(np.float)
-        
+
         # Store the output data dictionary
         output_dict = {}
         for i in range(self.num_outputs):
@@ -349,7 +354,7 @@ class Unpack:
             output_dict[self.output_labs[i]] = np.array(
                 self._parse_spreads(data[ind])).astype(np.float)
         return input_dict, output_dict
-        
+
     # Unpack histogram files
     def _unpack_vary_hist_files(self, files):
         # Enforce that the files are ordered by index
@@ -357,7 +362,7 @@ class Unpack:
         args = np.argsort(inds)
         inds = np.take_along_axis(np.array(inds), args, 0)
         files = np.take_along_axis(np.array(files), args, 0)
-        
+
         # Unpack the raw data into a dictionary
         hist_dict = {}
         labs = self.output_labs
@@ -369,7 +374,7 @@ class Unpack:
             if len(np.shape(data_load)) == 1:
                 data_load = np.array([[d] for d in data_load]).tolist()
             data.append(data_load)
-        save_data = np.transpose(data, (1, 0, 2))  
+        save_data = np.transpose(data, (1, 0, 2))
         hist_dict.update({labs[i]: save_data[i]
                           for i in range(self.num_outputs)})
         return hist_dict

@@ -39,6 +39,7 @@ class Camera:
         self._load = self.tel.exp.sim.load
         self._std_params = self.tel.exp.sim.std_params
         self._nexp = self.tel.exp.sim.param("nexp")
+        self.prefix=self.tel.exp.sim.prefix
 
         self._log.log("Generating camera realization from %s" % (self.dir))
         # Check whether camera and config dir exists
@@ -164,7 +165,7 @@ class Camera:
             os.path.join(self.config_dir, "Bands", "Detectors"))
         # Check that the channels file exists
         chn_file = os.path.join(
-            self.config_dir, "channels.txt")
+            self.config_dir, f"{self.prefix}channels.txt")
         if not os.path.exists(chn_file):
             self._log.err(
                 "Channel file '%s' for camera %s does not exist"
@@ -189,12 +190,13 @@ class Camera:
                     % (chan_dict["Band ID"], self.dir))
             # Check for band file for this channel
             cam_name = str(self.dir.rstrip(os.sep).split(os.sep)[-1])
-            band_name = (cam_name + "_" + str(band_id_upper)).upper()
+            band_name = (str(self.prefix)+cam_name + "_" + str(band_id_upper)).upper()
             if (self._band_dict is not None and
                band_name in self._band_dict.keys()):
                 band_file = self._band_dict[band_name]
             else:
                 band_file = None
+                prin("no band files")
             # Store the channel object
             self.chs.update(
                 {band_id_upper:
@@ -204,7 +206,8 @@ class Camera:
     def _gen_band_dict(self, band_dir):
         """ Generate a dictionary of band files given an input directory """
         # Gather potential band files in the passed directory
-        band_files = sorted(gb.glob(os.path.join(band_dir, '*')))
+        band_files = sorted(gb.glob(os.path.join(band_dir, f'{self.prefix}*')))
+        #print(band_files)
         band_files = [band_file for band_file in band_files
                       if '~' not in band_file]
         # Check that at least one band file was found

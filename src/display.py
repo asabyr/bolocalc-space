@@ -16,6 +16,7 @@ class Display:
         self._phys = self._sim.phys
         self._noise = self._sim.noise
         self._units = self._sim.output_units
+        self.prefix=self._sim.prefix
 
     # ***** Public Methods *****
     def display(self):
@@ -69,7 +70,7 @@ class Display:
             for j in range(len(tel.cams)):
                 cam = list(tel.cams.values())[j]
                 self._opt_f = open(
-                    os.path.join(cam.dir, 'optical_power.txt'), 'w')
+                    os.path.join(cam.dir, self.prefix+'optical_power.txt'), 'w')
                 for k in range(len(cam.chs)):
                     ch = list(cam.chs.values())[k]
                     self._write_opt_table(ch, (i, j, k))
@@ -192,7 +193,7 @@ class Display:
 
     def _init_exp_table(self):
         self._exp_f = open(
-            os.path.join(self._sim.exp_dir, 'sensitivity.txt'), 'w')
+            os.path.join(self._sim.exp_dir, self.prefix+'sensitivity.txt'), 'w')
         self._exp_f.write(self._title_exp)
         self._exp_f.write(self._break_exp)
         self._exp_f.write(self._unit_exp)
@@ -201,7 +202,7 @@ class Display:
 
     def _init_tel_table(self, tel):
         self._tel_f = open(
-            os.path.join(tel.dir, 'sensitivity.txt'), 'w')
+            os.path.join(tel.dir, self.prefix+'sensitivity.txt'), 'w')
         self._tel_f.write(self._title_tel)
         self._tel_f.write(self._break_tel)
         self._tel_f.write(self._unit_tel)
@@ -210,7 +211,7 @@ class Display:
 
     def _init_cam_table(self, cam):
         self._cam_f = open(os.path.join(
-            cam.dir, 'sensitivity.txt'), 'w')
+            cam.dir, self.prefix+'sensitivity.txt'), 'w')
         self._cam_f.write(self._title_cam)
         self._cam_f.write(self._break_cam)
         self._cam_f.write(self._unit_cam)
@@ -220,7 +221,7 @@ class Display:
 
     def _init_cam_output(self, cam):
         self._cam_d = open(os.path.join(
-            cam.dir, 'output.txt'), 'w+')
+            cam.dir, self.prefix+'output.txt'), 'w+')
         return
 
     def _write_cam_table_row(self, ch, tup):
