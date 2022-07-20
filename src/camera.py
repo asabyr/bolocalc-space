@@ -34,6 +34,7 @@ class Camera:
         # Store passed parameters
         self.tel = tel
         self.dir = inp_dir
+        #print(self.dir)
         self.name = self.dir.split(os.sep)[-2]
         self._log = self.tel.exp.sim.log
         self._load = self.tel.exp.sim.load
@@ -148,7 +149,9 @@ class Camera:
 
     def _store_param(self, name):
         """ Store src.Parameter objects for this camera """
+        #print("cap_name")
         cap_name = name.replace(" ", "").strip().upper()
+        #print(cap_name)
         if cap_name in self._std_params.keys():
             return pr.Parameter(
                 self._log, self._inp_dict[cap_name],
@@ -190,13 +193,18 @@ class Camera:
                     % (chan_dict["Band ID"], self.dir))
             # Check for band file for this channel
             cam_name = str(self.dir.rstrip(os.sep).split(os.sep)[-1])
+            #print('cam name')
+            #print(cam_name)
             band_name = (str(self.prefix)+cam_name + "_" + str(band_id_upper)).upper()
+            #print(band_name)
+            #print(self._band_dict)
+            #print(self._band_dict.keys())
             if (self._band_dict is not None and
                band_name in self._band_dict.keys()):
                 band_file = self._band_dict[band_name]
             else:
                 band_file = None
-                prin("no band files")
+                print("no band files")
             # Store the channel object
             self.chs.update(
                 {band_id_upper:
@@ -210,11 +218,13 @@ class Camera:
         #print(band_files)
         band_files = [band_file for band_file in band_files
                       if '~' not in band_file]
+        #print(band_files)
         # Check that at least one band file was found
         if len(band_files):
             # Array of potential band names, ignoring temp files
             name_arr = [os.path.split(nm)[-1].split('.')[0]
                         for nm in band_files if "~" not in nm]
+            #print(name_arr)
             # Create a dictionary of band files, if there are any
             if len(name_arr):
                 self._band_dict = {name_arr[i].strip().upper(): band_files[i]

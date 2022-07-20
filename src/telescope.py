@@ -37,7 +37,7 @@ class Telescope:
         self._log = self.exp.sim.log
         self._load = self.exp.sim.load
         self._std_params = self.exp.sim.std_params
-        self.prefix=self.exp.sim.prefix
+        #self.prefix=self.exp.sim.prefix
 
         self._log.log("Generating telescope realization from %s" % (self.dir))
         # Check whether telescope and config dir exists

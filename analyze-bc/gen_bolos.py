@@ -1,7 +1,8 @@
 import sys
 import os
-<<<<<<< HEAD
+
 root_path="/burg/home/as6131/CMB_dist_instrument/bolocalc-space/"
+
 src_path = os.path.join(root_path, "src")
 #src_path = os.path.join("..", "src")
 
@@ -22,13 +23,15 @@ class GenBolos:
         self.bc_fp = bc_fp
         self.exp_fp = exp_fp
         self.file_prefix=file_prefix
-        self.freqs = np.arange(0.75*np.min(band_edges), 1.25*np.max(band_edges))
-
+        #self.freqs = np.arange(0.75*np.min(band_edges), 1.25*np.max(band_edges))
+        self.freqs = np.arange(0.75*np.min(band_edges), 1.25*np.max(band_edges),0.1)
+        self.cached_dict={}
+        self.cached_dict_all={}
         if force_sim:
             self.band_edges = np.vstack(band_edges)
         else:
-            #self.band_edges = self.read_cache(band_edges)
             self.band_edges = np.vstack(self.read_cache(band_edges))
+        #print(self.band_edges)
         self.N_bands = len(self.band_edges)
         self.passbands = np.zeros( (self.N_bands, self.freqs.shape[0]))
         for b,edges in enumerate(self.band_edges):
@@ -108,24 +111,40 @@ class GenBolos:
         # this method checks for bands that are already stored in the cache dictionary, saves those sensitivities, and returns the remaining bands to run
         try:
             cached_sens = np.load(f'{self.exp_fp}/{self.file_prefix}sens_out.npy', allow_pickle=True).item()
+            #print(cached_sens)
             band_edges = [tuple(x) for x in band_edges]
-            cnt = 0
-            self.cached_dict = {}
+
+            #print(band_edges)
+            cnt_all = 0
+            cnt= 0
+            self.cached_dict_all = {}
+            self.cached_dict={}
             saved_edges = []
+            #print(cached_sens.keys())
             for band in cached_sens.keys():
+                self.cached_dict_all[cnt_all] = {}
+                self.cached_dict_all[cnt_all] = cached_sens[band]
+
                 for j,nus in enumerate(band_edges):
+
                     if np.all(cached_sens[band]['Band Edges'] == nus):
+                        saved_edges.append(nus)
                         self.cached_dict[cnt] = {}
                         self.cached_dict[cnt] = cached_sens[band]
-                        cnt += 1
-                        saved_edges.append(nus)
+                        cnt+=1
+
+                cnt_all += 1
+
             rem_edges = list(set(band_edges) ^ set(saved_edges))
+
             def getKey(item):
                 return item[0]
             rem_edges = np.array(sorted(rem_edges, key=getKey))
+
             if len(rem_edges) == 0:
                 print('No new bands found, simulating all')
                 self.cached_dict = {}
+                self.cached_dict_all = {}
                 return band_edges
             else:
                 return rem_edges
@@ -143,10 +162,18 @@ class GenBolos:
 
     def write_bands(self):
         os.makedirs(self.bands_fp, exist_ok=True)
-        if glob.glob(self.file_prefix+'*'):
+        #print(self.bands_fp+self.file_prefix+'*')
+        if glob.glob(self.bands_fp+self.file_prefix+'*'):
+            print(glob.glob(self.bands_fp+self.file_prefix+'*'))
+            print("clearing bands")
             clear_bands = ["rm", self.bands_fp+self.file_prefix+"*"]
             run_cmd(' '.join(clear_bands))
+            #print('cleared bands')
+            #sys.exit()
+        #print(self.passbands)
         for j,band in enumerate(self.passbands):
+            #print("writing bands")
+            #print(f'{self.bands_fp}{self.file_prefix}{self.cam}_{j+1}.txt')
             np.savetxt(f'{self.bands_fp}{self.file_prefix}{self.cam}_{j+1}.txt', np.c_[self.freqs,band])
 
 
@@ -268,22 +295,39 @@ class GenBolos:
         self.unpack = up.Unpack(self.file_prefix)
         self.unpack.unpack_sensitivities(self.exp_fp)
 
-        try:
+        if len(self.cached_dict.keys())>0 and len(self.cached_dict_all.keys())>1:
             self.new_dict = self.cached_dict.copy()
+            self.new_dict_all=self.cached_dict_all.copy()
             c = 1 + len(self.cached_dict.keys())
-        except:
+            c_all=1+len(self.cached_dict_all.keys())
+            print('appending to existing sensitivity file')
+        else:
             self.new_dict = {}
+            self.new_dict_all={}
             c = 1
+            c_all=1+len(self.cached_dict_all.keys())
+
         for j,band in enumerate(self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'].keys()):
+
             self.new_dict[j+c] = {}
             self.new_dict[j+c]['Center Frequency'] = self.band_centers[j]
             self.new_dict[j+c]['Band Edges'] = tuple(self.band_edges[j])
             self.new_dict[j+c]['Detector NET_CMB'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Detector NET_CMB'][0]
             self.new_dict[j+c]['Detector NET_RJ'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Detector NET_RJ'][0]
             self.new_dict[j+c]['Optical Power'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Optical Power'][0]
+
+            self.new_dict_all[j+c_all] = {}
+            self.new_dict_all[j+c_all]['Center Frequency'] = self.band_centers[j]
+            self.new_dict_all[j+c_all]['Band Edges'] = tuple(self.band_edges[j])
+            self.new_dict_all[j+c_all]['Detector NET_CMB'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Detector NET_CMB'][0]
+            self.new_dict_all[j+c_all]['Detector NET_RJ'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Detector NET_RJ'][0]
+            self.new_dict_all[j+c_all]['Optical Power'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Optical Power'][0]
+
         print(f'saving sensitivities to {self.exp_fp}{self.file_prefix}sens_out.npy')
         self.new_dict = self.sort_dict(self.new_dict)
-        np.save(f'{self.exp_fp}{self.file_prefix}sens_out.npy', self.new_dict, allow_pickle=True)
+        self.new_dict_all = self.sort_dict(self.new_dict_all)
+        np.save(f'{self.exp_fp}{self.file_prefix}sens_out.npy', self.new_dict_all, allow_pickle=True)
+        print(self.new_dict_all)
         return self.new_dict
 
     def sort_dict(self, sdict, key = 'Center Frequency'):
