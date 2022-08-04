@@ -163,19 +163,19 @@ class GenBolos:
     def write_bands(self):
         os.makedirs(self.bands_fp, exist_ok=True)
         #print(self.bands_fp+self.file_prefix+'*')
-        if glob.glob(self.bands_fp+self.file_prefix+'*'):
-            print(glob.glob(self.bands_fp+self.file_prefix+'*'))
+        if len(glob.glob(self.bands_fp+self.file_prefix+'*'))>0:
+            #print(glob.glob(self.bands_fp+self.file_prefix+'*'))
             print("clearing bands")
-            clear_bands = ["rm", self.bands_fp+self.file_prefix+"*"]
+            clear_bands = ["rm -f", self.bands_fp+self.file_prefix+"*"]
             run_cmd(' '.join(clear_bands))
             #print('cleared bands')
             #sys.exit()
-        #print(self.passbands)
+#        print(self.passbands)
         for j,band in enumerate(self.passbands):
-            #print("writing bands")
-            #print(f'{self.bands_fp}{self.file_prefix}{self.cam}_{j+1}.txt')
+ #           print("writing bands")
+#            print(f'{self.bands_fp}{self.file_prefix}{self.cam}_{j+1}.txt')
             np.savetxt(f'{self.bands_fp}{self.file_prefix}{self.cam}_{j+1}.txt', np.c_[self.freqs,band])
-
+#            print('wrote file')
 
     def write_optics_heading(self, entries, units = False):
         row = []
@@ -295,7 +295,7 @@ class GenBolos:
         self.unpack = up.Unpack(self.file_prefix)
         self.unpack.unpack_sensitivities(self.exp_fp)
 
-        if len(self.cached_dict.keys())>0 and len(self.cached_dict_all.keys())>1:
+        if len(self.cached_dict.keys())>0 and len(self.cached_dict_all.keys())>0:
             self.new_dict = self.cached_dict.copy()
             self.new_dict_all=self.cached_dict_all.copy()
             c = 1 + len(self.cached_dict.keys())
@@ -327,7 +327,7 @@ class GenBolos:
         self.new_dict = self.sort_dict(self.new_dict)
         self.new_dict_all = self.sort_dict(self.new_dict_all)
         np.save(f'{self.exp_fp}{self.file_prefix}sens_out.npy', self.new_dict_all, allow_pickle=True)
-        print(self.new_dict_all)
+        #print(self.new_dict_all)
         return self.new_dict
 
     def sort_dict(self, sdict, key = 'Center Frequency'):
