@@ -1,8 +1,7 @@
 import sys
 import os
 
-root_path="/burg/home/as6131/CMB_dist_instrument/bolocalc-space/"
-
+root_path=".."
 src_path = os.path.join(root_path, "src")
 #src_path = os.path.join("..", "src")
 
