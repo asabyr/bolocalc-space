@@ -23,6 +23,7 @@ class GenBolos:
         self.exp_fp = exp_fp
         self.file_prefix=file_prefix
         #self.freqs = np.arange(0.75*np.min(band_edges), 1.25*np.max(band_edges))
+        self.band_centers = np.mean(band_edges, axis=1)
         self.freqs = np.arange(0.75*np.min(band_edges), 1.25*np.max(band_edges),0.1)
         self.cached_dict={}
         self.cached_dict_all={}
@@ -38,8 +39,7 @@ class GenBolos:
                 if freq > edges[0] and freq < edges[1]:
                     self.passbands[b,j] = 1
         self.passbands *= eta
-        self.band_centers = np.sum( self.freqs * self.passbands, axis=1) / np.sum(self.passbands, axis=1)
-
+        #self.band_centers = np.sum( self.freqs * self.passbands, axis=1) / np.sum(self.passbands, axis=1)
         self.pixel_sizes = self.pitch_estimate()
 
         #self.unpack = up.Unpack(self.file_prefix)
