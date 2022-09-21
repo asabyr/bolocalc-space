@@ -37,6 +37,9 @@ ps = ap.ArgumentParser()
 ps.add_argument(
     "exp_dir", type=str, metavar="Experiment Directory",
     help="Experiment directory to be simulated")
+ps.add_argument(
+    "--prefix", default="dt_tm_str", dest="prefix",
+    help="prefix for the output files")
 # Keyword arguments
 ps.add_argument(
     "--vary", action="store_true", dest="vary", default=False,
@@ -62,8 +65,10 @@ vary_file = os.path.join(this_path, 'config', 'paramsToVary.txt')
 log_file = os.path.join(this_path, 'log', ('log_%s.txt' % (args.log_name[0])))
 
 # Simulate experiment
-sim = sm.Simulation(log_file, sim_file, args.exp_dir)
+sim = sm.Simulation(log_file, sim_file, args.exp_dir, args.prefix)
+
 if not args.vary:
     sim.simulate()
+    #print("not vary")
 else:
     sim.vary_simulate(vary_file, args.vary_name[0], args.vary_tog)

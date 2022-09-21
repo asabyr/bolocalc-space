@@ -1,25 +1,36 @@
 import sys
 import os
-src_path = os.path.join("..", "src")
+
+root_path=".."
+src_path = os.path.join(root_path, "src")
+#src_path = os.path.join("..", "src")
+
 if src_path not in sys.path:
     sys.path.append(src_path)
 import unpack as up
 import subprocess
 import numpy as np
 import pandas as pd
+import glob
 
 class GenBolos:
-    
-    def __init__(self,bc_fp,exp_fp,band_edges,eta=0.7,force_sim = False):
+
+    def __init__(self,bc_fp,exp_fp,band_edges,file_prefix, exp='specter_v1', tel='SPECTER', cam='BF', eta=0.7,force_sim = False):
+
         """ Accept a tuple of band edges, e.g. ([10,40], [40,80], ...) and write as tophats to the specified Bolocalc experiment directory with a default 0.7 detector efficiency"""
+
         self.bc_fp = bc_fp
         self.exp_fp = exp_fp
-        self.freqs = np.arange(0.75*np.min(band_edges), 1.25*np.max(band_edges))
+        self.file_prefix=file_prefix
+        #self.freqs = np.arange(0.75*np.min(band_edges), 1.25*np.max(band_edges))
+        self.freqs = np.arange(0.75*np.min(band_edges), 1.25*np.max(band_edges),0.1)
+        self.cached_dict={}
+        self.cached_dict_all={}
         if force_sim:
             self.band_edges = np.vstack(band_edges)
         else:
-            #self.band_edges = self.read_cache(band_edges)
             self.band_edges = np.vstack(self.read_cache(band_edges))
+        #print(self.band_edges)
         self.N_bands = len(self.band_edges)
         self.passbands = np.zeros( (self.N_bands, self.freqs.shape[0]))
         for b,edges in enumerate(self.band_edges):
@@ -27,30 +38,52 @@ class GenBolos:
                 if freq > edges[0] and freq < edges[1]:
                     self.passbands[b,j] = 1
         self.passbands *= eta
-        self.band_centers = np.sum( self.freqs * self.passbands, axis=1) / np.sum(self.passbands, axis=1)
-
+        #self.band_centers = np.sum( self.freqs * self.passbands, axis=1) / np.sum(self.passbands, axis=1)
+        self.band_centers = np.mean(self.band_edges, axis=1)
+        print(self.band_centers)
         self.pixel_sizes = self.pitch_estimate()
-        
-        self.unpack = up.Unpack()
-        self.unpack.unpack_sensitivities(self.exp_fp)
-        for exp in self.unpack.sens_outputs.keys():
-            if exp == 'Summary':
-                continue
-            self.exp = exp
-            for tel in self.unpack.sens_outputs[exp].keys():
-                if tel == 'Summary':
-                    continue
-                self.tel = tel
-                for cam in self.unpack.sens_outputs[exp][tel].keys():
-                    if cam == 'Summary':
-                        continue
-                    self.cam = cam
+
+        #self.unpack = up.Unpack(self.file_prefix)
+        #self.unpack.unpack_sensitivities(self.exp_fp)
+        # for exp in self.unpack.sens_outputs.keys():
+        #     if exp == 'Summary':
+        #         continue
+        #     self.exp = exp
+        #     print(self.exp)
+        #     for tel in self.unpack.sens_outputs[exp].keys():
+        #         if tel == 'Summary':
+        #             continue
+        #         self.tel = tel
+        #         print(self.tel)
+        #         for cam in self.unpack.sens_outputs[exp][tel].keys():
+        #             if cam == 'Summary':
+        #                 continue
+        #             self.cam = cam
+        #             print(self.cam)
+
+        # for exp in self.unpack.sens_outputs.keys():
+        #     if exp == 'Summary':
+        #         continue
+        self.exp = exp
+            # print(self.exp)
+            # for tel in self.unpack.sens_outputs[exp].keys():
+            #     if tel == 'Summary':
+            #         continue
+        self.tel = tel
+                # print(self.tel)
+                # for cam in self.unpack.sens_outputs[exp][tel].keys():
+                #     if cam == 'Summary':
+                #         continue
+        self.cam = cam
+                    # print(self.cam)
+
         self.cam_config = f'{self.exp_fp}{self.tel}/{self.cam}/config/'
         self.bands_fp = f'{self.cam_config}Bands/Detectors/'
-        self.optics_fp = f'{self.cam_config}optics.txt'
-        self.channels_fp = f'{self.cam_config}channels.txt'
-        self.cmd_bolo = ['python3', self.bc_fp, self.exp_fp]
-        
+        self.optics_fp = f'{self.cam_config}{self.file_prefix}optics.txt'
+        self.channels_fp = f'{self.cam_config}{self.file_prefix}channels.txt'
+        self.cmd_bolo = ['python3', self.bc_fp, self.exp_fp, f' --log_name {self.file_prefix}', f' --prefix {self.file_prefix}']
+
+
         self.optics_titles =     ("Element", "Temperature",
                 "Absorption", "Reflection",
                 "Thickness", "Index",
@@ -73,38 +106,54 @@ class GenBolos:
                  "Bolo Resistance", "Read Noise Frac",
                  "G")
         self.det_units = ('', 'NA', '[GHz]', 'NA', '[mm]', 'NA', 'NA', 'NA', 'NA', 'NA', '[pW]', 'NA', 'NA', '[K]', 'NA', 'NA', 'NA', '[pA/rtHz]', '[Ohms]', 'NA', '[pW/K]')
-        
+
     def read_cache(self, band_edges):
         # this method checks for bands that are already stored in the cache dictionary, saves those sensitivities, and returns the remaining bands to run
         try:
-            cached_sens = np.load(f'{self.exp_fp}/sens_out.npy', allow_pickle=True).item()
+            cached_sens = np.load(f'{self.exp_fp}/{self.file_prefix}sens_out.npy', allow_pickle=True).item()
+            #print(cached_sens)
             band_edges = [tuple(x) for x in band_edges]
-            cnt = 0
-            self.cached_dict = {}
+
+            #print(band_edges)
+            cnt_all = 0
+            cnt= 0
+            self.cached_dict_all = {}
+            self.cached_dict={}
             saved_edges = []
+            #print(cached_sens.keys())
             for band in cached_sens.keys():
+                self.cached_dict_all[cnt_all] = {}
+                self.cached_dict_all[cnt_all] = cached_sens[band]
+
                 for j,nus in enumerate(band_edges):
+
                     if np.all(cached_sens[band]['Band Edges'] == nus):
+                        saved_edges.append(nus)
                         self.cached_dict[cnt] = {}
                         self.cached_dict[cnt] = cached_sens[band]
-                        cnt += 1
-                        saved_edges.append(nus)
+                        cnt+=1
+
+                cnt_all += 1
+
             rem_edges = list(set(band_edges) ^ set(saved_edges))
+
             def getKey(item):
                 return item[0]
             rem_edges = np.array(sorted(rem_edges, key=getKey))
+
             if len(rem_edges) == 0:
                 print('No new bands found, simulating all')
                 self.cached_dict = {}
+                self.cached_dict_all = {}
                 return band_edges
             else:
                 return rem_edges
         except:
             print('No cached dictionary found, simulating all input bands')
             return band_edges
-        
+
     def pitch_estimate(self):
-        ref_sizes = np.load('pixel_pitch.npy', allow_pickle=True).item()
+        ref_sizes = np.load(root_path+'/analyze-bc'+'/pixel_pitch.npy', allow_pickle=True).item()
         sizes = []
         for low_edge in self.band_edges[:,0]:
             freq_idx = find_nearest(ref_sizes['Freq'], low_edge)[0]
@@ -113,11 +162,21 @@ class GenBolos:
 
     def write_bands(self):
         os.makedirs(self.bands_fp, exist_ok=True)
-        clear_bands = ["rm", self.bands_fp+"/*"]
-        run_cmd(' '.join(clear_bands))
+        #print(self.bands_fp+self.file_prefix+'*')
+        if len(glob.glob(self.bands_fp+self.file_prefix+'*'))>0:
+            #print(glob.glob(self.bands_fp+self.file_prefix+'*'))
+            print("clearing bands")
+            clear_bands = ["rm -f", self.bands_fp+self.file_prefix+"*"]
+            run_cmd(' '.join(clear_bands))
+            #print('cleared bands')
+            #sys.exit()
+#        print(self.passbands)
         for j,band in enumerate(self.passbands):
-            np.savetxt(f'{self.bands_fp}{self.cam}_{j+1}.txt', np.c_[self.freqs,band])
-        
+ #           print("writing bands")
+#            print(f'{self.bands_fp}{self.file_prefix}{self.cam}_{j+1}.txt')
+            np.savetxt(f'{self.bands_fp}{self.file_prefix}{self.cam}_{j+1}.txt', np.c_[self.freqs,band])
+#            print('wrote file')
+
     def write_optics_heading(self, entries, units = False):
         row = []
         for j,entry in enumerate(entries):
@@ -227,30 +286,50 @@ class GenBolos:
         self.write_optics_table()
         self.write_det_table()
         self.write_bands()
-        
+
     def calc_bolos(self):
         self.write_experiment()
         #!{' '.join(self.cmd_bolo)}
         run_cmd(' '.join(self.cmd_bolo))
+
+        self.unpack = up.Unpack(self.file_prefix)
         self.unpack.unpack_sensitivities(self.exp_fp)
-        try:
+
+        if len(self.cached_dict.keys())>0 and len(self.cached_dict_all.keys())>0:
             self.new_dict = self.cached_dict.copy()
+            self.new_dict_all=self.cached_dict_all.copy()
             c = 1 + len(self.cached_dict.keys())
-        except:
+            c_all=1+len(self.cached_dict_all.keys())
+            print('appending to existing sensitivity file')
+        else:
             self.new_dict = {}
+            self.new_dict_all={}
             c = 1
+            c_all=1+len(self.cached_dict_all.keys())
+
         for j,band in enumerate(self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'].keys()):
+
             self.new_dict[j+c] = {}
             self.new_dict[j+c]['Center Frequency'] = self.band_centers[j]
             self.new_dict[j+c]['Band Edges'] = tuple(self.band_edges[j])
             self.new_dict[j+c]['Detector NET_CMB'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Detector NET_CMB'][0]
             self.new_dict[j+c]['Detector NET_RJ'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Detector NET_RJ'][0]
             self.new_dict[j+c]['Optical Power'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Optical Power'][0]
-        print(f'saving sensitivities to {self.exp_fp}sens_out.npy')
+
+            self.new_dict_all[j+c_all] = {}
+            self.new_dict_all[j+c_all]['Center Frequency'] = self.band_centers[j]
+            self.new_dict_all[j+c_all]['Band Edges'] = tuple(self.band_edges[j])
+            self.new_dict_all[j+c_all]['Detector NET_CMB'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Detector NET_CMB'][0]
+            self.new_dict_all[j+c_all]['Detector NET_RJ'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Detector NET_RJ'][0]
+            self.new_dict_all[j+c_all]['Optical Power'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Optical Power'][0]
+
+        print(f'saving sensitivities to {self.exp_fp}{self.file_prefix}sens_out.npy')
         self.new_dict = self.sort_dict(self.new_dict)
-        np.save(f'{self.exp_fp}/sens_out.npy', self.new_dict, allow_pickle=True)
+        self.new_dict_all = self.sort_dict(self.new_dict_all)
+        np.save(f'{self.exp_fp}{self.file_prefix}sens_out.npy', self.new_dict_all, allow_pickle=True)
+        #print(self.new_dict_all)
         return self.new_dict
-    
+
     def sort_dict(self, sdict, key = 'Center Frequency'):
         # sort a dictionary by its 2nd key
         idxs, vals = [], []
@@ -263,7 +342,7 @@ class GenBolos:
         for j,i in enumerate(np.argsort(vals)):
             sdict_sorted[j] = sdict[idxs[i]]
         return sdict_sorted
-    
+
 def run_cmd(cmd: str, stderr=subprocess.STDOUT) -> None:
     """Run a command in terminal
 
@@ -287,7 +366,7 @@ def run_cmd(cmd: str, stderr=subprocess.STDOUT) -> None:
               flush=True, file=sys.stderr)
         raise e
     print(out)
-    
+
 def find_nearest(array, value):
     array = np.asarray(array)
     idx = (np.abs(array - value)).argmin()

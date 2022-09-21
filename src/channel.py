@@ -50,7 +50,7 @@ class Channel:
         self._nexp = self.cam.tel.exp.sim.param("nexp")
         self._fres = self.cam.tel.exp.sim.param("fres")
         self._ndet = self.cam.tel.exp.sim.param("ndet")
-
+        #self.prefix=self.cam.tel.exp.sim.prefix
         self._log.log("Generating realization for channel Band_ID '%s'"
                       % (self.band_id))
         # Store the channel parameters in a dictionary
