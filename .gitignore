@@ -1,3 +1,6 @@
+#Bolocalc files
+log/
+log/log*
 # Atmosphere files
 *src/atmFiles/*
 *hdf5
