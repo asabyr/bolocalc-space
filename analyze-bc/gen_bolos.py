@@ -9,10 +9,12 @@ import subprocess
 import numpy as np
 import pandas as pd
 import glob
+from hemt_noise import hemt
 
 class GenBolos:
 
-    def __init__(self,bc_fp,exp_fp,band_edges,file_prefix, exp='specter_v1', tel='SPECTER', cam='BF', eta=0.7,force_sim = False):
+    def __init__(self,bc_fp,exp_fp,band_edges,file_prefix, exp='specter_v1', tel='SPECTER', cam='BF', 
+                 eta=0.7, force_sim = False, hemt_amps = True, hemt_freq = 100):
         """ Accept a tuple of band edges, e.g. ([10,40], [40,80], ...) and write as tophats to the specified Bolocalc experiment directory with a default 0.7 detector efficiency"""
         self.bc_fp = bc_fp
         self.exp_fp = exp_fp
@@ -24,8 +26,15 @@ class GenBolos:
             self.band_edges = np.vstack(band_edges)
         else:
             self.band_edges = np.vstack(self.read_cache(band_edges))
-        self.N_bands = len(self.band_edges)
-        self.passbands = np.zeros( (self.N_bands, self.freqs.shape[0]))
+        if hemt_amps:            
+            self.low = np.where( self.band_edges[:,0] < hemt_freq)[0]
+            self.high = np.where( self.band_edges[:,0] >= hemt_freq)[0]
+        else:
+            self.low = []
+            self.high = np.where( self.band_edges[:,0] > 0)[0]
+        self.N_low = len(self.low)
+        self.N_high = len(self.high)
+        self.passbands = np.zeros( (self.N_low + self.N_high, self.freqs.shape[0]))
         for b,edges in enumerate(self.band_edges):
             for j,freq in enumerate(self.freqs):
                 if freq > edges[0] and freq < edges[1]:
@@ -115,14 +124,14 @@ class GenBolos:
             print("clearing bands")
             clear_bands = ["rm -f", self.bands_fp+self.file_prefix+"*"]
             run_cmd(' '.join(clear_bands))
-        for j,band in enumerate(self.passbands):
+        for j,band in enumerate(self.passbands[self.high]):
             np.savetxt(f'{self.bands_fp}{self.file_prefix}{self.cam}_{j+1}.txt', np.c_[self.freqs,band])
 
     def write_optics_heading(self, entries, units = False):
         row = []
         for j,entry in enumerate(entries):
             if j in self.optics_band_cols:
-                row.append(f'{entry:<{7*self.N_bands}s}')
+                row.append(f'{entry:<{7*self.N_high}s}')
             else:
                 row.append(f'{entry:<{16}s}')
         if units:
@@ -133,11 +142,12 @@ class GenBolos:
         param_row = []
         for j,param in enumerate(self.optics_titles):
             if param in ['Absorption','Reflection','Spillover','Scatter Frac']:
-                if isinstance(self.calc_optic(optic,param,self.band_centers[0]), str):
-                    param_row.append(f'{"NA":<{7*self.N_bands}s}')
+                if isinstance(self.calc_optic(optic,param,self.band_centers[self.high][0]), str):
+                    param_row.append(f'{"NA":<{7*self.N_high}s}')
                     continue
                 band_vals = []
-                for nu in self.band_centers:
+                for nu in self.band_centers[self.high]:
+                    # 
                     val = self.calc_optic(optic,param,nu)
                     band_vals.append(f'{val:>0.3f}')
                 band_vals = ', '.join(band_vals)
@@ -217,19 +227,20 @@ class GenBolos:
         title_row = self.write_det_heading(self.det_titles)
         unit_row = self.write_det_heading(self.det_units, units=True)
         lines = [init_row, title_row, unit_row]
-        for j,nu in enumerate(self.band_centers):
+        for j,nu in enumerate(self.band_centers[self.high]):
             lines.append(self.write_det_row(j+1, nu, self.pixel_sizes[j]))
         with open(self.channels_fp, 'w') as f:
             for line in lines:
                 f.write(f'{line}\n#{"-"*len(title_row)}\n')
 
-    def write_experiment(self):
+    def write_bc_experiment(self):
         self.write_optics_table()
         self.write_det_table()
         self.write_bands()
 
     def calc_bolos(self):
-        self.write_experiment()
+        self.calc_hemts()
+        self.write_bc_experiment()
         run_cmd(' '.join(self.cmd_bolo))
         self.unpack = up.Unpack(self.file_prefix)
         self.unpack.unpack_sensitivities(self.exp_fp)
@@ -244,7 +255,27 @@ class GenBolos:
             self.new_dict_all={}
             c = 1
             c_all=1+len(self.cached_dict_all.keys())
+        # first, the low frequencies
+        for j,band in enumerate(self.band_centers[self.low]):
+            self.new_dict[j+c] = {}
+            self.new_dict[j+c]['Center Frequency'] = self.band_centers[j]
+            self.new_dict[j+c]['Band Edges'] = tuple(self.band_edges[j])
+            self.new_dict[j+c]['Detector NET_CMB'] = self.hemt_out.sens[j].value
+            self.new_dict[j+c]['Detector NET_RJ'] = self.hemt_out.sens[j].value
+            self.new_dict[j+c]['Optical Power'] = self.hemt_out.popt
+            self.new_dict[j+c]['Sky Temp'] = self.hemt_out.T_sky[j].value
+
+            self.new_dict_all[j+c_all] = {}
+            self.new_dict_all[j+c_all]['Center Frequency'] = self.band_centers[j]
+            self.new_dict_all[j+c_all]['Band Edges'] = tuple(self.band_edges[j])
+            self.new_dict_all[j+c_all]['Detector NET_CMB'] = self.hemt_out.sens[j].value
+            self.new_dict_all[j+c_all]['Detector NET_RJ'] = self.hemt_out.sens[j].value
+            self.new_dict_all[j+c_all]['Optical Power'] = self.hemt_out.popt
+            self.new_dict_all[j+c_all]['Sky Temp'] = self.hemt_out.T_sky[j].value
+            
+        # next, the high frequencies
         for j,band in enumerate(self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'].keys()):
+            j += len(self.low)
             self.new_dict[j+c] = {}
             self.new_dict[j+c]['Center Frequency'] = self.band_centers[j]
             self.new_dict[j+c]['Band Edges'] = tuple(self.band_edges[j])
@@ -266,6 +297,10 @@ class GenBolos:
         np.save(f'{self.exp_fp}{self.file_prefix}sens_out.npy', self.new_dict_all, allow_pickle=True)
         #print(self.new_dict_all)
         return self.new_dict
+    
+    def calc_hemts(self):
+        # calculate sensitivities for HEMT amplifiers at low frequencies
+        self.hemt_out = hemt(self.band_edges[self.low], eta=0.35)
 
     def sort_dict(self, sdict, key = 'Center Frequency'):
         # sort a dictionary by its 2nd key
