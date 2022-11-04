@@ -1,9 +1,12 @@
 import sys
 import os
-root_path=".."
+file_path=os.path.dirname(os.path.abspath(__file__))
+root_path=file_path.replace('/analyze-bc','')
+
 src_path = os.path.join(root_path, "src")
 if src_path not in sys.path:
     sys.path.append(src_path)
+
 import unpack as up
 import subprocess
 import numpy as np
@@ -13,7 +16,7 @@ from hemt_noise import hemt
 
 class GenBolos:
 
-    def __init__(self,bc_fp,exp_fp,band_edges,file_prefix, exp='specter_v1', tel='SPECTER', cam='BF', 
+    def __init__(self,bc_fp,exp_fp,band_edges,file_prefix, exp='specter_v1', tel='SPECTER', cam='BF',
                  eta=0.7, force_sim = False, hemt_amps = True, hemt_freq = 100):
         """ Accept a tuple of band edges, e.g. ([10,40], [40,80], ...) and write as tophats to the specified Bolocalc experiment directory with a default 0.7 detector efficiency"""
         self.bc_fp = bc_fp
@@ -26,8 +29,8 @@ class GenBolos:
             self.band_edges = np.vstack(band_edges)
         else:
             self.band_edges = np.vstack(self.read_cache(band_edges))
-        if hemt_amps:            
-            self.low = np.where( self.band_edges[:,0] < hemt_freq)[0]
+        if hemt_amps:
+            self.low = np.where(self.band_edges[:,0] < hemt_freq)[0]
             self.high = np.where( self.band_edges[:,0] >= hemt_freq)[0]
         else:
             self.low = []
@@ -41,7 +44,7 @@ class GenBolos:
                     self.passbands[b,j] = 1
         self.passbands *= eta
         self.band_centers = np.mean(self.band_edges, axis=1)
-        print(self.band_centers)
+
         self.pixel_sizes = self.pitch_estimate()
         self.exp = exp
         self.tel = tel
@@ -49,6 +52,7 @@ class GenBolos:
         self.cam_config = f'{self.exp_fp}{self.tel}/{self.cam}/config/'
         self.bands_fp = f'{self.cam_config}Bands/Detectors/'
         self.optics_fp = f'{self.cam_config}{self.file_prefix}optics.txt'
+        print(self.optics_fp)
         self.channels_fp = f'{self.cam_config}{self.file_prefix}channels.txt'
         self.cmd_bolo = ['python3', self.bc_fp, self.exp_fp, f' --log_name {self.file_prefix}', f' --prefix {self.file_prefix}']
 
@@ -147,7 +151,7 @@ class GenBolos:
                     continue
                 band_vals = []
                 for nu in self.band_centers[self.high]:
-                    # 
+                    #
                     val = self.calc_optic(optic,param,nu)
                     band_vals.append(f'{val:>0.3f}')
                 band_vals = ', '.join(band_vals)
@@ -272,7 +276,7 @@ class GenBolos:
             self.new_dict_all[j+c_all]['Detector NET_RJ'] = self.hemt_out.sens[j].value
             self.new_dict_all[j+c_all]['Optical Power'] = self.hemt_out.popt
             self.new_dict_all[j+c_all]['Sky Temp'] = self.hemt_out.T_sky[j].value
-            
+
         # next, the high frequencies
         for j,band in enumerate(self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'].keys()):
             j += len(self.low)
@@ -297,7 +301,7 @@ class GenBolos:
         np.save(f'{self.exp_fp}{self.file_prefix}sens_out.npy', self.new_dict_all, allow_pickle=True)
         #print(self.new_dict_all)
         return self.new_dict
-    
+
     def calc_hemts(self):
         # calculate sensitivities for HEMT amplifiers at low frequencies
         self.hemt_out = hemt(self.band_edges[self.low], eta=0.35)
