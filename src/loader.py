@@ -49,7 +49,7 @@ class Loader:
         """
         try:
             freq, temp, tran = np.loadtxt(
-                fname, unpack=True, usecols=[0, 2, 3], dtype=np.float)
+                fname, unpack=True, usecols=[0, 1, 2], dtype=np.float)
         except IndexError:
             self._log.err("Failed to load atm file '%s'" % (fname))
         return (freq, temp, tran)
