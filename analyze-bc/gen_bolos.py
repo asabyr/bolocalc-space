@@ -25,16 +25,26 @@ class GenBolos:
         self.freqs = np.arange(0.75*np.min(band_edges), 1.25*np.max(band_edges),0.1)
         self.cached_dict={}
         self.cached_dict_all={}
+
         if force_sim:
             self.band_edges = np.vstack(band_edges)
         else:
             self.band_edges = np.vstack(self.read_cache(band_edges))
+
         if hemt_amps:
             self.low = np.where(self.band_edges[:,0] < hemt_freq)[0]
             self.high = np.where( self.band_edges[:,0] >= hemt_freq)[0]
         else:
+            print("calculating only bolometer frequencies")
             self.low = []
             self.high = np.where( self.band_edges[:,0] > 0)[0]
+
+
+        if ((hemt_freq == self.band_edges[-1][-1]) or (hemt_freq > self.band_edges[-1][-1])):
+            print("calculating only hemt frequencies")
+            self.low=np.where(self.band_edges[:,0] < hemt_freq)[0]
+            self.high=[]
+
         self.N_low = len(self.low)
         self.N_high = len(self.high)
         self.passbands = np.zeros( (self.N_low + self.N_high, self.freqs.shape[0]))
@@ -52,7 +62,6 @@ class GenBolos:
         self.cam_config = f'{self.exp_fp}{self.tel}/{self.cam}/config/'
         self.bands_fp = f'{self.cam_config}Bands/Detectors/'
         self.optics_fp = f'{self.cam_config}{self.file_prefix}optics.txt'
-        print(self.optics_fp)
         self.channels_fp = f'{self.cam_config}{self.file_prefix}channels.txt'
         self.cmd_bolo = ['python3', self.bc_fp, self.exp_fp, f' --log_name {self.file_prefix}', f' --prefix {self.file_prefix}']
 
@@ -244,10 +253,13 @@ class GenBolos:
 
     def calc_bolos(self):
         self.calc_hemts()
-        self.write_bc_experiment()
-        run_cmd(' '.join(self.cmd_bolo))
-        self.unpack = up.Unpack(self.file_prefix)
-        self.unpack.unpack_sensitivities(self.exp_fp)
+        if self.N_high>0:
+            self.write_bc_experiment()
+            run_cmd(' '.join(self.cmd_bolo))
+
+            self.unpack = up.Unpack(self.file_prefix)
+            self.unpack.unpack_sensitivities(self.exp_fp)
+
         if len(self.cached_dict.keys())>0 and len(self.cached_dict_all.keys())>0:
             self.new_dict = self.cached_dict.copy()
             self.new_dict_all=self.cached_dict_all.copy()
@@ -259,42 +271,46 @@ class GenBolos:
             self.new_dict_all={}
             c = 1
             c_all=1+len(self.cached_dict_all.keys())
+
+        if self.N_low>0:
         # first, the low frequencies
-        for j,band in enumerate(self.band_centers[self.low]):
-            self.new_dict[j+c] = {}
-            self.new_dict[j+c]['Center Frequency'] = self.band_centers[j]
-            self.new_dict[j+c]['Band Edges'] = tuple(self.band_edges[j])
-            self.new_dict[j+c]['Detector NET_CMB'] = self.hemt_out.sens[j].value
-            self.new_dict[j+c]['Detector NET_RJ'] = self.hemt_out.sens[j].value
-            self.new_dict[j+c]['Optical Power'] = self.hemt_out.popt
-            self.new_dict[j+c]['Sky Temp'] = self.hemt_out.T_sky[j].value
+            for j,band in enumerate(self.band_centers[self.low]):
+                self.new_dict[j+c] = {}
+                self.new_dict[j+c]['Center Frequency'] = self.band_centers[j]
+                self.new_dict[j+c]['Band Edges'] = tuple(self.band_edges[j])
+                self.new_dict[j+c]['Detector NET_CMB'] = self.hemt_out.sens[j].value
+                self.new_dict[j+c]['Detector NET_RJ'] = self.hemt_out.sens[j].value
+                self.new_dict[j+c]['Optical Power'] = self.hemt_out.popt
+                self.new_dict[j+c]['Sky Temp'] = self.hemt_out.T_sky[j].value
 
-            self.new_dict_all[j+c_all] = {}
-            self.new_dict_all[j+c_all]['Center Frequency'] = self.band_centers[j]
-            self.new_dict_all[j+c_all]['Band Edges'] = tuple(self.band_edges[j])
-            self.new_dict_all[j+c_all]['Detector NET_CMB'] = self.hemt_out.sens[j].value
-            self.new_dict_all[j+c_all]['Detector NET_RJ'] = self.hemt_out.sens[j].value
-            self.new_dict_all[j+c_all]['Optical Power'] = self.hemt_out.popt
-            self.new_dict_all[j+c_all]['Sky Temp'] = self.hemt_out.T_sky[j].value
+                self.new_dict_all[j+c_all] = {}
+                self.new_dict_all[j+c_all]['Center Frequency'] = self.band_centers[j]
+                self.new_dict_all[j+c_all]['Band Edges'] = tuple(self.band_edges[j])
+                self.new_dict_all[j+c_all]['Detector NET_CMB'] = self.hemt_out.sens[j].value
+                self.new_dict_all[j+c_all]['Detector NET_RJ'] = self.hemt_out.sens[j].value
+                self.new_dict_all[j+c_all]['Optical Power'] = self.hemt_out.popt
+                self.new_dict_all[j+c_all]['Sky Temp'] = self.hemt_out.T_sky[j].value
 
+        if self.N_high>0:
         # next, the high frequencies
-        for j,band in enumerate(self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'].keys()):
-            j += len(self.low)
-            self.new_dict[j+c] = {}
-            self.new_dict[j+c]['Center Frequency'] = self.band_centers[j]
-            self.new_dict[j+c]['Band Edges'] = tuple(self.band_edges[j])
-            self.new_dict[j+c]['Detector NET_CMB'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Detector NET_CMB'][0]
-            self.new_dict[j+c]['Detector NET_RJ'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Detector NET_RJ'][0]
-            self.new_dict[j+c]['Optical Power'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Optical Power'][0]
-            self.new_dict[j+c]['Sky Temp'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Sky Temp'][0]
+            for j,band in enumerate(self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'].keys()):
+                j += len(self.low)
+                self.new_dict[j+c] = {}
+                self.new_dict[j+c]['Center Frequency'] = self.band_centers[j]
+                self.new_dict[j+c]['Band Edges'] = tuple(self.band_edges[j])
+                self.new_dict[j+c]['Detector NET_CMB'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Detector NET_CMB'][0]
+                self.new_dict[j+c]['Detector NET_RJ'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Detector NET_RJ'][0]
+                self.new_dict[j+c]['Optical Power'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Optical Power'][0]
+                self.new_dict[j+c]['Sky Temp'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Sky Temp'][0]
 
-            self.new_dict_all[j+c_all] = {}
-            self.new_dict_all[j+c_all]['Center Frequency'] = self.band_centers[j]
-            self.new_dict_all[j+c_all]['Band Edges'] = tuple(self.band_edges[j])
-            self.new_dict_all[j+c_all]['Detector NET_CMB'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Detector NET_CMB'][0]
-            self.new_dict_all[j+c_all]['Detector NET_RJ'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Detector NET_RJ'][0]
-            self.new_dict_all[j+c_all]['Optical Power'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Optical Power'][0]
-            self.new_dict_all[j+c_all]['Sky Temp'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Sky Temp'][0]
+                self.new_dict_all[j+c_all] = {}
+                self.new_dict_all[j+c_all]['Center Frequency'] = self.band_centers[j]
+                self.new_dict_all[j+c_all]['Band Edges'] = tuple(self.band_edges[j])
+                self.new_dict_all[j+c_all]['Detector NET_CMB'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Detector NET_CMB'][0]
+                self.new_dict_all[j+c_all]['Detector NET_RJ'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Detector NET_RJ'][0]
+                self.new_dict_all[j+c_all]['Optical Power'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Optical Power'][0]
+                self.new_dict_all[j+c_all]['Sky Temp'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Sky Temp'][0]
+
         print(f'saving sensitivities to {self.exp_fp}{self.file_prefix}sens_out.npy')
         self.new_dict = self.sort_dict(self.new_dict)
         self.new_dict_all = self.sort_dict(self.new_dict_all)
