@@ -4,9 +4,11 @@ from scipy.optimize import curve_fit
 from astropy.modeling import models
 import astropy.constants as c
 import astropy.units as u
+import os
+this_dir=os.path.dirname(os.path.abspath(__file__))
 
 class hemt:
-    
+
     def __init__(self, band_edges, eta):
         # takes in a tuple of band edges and returns the HEMT sensitivity for each band
         self.band_edges = np.array(band_edges) * u.GHz
@@ -31,7 +33,7 @@ class hemt:
         spec_rad = bb(self.freqs)
         T_cmb = spec_rad.to(u.K, equivalencies=u.brightness_temperature(self.freqs))
         return T_cmb
-    
+
     def foregrounds(self):
         fg_labels = ['Freqs', 'Synch', 'Free-free', 'AME', 'CIB', 'Dust', 'CO', 'Total']  
         data = np.loadtxt('foregrounds/foregrounds_Jysr.txt')
