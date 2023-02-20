@@ -263,15 +263,17 @@ class GenBolos:
             self.new_dict[j+c]['Detector NET_CMB'] = self.hemt_out.sens[j].value
             self.new_dict[j+c]['Detector NET_RJ'] = self.hemt_out.sens[j].value
             self.new_dict[j+c]['Optical Power'] = self.hemt_out.popt
-            self.new_dict[j+c]['Sky Temp'] = self.hemt_out.T_sky[j].value
-
+            self.new_dict[j+c]['Sky Power'] = np.nan
+            #self.new_dict[j+c]['Sky Temp'] = self.hemt_out.T_sky[j].value
+            
             self.new_dict_all[j+c_all] = {}
             self.new_dict_all[j+c_all]['Center Frequency'] = self.band_centers[j]
             self.new_dict_all[j+c_all]['Band Edges'] = tuple(self.band_edges[j])
             self.new_dict_all[j+c_all]['Detector NET_CMB'] = self.hemt_out.sens[j].value
             self.new_dict_all[j+c_all]['Detector NET_RJ'] = self.hemt_out.sens[j].value
             self.new_dict_all[j+c_all]['Optical Power'] = self.hemt_out.popt
-            self.new_dict_all[j+c_all]['Sky Temp'] = self.hemt_out.T_sky[j].value
+            self.new_dict_all[j+c_all]['Sky Power'] = np.nan
+            #self.new_dict_all[j+c_all]['Sky Temp'] = self.hemt_out.T_sky[j].value
             
         # next, the high frequencies
         for j,band in enumerate(self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'].keys()):
@@ -282,7 +284,10 @@ class GenBolos:
             self.new_dict[j+c]['Detector NET_CMB'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Detector NET_CMB'][0]
             self.new_dict[j+c]['Detector NET_RJ'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Detector NET_RJ'][0]
             self.new_dict[j+c]['Optical Power'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Optical Power'][0]
-            self.new_dict[j+c]['Sky Temp'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Sky Temp'][0]
+            cmb_pwr = self.unpack.pwr_outputs[self.exp][self.tel][self.cam]['Summary'][band]['CMB']['Power to Detector'][0]
+            fg_pwr = self.unpack.pwr_outputs[self.exp][self.tel][self.cam]['Summary'][band]['ATM']['Power to Detector'][0]
+            self.new_dict[j+c]['Sky Power'] = cmb_pwr + fg_pwr
+            #self.new_dict[j+c]['Sky Temp'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Sky Temp'][0]
 
             self.new_dict_all[j+c_all] = {}
             self.new_dict_all[j+c_all]['Center Frequency'] = self.band_centers[j]
@@ -290,7 +295,8 @@ class GenBolos:
             self.new_dict_all[j+c_all]['Detector NET_CMB'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Detector NET_CMB'][0]
             self.new_dict_all[j+c_all]['Detector NET_RJ'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Detector NET_RJ'][0]
             self.new_dict_all[j+c_all]['Optical Power'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Optical Power'][0]
-            self.new_dict_all[j+c_all]['Sky Temp'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Sky Temp'][0]
+            self.new_dict_all[j+c_all]['Sky Power'] = cmb_pwr + fg_pwr
+            #self.new_dict_all[j+c_all]['Sky Temp'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Sky Temp'][0]
         print(f'saving sensitivities to {self.exp_fp}{self.file_prefix}sens_out.npy')
         self.new_dict = self.sort_dict(self.new_dict)
         self.new_dict_all = self.sort_dict(self.new_dict_all)

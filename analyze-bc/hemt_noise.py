@@ -34,14 +34,15 @@ class hemt:
     
     def foregrounds(self):
         fg_labels = ['Freqs', 'Synch', 'Free-free', 'AME', 'CIB', 'Dust', 'CO', 'Total']  
-        data = np.loadtxt('foregrounds/foregrounds_muK.txt')
-        fgs_uk = {}
+        data = np.loadtxt('foregrounds/foregrounds_Jysr.txt')
+        fgs_jy = {}
         d = np.where(data[:,0] <= 200*1e9)
         for j,col in enumerate(data.T):
-            fgs_uk[fg_labels[j]] = {}
-            fgs_uk[fg_labels[j]] = col[d]
-        f = interp1d(fgs_uk['Freqs']*1e-9, fgs_uk['Total'])
-        T_fgs = f(self.freqs) * 1e-6 * u.K
+            fgs_jy[fg_labels[j]] = {}
+            fgs_jy[fg_labels[j]] = col[d]
+        Tb = self.Jysr_to_Tb(fgs_jy['Freqs'], fgs_jy['Total'])
+        f = interp1d(fgs_jy['Freqs']*1e-9, Tb)
+        T_fgs = f(self.freqs) * u.K
         return T_fgs
 
     def amplifier(self):
@@ -59,3 +60,8 @@ class hemt:
 
     def opt_pow(self):
         return np.nan
+    
+    def Jysr_to_Tb(self, freqs, spec_rad):
+        # given spectral radiance in Jy/sr, return physical temperature in K
+        spec_rad *= 1e-26 # convert Jy/sr to W Hz^-1 m^-2
+        return c.h.value * freqs/c.k_B.value * 1/(np.log(2*c.h.value*freqs**3 / (c.c.value**2 * spec_rad) + 1))
