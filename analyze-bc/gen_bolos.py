@@ -129,7 +129,7 @@ class GenBolos:
         for low_edge in self.band_edges[:,0]:
             freq_idx = find_nearest(ref_sizes['Freq'], low_edge)[0]
             sizes.append(ref_sizes['Size'][freq_idx])
-        return sizes
+        return np.array(sizes)
 
     def write_bands(self):
         os.makedirs(self.bands_fp, exist_ok=True)
@@ -241,7 +241,7 @@ class GenBolos:
         unit_row = self.write_det_heading(self.det_units, units=True)
         lines = [init_row, title_row, unit_row]
         for j,nu in enumerate(self.band_centers[self.high]):
-            lines.append(self.write_det_row(j+1, nu, self.pixel_sizes[j]))
+            lines.append(self.write_det_row(j+1, nu, self.pixel_sizes[self.high][j]))
         with open(self.channels_fp, 'w') as f:
             for line in lines:
                 f.write(f'{line}\n#{"-"*len(title_row)}\n')
