@@ -19,7 +19,6 @@ class hemt:
         self.eta = eta
         T_cmb = self.cmb()
         T_fgs = self.foregrounds()
-        T_fgs = 1 * u.K
         T_hemt = self.amplifier()
         T_sys = T_cmb + T_fgs + T_hemt
         T_3ql = self.ideal_amp()
