@@ -3,12 +3,12 @@
 import numpy as np
 
 c = 2.99792458e8  #m/s
-T_cmb = 2.725        #K
-k_pJ = 1.3806503e-11   #pJ/K
-h_pJ = 6.626068e-22       #pJ s
+T_cmb = 2.7255    #K
+k_pJ = 1.380649e-11   #pJ/K
+h_pJ = 6.62607015e-22  #pJ s
 pi = np.pi
-
 GHz = 1e9
+
 
 def blackbody_x(T, f):
     """
@@ -78,3 +78,42 @@ def RJToDCMB(f):
     CMB temperature, at frequency f.
     """
     return spectrumToDCMB(rayleigh(1, f), f)
+
+def microK_to_Jypersr(muK,f):
+    """
+    convert from muK units to Jy/sr based on https://arxiv.org/pdf/1303.5070.pdf & https://arxiv.org/pdf/2010.16405.pdf
+    i.e. by taking a derivative of the Planck function
+
+    args:
+    muK: sensitivity [muK]
+    f: frequency [Hz]
+
+    output:
+    sensitivity [Jy/sr]
+    """
+
+    kb=k_pJ*1.e-12
+    hplanck=h_pJ*1.e-12
+
+
+    x=hplanck*f/(kb*T_cmb)
+    factor=2.*hplanck**2/(c**2*kb*(T_cmb*1.e6)*T_cmb)*1.e26
+    Jypersr_muK=factor*(f)**4*np.exp(x)/(np.exp(x)-1.)**2
+
+    return muK*Jypersr_muK
+
+def Jypersr_to_microK(Jysr, f):
+    """
+    convert from Jy/sr units to muK
+
+    args:
+    Jysr: sensitivity [Jy/sr]
+    f: frequency [Hz]
+
+    output:
+    sensitivity [muK]
+    """
+
+    Jysr_onemuK=microK_to_Jypersr(1.,f)
+
+    return Jysr*1./Jysr_onemuK
