@@ -25,13 +25,14 @@ class GenBolos:
         self.freqs = np.arange(0.75*np.min(band_edges), 1.25*np.max(band_edges),0.1)
         self.cached_dict={}
         self.cached_dict_all={}
-
+        self.hemt_amps=hemt_amps
+        
         if force_sim:
             self.band_edges = np.vstack(band_edges)
         else:
             self.band_edges = np.vstack(self.read_cache(band_edges))
 
-        if hemt_amps:
+        if self.hemt_amps:
             self.low = np.where(self.band_edges[:,0] < hemt_freq)[0]
             self.high = np.where( self.band_edges[:,0] >= hemt_freq)[0]
         else:
@@ -252,7 +253,8 @@ class GenBolos:
         self.write_bands()
 
     def calc_bolos(self):
-        self.calc_hemts()
+        if self.hemt_amps:
+            self.calc_hemts()
         if self.N_high>0:
             self.write_bc_experiment()
             run_cmd(' '.join(self.cmd_bolo))
@@ -277,21 +279,23 @@ class GenBolos:
                 self.new_dict[j+c] = {}
                 self.new_dict[j+c]['Center Frequency'] = self.band_centers[j]
                 self.new_dict[j+c]['Band Edges'] = tuple(self.band_edges[j])
-                self.new_dict[j+c]['Detector NET_CMB'] = self.hemt_out.sens[j].value
-                self.new_dict[j+c]['Detector NET_RJ'] = self.hemt_out.sens[j].value
+                print(self.hemt_out.sens[j])
+                self.new_dict[j+c]['Detector NET_CMB'] = self.hemt_out.sens[j]
+                self.new_dict[j+c]['Detector NET_RJ'] = self.hemt_out.sens[j]
+
                 self.new_dict[j+c]['Optical Power'] = self.hemt_out.popt
                 self.new_dict[j+c]['Sky Power'] = np.nan
                 #self.new_dict[j+c]['Sky Temp'] = self.hemt_out.T_sky[j].value
-                
+
                 self.new_dict_all[j+c_all] = {}
                 self.new_dict_all[j+c_all]['Center Frequency'] = self.band_centers[j]
                 self.new_dict_all[j+c_all]['Band Edges'] = tuple(self.band_edges[j])
-                self.new_dict_all[j+c_all]['Detector NET_CMB'] = self.hemt_out.sens[j].value
-                self.new_dict_all[j+c_all]['Detector NET_RJ'] = self.hemt_out.sens[j].value
+                self.new_dict_all[j+c_all]['Detector NET_CMB'] = self.hemt_out.sens[j]
+                self.new_dict_all[j+c_all]['Detector NET_RJ'] = self.hemt_out.sens[j]
                 self.new_dict_all[j+c_all]['Optical Power'] = self.hemt_out.popt
                 self.new_dict_all[j+c_all]['Sky Power'] = np.nan
                 #self.new_dict_all[j+c_all]['Sky Temp'] = self.hemt_out.T_sky[j].value
-            
+
         if self.N_high>0:
         # next, the high frequencies
             for j,band in enumerate(self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'].keys()):

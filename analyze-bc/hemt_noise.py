@@ -5,7 +5,7 @@ from astropy.modeling import models
 import astropy.constants as c
 import astropy.units as u
 import os
-from det_phys import RJToDCMB
+from det_phys import RJToDCMB, Jypersr_to_microK
 
 this_dir=os.path.dirname(os.path.abspath(__file__))
 
@@ -46,14 +46,21 @@ class hemt:
         self.sens_3ql = [i.value for i in self.sens_3ql]
 
     def cmb(self):
-        bb = models.BlackBody(temperature=2.726*u.K, scale=1*u.J/(u.m ** 2 * u.s * u.Hz * u.sr))
+        bb = models.BlackBody(temperature=2.7255*u.K, scale=1*u.J/(u.m ** 2 * u.s * u.Hz * u.sr))
         spec_rad = bb(self.freqs)
-        T_cmb = spec_rad.to(u.K, equivalencies=u.brightness_temperature(self.freqs))
+        spec_rad_Jypersr=spec_rad*1.e26
+
+        spec_rad_Jypersr_value=spec_rad_Jypersr.value
+        freqs_value=self.freqs.value*1.e9
+
+        T_cmb_muK=Jypersr_to_microK(spec_rad_Jypersr_value, freqs_value)
+        T_cmb=T_cmb_muK*1e-6*u.K
+
         return T_cmb
 
     def foregrounds(self):
         fg_labels = ['Freqs', 'Synch', 'Free-free', 'AME', 'CIB', 'Dust', 'CO', 'Total']
-        data = np.loadtxt(this_dir+'foregrounds/foregrounds_muK.txt')
+        data = np.loadtxt(this_dir+'/foregrounds/foregrounds_muK.txt')
         fgs_uk = {}
         d = np.where(data[:,0] <= 300*1e9)
         for j,col in enumerate(data.T):
@@ -70,7 +77,7 @@ class hemt:
         hemt_fit = np.poly1d(z)
         T_hemt = hemt_fit(self.freqs.value) * u.K
         return T_hemt
-    
+
     def ideal_amp(self):
         h = 6.626e-34 * 1e9 # J / GHz
         k = 1.38e-23
@@ -79,7 +86,7 @@ class hemt:
         t_3ql = 3*h*nu/k #/ np.log(2)
         f = interp1d(nu, t_3ql, bounds_error=False, fill_value='extrapolate')
         return f(self.freqs) * u.K
-        
+
     def dicke_sens(self, tsys, f_low, f_high):
         bw = f_high - f_low
         sens = np.mean(tsys) / np.sqrt(self.eta * bw)
