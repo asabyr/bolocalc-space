@@ -81,8 +81,7 @@ class hemt:
     def ideal_amp(self):
         h = 6.626e-34 * 1e9 # J / GHz
         k = 1.38e-23
-        nu = self.band_centers.value
-        print(f'freqs are {nu}')
+        nu = self.freqs.value
         t_3ql = 3*h*nu/k #/ np.log(2)
         f = interp1d(nu, t_3ql, bounds_error=False, fill_value='extrapolate')
         return f(self.freqs) * u.K
