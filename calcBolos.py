@@ -38,7 +38,7 @@ ps.add_argument(
     "exp_dir", type=str, metavar="Experiment Directory",
     help="Experiment directory to be simulated")
 ps.add_argument(
-    "--prefix", default="dt_tm_str", dest="prefix",
+    "--prefix", default=dt_str+"_", dest="prefix",
     help="prefix for the output files")
 # Keyword arguments
 ps.add_argument(
