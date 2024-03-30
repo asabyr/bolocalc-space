@@ -279,7 +279,7 @@ class GenBolos:
                 self.new_dict[j+c] = {}
                 self.new_dict[j+c]['Center Frequency'] = self.band_centers[j]
                 self.new_dict[j+c]['Band Edges'] = tuple(self.band_edges[j])
-                print(self.hemt_out.sens[j])
+                # print(self.hemt_out.sens[j])
                 self.new_dict[j+c]['Detector NET_CMB'] = self.hemt_out.sens[j]
                 self.new_dict[j+c]['Detector NET_RJ'] = self.hemt_out.sens[j]
 
