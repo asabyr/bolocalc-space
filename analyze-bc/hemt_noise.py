@@ -25,7 +25,6 @@ class hemt:
         self.sens, self.sens_3ql, self.T_sys, self.T_sys_3ql, self.T_sky, self.T_amp, self.T_amp_3ql = [], [], [], [], [], [], []
         for f_low,f_high in self.band_edges:
             idx = np.where( (self.freqs >= f_low) & (self.freqs < f_high) )[0]
-            rj_to_cmb = RJToDCMB((f_low.value + f_high.value)/2)
             tsys = np.mean((T_cmb+T_fgs+T_hemt)[idx])
             tsys_3ql = np.mean((T_cmb+T_fgs+T_3ql)[idx])
             tsky = np.mean((T_cmb+T_fgs)[idx])
@@ -36,8 +35,8 @@ class hemt:
             self.T_sky.append(tsky)
             self.T_amp.append(tamp.value)
             self.T_amp_3ql.append(t3ql.value)
-            self.sens.append(rj_to_cmb * self.dicke_sens(tsys, f_low, f_high))
-            self.sens_3ql.append(rj_to_cmb * self.dicke_sens(tsys_3ql, f_low, f_high))
+            self.sens.append(self.dicke_sens(tsys, f_low, f_high))
+            self.sens_3ql.append(self.dicke_sens(tsys_3ql, f_low, f_high))
         self.popt = self.opt_pow()
         self.T_sky = [i.value for i in self.T_sky]
         self.T_sys = [i.value for i in self.T_sys]
@@ -71,12 +70,14 @@ class hemt:
         return T_fgs
 
     def amplifier(self):
+        #these are in RJ
         hemt_noise = [1.1,1.1,1.3,1.5,1.5,2,3,5,6.5,8,10,8,9,12,10,10,15,17,20,22,27,30]
         hemt_freqs = [1,2,3,4,6,8,10,16,20,25,28,30,40,45,50,59,69,77,80,90,100,116]
         z = np.polyfit(hemt_freqs, hemt_noise, 2)
         hemt_fit = np.poly1d(z)
         T_hemt = hemt_fit(self.freqs.value) * u.K
-        return T_hemt
+        rj_to_cmb = RJToDCMB(self.freqs.value)
+        return T_hemt*rj_to_cmb
 
     def ideal_amp(self):
         h = 6.626e-34 * 1e9 # J / GHz
