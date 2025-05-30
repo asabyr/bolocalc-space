@@ -88,7 +88,7 @@ class hemt:
 
     def dicke_sens(self, tsys, f_low, f_high):
         bw = f_high - f_low
-        sens = np.mean(tsys) / np.sqrt(self.eta * bw)
+        sens = np.sqrt(2.0)*np.mean(tsys) / np.sqrt(self.eta * bw)
         return sens.to(u.uK / (u.Hz)**0.5)
 
     def opt_pow(self):
