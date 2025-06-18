@@ -306,9 +306,15 @@ class GenBolos:
                 self.new_dict[j+c]['Detector NET_CMB'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Detector NET_CMB'][0]
                 self.new_dict[j+c]['Detector NET_RJ'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Detector NET_RJ'][0]
                 self.new_dict[j+c]['Optical Power'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Optical Power'][0]
-                cmb_pwr = self.unpack.pwr_outputs[self.exp][self.tel][self.cam]['Summary'][band]['CMB']['Power to Detector'][0]
-                fg_pwr = self.unpack.pwr_outputs[self.exp][self.tel][self.cam]['Summary'][band]['ATM']['Power to Detector'][0]
-                self.new_dict[j+c]['Sky Power'] = cmb_pwr + fg_pwr
+                power_keys=self.unpack.pwr_outputs[self.exp][self.tel][self.cam]['Summary'][band].keys()
+                if 'CMB' and 'ATM' in power_keys:
+                    cmb_pwr = self.unpack.pwr_outputs[self.exp][self.tel][self.cam]['Summary'][band]['CMB']['Power to Detector'][0]
+                    fg_pwr = self.unpack.pwr_outputs[self.exp][self.tel][self.cam]['Summary'][band]['ATM']['Power to Detector'][0]
+                    tot_pwr = cmb_pwr + fg_pwr
+                elif 'Sky' in power_keys:
+                    # print(self.unpack.pwr_outputs[self.exp][self.tel][self.cam]['Summary'][band]['Sky'].keys())
+                    tot_pwr = self.unpack.pwr_outputs[self.exp][self.tel][self.cam]['Summary'][band]['Sky']['Power to Detector'][0]
+                self.new_dict[j+c]['Sky Power'] = tot_pwr
                 #self.new_dict[j+c]['Sky Temp'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Sky Temp'][0]
 
                 self.new_dict_all[j+c_all] = {}
@@ -317,7 +323,7 @@ class GenBolos:
                 self.new_dict_all[j+c_all]['Detector NET_CMB'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Detector NET_CMB'][0]
                 self.new_dict_all[j+c_all]['Detector NET_RJ'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Detector NET_RJ'][0]
                 self.new_dict_all[j+c_all]['Optical Power'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Optical Power'][0]
-                self.new_dict_all[j+c_all]['Sky Power'] = cmb_pwr + fg_pwr
+                self.new_dict_all[j+c_all]['Sky Power'] = tot_pwr
                 #self.new_dict_all[j+c_all]['Sky Temp'] = self.unpack.sens_outputs[self.exp][self.tel][self.cam]['All'][band]['Sky Temp'][0]
 
         print(f'saving sensitivities to {self.exp_fp}{self.file_prefix}sens_out.npy')
